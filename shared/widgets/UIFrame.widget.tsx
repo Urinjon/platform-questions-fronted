@@ -9,15 +9,18 @@ import { Input } from "@shared/ui/input";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@shared/ui/input-group";
 import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from "@shared/ui/pagination";
 import { AlertCircleIcon, CheckCircle2Icon, CheckIcon, CreditCardIcon, InfoIcon, MailIcon, PopcornIcon, SearchIcon, StarIcon } from "lucide-react";
-import { Navigation } from "./Navigation.widget";
+
 import { InputFile } from "@shared/ui/input-file";
+import { HomeCarousel } from "../../app/components/HomeCarousel.widget";
 
 export const UIFrame: React.FC = () => {
     return (
         <div className="flex flex-col items-center gap-3">
 
-            <Navigation />
+            
 
+
+            <HomeCarousel />
 
             <Button variant={"default"}>Button</Button>
             <SwitchTheme />

@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon, LanguagesIcon } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -14,6 +14,8 @@ import {
   navigationMenuTriggerStyle,
 } from "@shared/ui/navigation-menu"
 import { LinkApp } from "@shared/ui/link"
+import { SwitchTheme } from "@shared/features/SwitchTheme.feature"
+
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -79,7 +81,7 @@ export function Navigation() {
 
   return (
     <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
+      <NavigationMenuList className="flex-wrap pt-2">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -205,6 +207,29 @@ export function Navigation() {
                     <CircleCheckIcon />
                     Done
                   </Link>
+                </NavigationMenuLink>
+              </li>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        
+        <NavigationMenuItem className="flex items-center gap-3">
+          <SwitchTheme />
+
+          <NavigationMenuTrigger>
+              <LanguagesIcon />
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid w-[200px] gap-4">
+              <li>
+                <NavigationMenuLink asChild>
+                  <Link href="#">RU</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="#">EN</Link>
+                </NavigationMenuLink>
+                <NavigationMenuLink asChild>
+                  <Link href="#">UZ</Link>
                 </NavigationMenuLink>
               </li>
             </ul>
