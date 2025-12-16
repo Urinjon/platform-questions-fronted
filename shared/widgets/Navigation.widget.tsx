@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon, LanguagesIcon } from "lucide-react"
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon, LanguagesIcon, UserRoundIcon } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -15,45 +15,10 @@ import {
 } from "@shared/ui/navigation-menu"
 import { LinkApp } from "@shared/ui/link"
 import { SwitchTheme } from "@shared/features/SwitchTheme.feature"
+import { NavMainLinks } from "@shared/config/routing.config"
+import { Button } from "@shared/ui/button"
 
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-]
 
 
 function useIsMobile() {
@@ -114,10 +79,10 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Основное</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
+              {NavMainLinks.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
@@ -233,6 +198,20 @@ export function Navigation() {
                 </NavigationMenuLink>
               </li>
             </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>
+              <UserRoundIcon />
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="flex flex-col gap-3">
+            <Button variant={"outline"}>
+              Войти
+            </Button>
+            <Button variant={"default"}>
+              Зарегистрироваться
+            </Button>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
