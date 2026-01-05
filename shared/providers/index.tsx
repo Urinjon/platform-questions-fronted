@@ -1,5 +1,8 @@
 "use client";
 
+import 'reflect-metadata';
+
+
 import { ThemeProvider } from "@shared/providers/theme.provider";
 import { PropsWithChildren } from "react";
 
