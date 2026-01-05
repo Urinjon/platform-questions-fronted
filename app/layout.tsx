@@ -36,8 +36,9 @@ export default function RootLayout({
             <div className="flex justify-center items-center">
               <Navigation />
             </div>
+          
+            {children}
           </Container>
-          {children}
         </AppProviders>
       </body>
     </html>
