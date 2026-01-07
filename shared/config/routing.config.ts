@@ -31,7 +31,7 @@ export const NewFeaturesLinks: { title: string; href: string; description: strin
   },
   {
     title: "Регистрация/Вход",
-    href: "/auth",
+    href: "/auth/login",
     description: "Регистрация и вход в систему.",
     icon: KeyRoundIcon
   }

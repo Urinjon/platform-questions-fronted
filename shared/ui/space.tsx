@@ -11,6 +11,7 @@ interface ISpaceProps extends React.HTMLAttributes<HTMLDivElement> {
     gap?: number;
     isWrap?: boolean;
     fullWidth?: boolean;
+    fullScreenHeight?: boolean;
 }
 
 export const Space: React.FC<ISpaceProps> = ({
@@ -22,6 +23,7 @@ export const Space: React.FC<ISpaceProps> = ({
     gap = 0,
     isWrap = false,
     fullWidth = false,
+    fullScreenHeight = false,
     ...props
 }) => {
     const Component = as;
@@ -53,7 +55,9 @@ export const Space: React.FC<ISpaceProps> = ({
         `gap-${gap}`,
         `p-${p}`,
         isWrap && "flex-wrap",
-        fullWidth && "w-full"
+        fullWidth && "w-full",
+        fullScreenHeight && "min-h-screen",
+        props.className
     )
     
 
