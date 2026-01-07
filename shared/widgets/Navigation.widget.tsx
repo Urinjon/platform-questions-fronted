@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon, LanguagesIcon, UserRoundIcon } from "lucide-react"
+import { CircleCheckIcon, CircleHelpIcon, CircleIcon, DiamondPlusIcon, LanguagesIcon, LucideIcon, UserRoundIcon } from "lucide-react"
 
 import {
   NavigationMenu,
@@ -15,8 +15,9 @@ import {
 } from "@shared/ui/navigation-menu"
 import { LinkApp } from "@shared/ui/link"
 import { SwitchTheme } from "@shared/features/SwitchTheme.feature"
-import { NavMainLinks } from "@shared/config/routing.config"
+import { NewFeaturesLinks } from "@shared/config/routing.config"
 import { Button } from "@shared/ui/button"
+import { Space } from "@shared/ui/space"
 
 
 
@@ -79,16 +80,24 @@ export function Navigation() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Основное</NavigationMenuTrigger>
+          <NavigationMenuTrigger>
+            <Space gap={1} align="center">
+              <DiamondPlusIcon size={20} />
+              Нововведение сайта
+            </Space>
+          </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {NavMainLinks.map((component) => (
+              {NewFeaturesLinks.map((component) => (
                 <ListItem
                   key={component.title}
                   title={component.title}
                   href={component.href}
+                  icon={component.icon}
                 >
+                 
                   {component.description}
+                  
                 </ListItem>
               ))}
             </ul>
@@ -219,17 +228,26 @@ export function Navigation() {
   )
 }
 
+type TListItem = React.ComponentPropsWithoutRef<"li"> & { href: string } & {
+  title: string
+  children: React.ReactNode
+  href: string
+  icon?: LucideIcon
+}
+
 function ListItem({
   title,
   children,
   href,
   ...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: TListItem) {
+  
+
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
+          <div className="text-sm leading-none font-medium flex items-center gap-1">{title}</div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>

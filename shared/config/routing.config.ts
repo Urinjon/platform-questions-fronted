@@ -1,4 +1,5 @@
-import { Home, Inbox, Settings } from "lucide-react";
+import { ClipboardListIcon, Home, Inbox, KeyRoundIcon, LucideIcon, Settings } from "lucide-react";
+
 
 
 export const SideBarLinks = [
@@ -21,23 +22,17 @@ export const SideBarLinks = [
 
 
 
-export const NavMainLinks: { title: string; href: string; description: string }[] = [
+export const NewFeaturesLinks: { title: string; href: string; description: string, icon: LucideIcon }[] = [
   {
-    title: "Вопросы",
-    href: "/student/questions",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    title: "Задачи",
+    href: "/tasks",
+    description: "Управление задачами. Создание, редактирование, удаление.",
+    icon: ClipboardListIcon
   },
   {
-    title: "Настройки",
-    href: "/settings",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Профиль",
-    href: "/student",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
+    title: "Регистрация/Вход",
+    href: "/auth",
+    description: "Регистрация и вход в систему.",
+    icon: KeyRoundIcon
+  }
 ]
