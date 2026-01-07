@@ -1,8 +1,8 @@
 import { TaskEntity } from "@modules/tasks/Task.entity"
 import { Button } from "@shared/ui/button"
 import { Calendar } from "@shared/ui/calendar"
-import { Card } from "@shared/ui/card"
-import { Item, ItemActions, ItemContent, ItemDescription, ItemFooter, ItemHeader, ItemMedia, ItemTitle } from "@shared/ui/item"
+
+import { Item, ItemActions, ItemContent, ItemDescription, ItemTitle } from "@shared/ui/item"
 import { Popover, PopoverContent, PopoverTrigger } from "@shared/ui/popover"
 import { Space } from "@shared/ui/space"
 import { CalendarIcon, CheckIcon, InfoIcon, XIcon } from "lucide-react"

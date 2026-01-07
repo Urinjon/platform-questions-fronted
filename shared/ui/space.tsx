@@ -3,24 +3,28 @@
 import { cn } from "@shared/lib/utils";
 
 interface ISpaceProps extends React.HTMLAttributes<HTMLDivElement> {
-    tag?: "section" | "div";
+    as?: "section" | "div";
     axios?: "col" | "row";
     justify?: "start" | "center" | "end";
     align?: "start" | "center" | "end";
     p?: number;
     gap?: number;
+    isWrap?: boolean;
+    fullWidth?: boolean;
 }
 
 export const Space: React.FC<ISpaceProps> = ({
-    tag = "div",
+    as = "div",
     axios = "row",
     justify = "start",
     align = "start",
     p = 0,
     gap = 0,
+    isWrap = false,
+    fullWidth = false,
     ...props
 }) => {
-    const Component = tag;
+    const Component = as;
 
     const baseClass = "flex";
 
@@ -47,7 +51,9 @@ export const Space: React.FC<ISpaceProps> = ({
         justifyClass[justify],
         alignClass[align],
         `gap-${gap}`,
-        `p-${p}`
+        `p-${p}`,
+        isWrap && "flex-wrap",
+        fullWidth && "w-full"
     )
     
 
