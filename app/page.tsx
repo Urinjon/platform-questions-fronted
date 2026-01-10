@@ -1,14 +1,11 @@
-import { Container } from "@shared/widgets/Container.widget";
-import { UIFrame } from "@shared/widgets/UIFrame.widget";
 import { HomeHere } from "./components/HomeHere.widget";
-
-
+import { AboutHere } from "./components/AboutHere.widget";
 
 export default function HomePage() {
   return (
-   <Container>
-    <HomeHere />
-    <UIFrame />
-   </Container>
+    <div className="flex flex-col space-y-10">
+      <HomeHere />
+      <AboutHere />
+    </div>
   );
 }

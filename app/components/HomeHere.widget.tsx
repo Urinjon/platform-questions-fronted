@@ -1,36 +1,33 @@
+"use client";
 
-import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@shared/ui/resizable"
+import { cn } from "@shared/lib/utils";
+import { Spotlight } from "@shared/ui/Spotlight";
+import { TextGenerateEffect } from "@shared/ui/text-generate-effect";
 
-
-
+const words = `lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. `;
 
 export const HomeHere: React.FC = () => {
-    return (
-        <ResizablePanelGroup
-        direction="horizontal"
-        className="max-w-md rounded-lg border md:min-w-[450px]"
-        >
-        <ResizablePanel defaultSize={50}>
-            <div className="flex h-[200px] items-center justify-center p-6">
-            <span className="font-semibold">One</span>
-            </div>
-        </ResizablePanel>
-        <ResizableHandle />
-        <ResizablePanel defaultSize={50}>
-            <ResizablePanelGroup direction="vertical">
-            <ResizablePanel defaultSize={25}>
-                <div className="flex h-full items-center justify-center p-6">
-                <span className="font-semibold">Two</span>
-                </div>
-            </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel defaultSize={75}>
-                <div className="flex h-full items-center justify-center p-6">
-                <span className="font-semibold">Three</span>
-                </div>
-            </ResizablePanel>
-            </ResizablePanelGroup>
-        </ResizablePanel>
-        </ResizablePanelGroup>
-    )
-}
+  return (
+    <div className="relative flex h-[40rem] w-full overflow-hidden rounded-md bg-black/[0.96] antialiased md:items-center md:justify-center">
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 [background-size:40px_40px] select-none",
+          "[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]",
+        )}
+      />
+
+      <Spotlight
+        className="-top-40 left-0 md:-top-20 md:left-60"
+        fill="white"
+      />
+      <div className="relative z-10 mx-auto w-full max-w-7xl p-4 pt-20 md:pt-0">
+        <h1 className="bg-opacity-50 bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-center text-4xl font-bold text-transparent md:text-7xl">
+          Платформа <br /> с вопросами.
+        </h1>
+        <p className="mx-auto mt-4 max-w-lg text-center text-base font-normal text-neutral-300">
+          <TextGenerateEffect words={words} />
+        </p>
+      </div>
+    </div>
+  );
+};

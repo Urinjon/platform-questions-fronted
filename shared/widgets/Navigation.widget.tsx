@@ -1,8 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon, DiamondPlusIcon, LanguagesIcon, LucideIcon, UserRoundIcon } from "lucide-react"
+import * as React from "react";
+import Link from "next/link";
+import {
+  CircleCheckIcon,
+  CircleHelpIcon,
+  CircleIcon,
+  DiamondPlusIcon,
+  LanguagesIcon,
+  LucideIcon,
+  UserRoundIcon,
+} from "lucide-react";
 
 import {
   NavigationMenu,
@@ -12,41 +20,40 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@shared/ui/navigation-menu"
-import { LinkApp } from "@shared/ui/link"
-import { SwitchTheme } from "@shared/features/SwitchTheme.feature"
-import { NewFeaturesLinks } from "@shared/config/routing.config"
-import { Button } from "@shared/ui/button"
-import { Space } from "@shared/ui/space"
-
-
-
+} from "@shared/ui/navigation-menu";
+import { LinkApp } from "@shared/ui/link";
+import { SwitchTheme } from "@shared/features/SwitchTheme.feature";
+import { NewFeaturesLinks } from "@shared/config/routing.config";
+import { Button } from "@shared/ui/button";
+import { Space } from "@shared/ui/space";
 
 function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState(false)
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 1024)
-    }
+      setIsMobile(window.innerWidth < 1024);
+    };
 
-    handleResize()
-    window.addEventListener("resize", handleResize)
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-  return isMobile
+  return isMobile;
 }
 
-
 export function Navigation() {
-  const isMobile = useIsMobile()
+  const isMobile = useIsMobile();
 
   return (
-    <NavigationMenu viewport={isMobile}>
+    <NavigationMenu
+      viewport={isMobile}
+      className="fixed top-0 left-0 right-0 z-50"
+    >
       <NavigationMenuList className="flex-wrap pt-2">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
@@ -95,9 +102,7 @@ export function Navigation() {
                   href={component.href}
                   icon={component.icon}
                 >
-                 
                   {component.description}
-                  
                 </ListItem>
               ))}
             </ul>
@@ -186,12 +191,12 @@ export function Navigation() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        
+
         <NavigationMenuItem className="flex items-center gap-3">
           <SwitchTheme />
 
           <NavigationMenuTrigger>
-              <LanguagesIcon />
+            <LanguagesIcon />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">
@@ -212,47 +217,38 @@ export function Navigation() {
 
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-              <UserRoundIcon />
+            <UserRoundIcon />
           </NavigationMenuTrigger>
           <NavigationMenuContent className="flex flex-col gap-3">
-            <Button variant={"outline"}>
-              Войти
-            </Button>
-            <Button variant={"default"}>
-              Зарегистрироваться
-            </Button>
+            <Button variant={"outline"}>Войти</Button>
+            <Button variant={"default"}>Зарегистрироваться</Button>
           </NavigationMenuContent>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
 
 type TListItem = React.ComponentPropsWithoutRef<"li"> & { href: string } & {
-  title: string
-  children: React.ReactNode
-  href: string
-  icon?: LucideIcon
-}
+  title: string;
+  children: React.ReactNode;
+  href: string;
+  icon?: LucideIcon;
+};
 
-function ListItem({
-  title,
-  children,
-  href,
-  ...props
-}: TListItem) {
-  
-
+function ListItem({ title, children, href, ...props }: TListItem) {
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="text-sm leading-none font-medium flex items-center gap-1">{title}</div>
+          <div className="text-sm leading-none font-medium flex items-center gap-1">
+            {title}
+          </div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
         </Link>
       </NavigationMenuLink>
     </li>
-  )
+  );
 }

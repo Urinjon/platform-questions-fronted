@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AppProviders } from "@shared/providers";
 import { Navigation } from "@shared/widgets/Navigation.widget";
-import { Container } from "@shared/widgets/Container.widget";
-
-
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -29,16 +26,16 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppProviders>
-          <Container>
-            <div className="flex justify-center items-center">
-              <Navigation />
-            </div>
-          
-            {children}
-          </Container>
+          {/*<Container>*/}
+          <div className="flex justify-center items-center">
+            <Navigation />
+          </div>
+
+          {children}
+          {/*</Container>*/}
         </AppProviders>
       </body>
     </html>
