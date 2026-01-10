@@ -9,6 +9,7 @@ import {
   DiamondPlusIcon,
   LanguagesIcon,
   LucideIcon,
+  SettingsIcon,
   UserRoundIcon,
 } from "lucide-react";
 
@@ -26,6 +27,17 @@ import { SwitchTheme } from "@shared/features/SwitchTheme.feature";
 import { NewFeaturesLinks } from "@shared/config/routing.config";
 import { Button } from "@shared/ui/button";
 import { Space } from "@shared/ui/space";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@shared/ui/alert-dialog";
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState(false);
@@ -52,9 +64,9 @@ export function Navigation() {
   return (
     <NavigationMenu
       viewport={isMobile}
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed z-50 top-0 bg-gray-900/30 backdrop-blur-md w-full p-3 rounded-b-2xl"
     >
-      <NavigationMenuList className="flex-wrap pt-2">
+      <NavigationMenuList className="flex-wrap pt-2 ">
         <NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -223,6 +235,27 @@ export function Navigation() {
             <Button variant={"outline"}>Войти</Button>
             <Button variant={"default"}>Зарегистрироваться</Button>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+
+        <NavigationMenuItem>
+          <AlertDialog>
+            <AlertDialogTrigger>
+              <SettingsIcon />
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Настройки пользователя</AlertDialogTitle>
+                <AlertDialogDescription>
+                  This action cannot be undone. This will permanently delete
+                  your account and remove your data from our servers.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                <AlertDialogAction>Continue</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
