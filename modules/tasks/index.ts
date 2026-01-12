@@ -1,1 +1,1 @@
-export { TaskTable } from "./components/organisms/TaskTable.client";
+export { TaskTable } from "./components/organisms/TaskTable.organism";

@@ -1,16 +1,13 @@
 "use client";
 
-import { container } from 'tsyringe';
-import { TasksApiRepository } from './Tasks.api';
-import { TasksService } from './Task.service';
-import { TasksStore } from './Tasks.store';
+import { TasksApiRepository } from "./Tasks.api";
+import { TasksService } from "./Task.service";
+import { TasksStore } from "./Tasks.store";
 
+export function createTasksStore() {
+	const repo = new TasksApiRepository();
+	const service = new TasksService(repo);
+	const store = new TasksStore(service);
 
-container.register('ITasksRepository', {
-  useClass: TasksApiRepository,
-});
-
-container.registerSingleton(TasksService);
-container.registerSingleton(TasksStore);
-
-export const tasksStore = container.resolve(TasksStore);
+	return store;
+}

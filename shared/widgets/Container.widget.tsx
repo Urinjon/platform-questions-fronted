@@ -1,13 +1,16 @@
 "use client";
 
+import { cn } from "@shared/lib/utils";
 
-import { PropsWithChildren } from "react"
+export const Container: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+	children,
+	...props
+}) => {
+	const className = cn("container mx-auto", props.className);
 
-
-export const Container: React.FC<PropsWithChildren> = ({children}) => {
-    return (
-        <div className="container mx-auto">
-            {children}
-        </div>
-    )
-}
+	return (
+		<div {...props} className={className}>
+			{children}
+		</div>
+	);
+};

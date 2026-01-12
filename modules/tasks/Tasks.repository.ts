@@ -1,6 +1,5 @@
-import { TaskEntity } from "./Task.entity";
-
+import type { TaskEntity } from "./Task.entity";
 
 export interface ITasksRepository {
-  findAll(): Promise<TaskEntity[]>;
+	findAll(): Promise<TaskEntity[]>;
 }

@@ -1,15 +1,9 @@
-import { inject, injectable } from 'tsyringe';
-import type { ITasksRepository } from './Tasks.repository';
+import type { ITasksRepository } from "./Tasks.repository";
 
-
-@injectable()
 export class TasksService {
-  constructor(
-    @inject('ITasksRepository')
-    private readonly repo: ITasksRepository
-  ) {}
+	constructor(private readonly _repo: ITasksRepository) {}
 
-  execute() {
-    return this.repo.findAll();
-  }
+	execute() {
+		return this._repo.findAll();
+	}
 }
