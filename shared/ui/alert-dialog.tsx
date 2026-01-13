@@ -5,6 +5,7 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 import { cn } from "@shared/lib/utils";
 import { buttonVariants } from "@shared/ui/button";
+import { Space } from "./space";
 
 function AlertDialog({
 	...props
@@ -143,7 +144,21 @@ function AlertDialogCancel({
 	);
 }
 
+function AlertBody({
+	className,
+	...props
+}: React.ComponentProps<typeof AlertDialogPrimitive.Content>) {
+	return (
+		<Space
+			data-slot="alert-dialog-body"
+			className={cn("flex flex-col gap-2", className)}
+			{...props}
+		/>
+	);
+}
+
 export {
+	AlertBody,
 	AlertDialog,
 	AlertDialogTrigger,
 	AlertDialogContent,

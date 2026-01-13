@@ -41,7 +41,7 @@ import {
 } from "lucide-react";
 
 import { InputFile } from "@shared/ui/input-file";
-import { HomeCarousel } from "../../app/components/HomeCarousel.widget";
+
 import {
 	Sidebar,
 	SidebarContent,
@@ -86,7 +86,7 @@ export const UIFrame: React.FC = () => {
 				</Sidebar>
 
 				<div className="text-red-500">TEST</div>
-				<HomeCarousel />
+
 				<SidebarTrigger />
 				<Button variant={"default"}>Button</Button>
 				<SwitchTheme />

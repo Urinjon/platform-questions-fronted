@@ -12,7 +12,7 @@ const words = `Создавай, проходи, соревнуйся.
 Платформа с тысячами интересных вопросов
 по самым разным темам — от науки до мемов.`;
 
-export const HomeHero = () => {
+export const HomeHere = () => {
 	return (
 		<header className="relative min-h-screen w-full overflow-hidden bg-background antialiased">
 			{/* Фон + градиенты, которые адаптируются к теме */}
