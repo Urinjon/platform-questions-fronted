@@ -1,6 +1,6 @@
 "use client";
 
-import { GlowingEffect } from "@shared/ui/glowing-effect";
+import { GlowingEffect } from "@ui-kit/effects";
 import { Box, Lock, Search, Settings, Sparkles } from "lucide-react";
 
 export function AboutHere() {

@@ -2,9 +2,11 @@
 
 import { generateUniqId } from "@shared/lib/generate-uniq-id.lib";
 import { cn } from "@shared/lib/utils";
-import { Button } from "@shared/ui/button";
-import { Spotlight } from "@shared/ui/spotlight";
-import { TextGenerateEffect } from "@shared/ui/text-generate-effect";
+
+import { TextGenerateEffect } from "@ui-kit/effects";
+import { Button } from "@ui-kit/ui/button";
+import { Spotlight } from "@ui-kit/ui/spotlight";
+
 import { MoveRight, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 

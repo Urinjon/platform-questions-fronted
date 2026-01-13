@@ -1,10 +1,10 @@
 "use client";
 
-import { Card } from "@shared/ui/card";
+import { Card } from "@ui-kit/ui/card";
 import { TasksList } from "../molecules/TasksList.molecule";
-import { Title } from "@shared/ui/Title";
-import { Space } from "@shared/ui/space";
-import { Grid } from "@shared/ui/grid";
+import { Title } from "@ui-kit/ui/Title";
+import { Space } from "@ui-kit/ui/space";
+import { Grid } from "@ui-kit/ui/grid";
 
 export const TaskTable = () => {
 	const days = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];

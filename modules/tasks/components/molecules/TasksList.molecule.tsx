@@ -2,9 +2,9 @@
 import { observer } from "mobx-react-lite";
 import { useMemo, useEffect } from "react";
 
-import { Spinner } from "@shared/ui/spinner";
-import { Alert } from "@shared/ui/alert";
-import { Card } from "@shared/ui/card";
+import { Spinner } from "@ui-kit/ui/spinner";
+import { Alert } from "@ui-kit/ui/alert";
+import { Card } from "@ui-kit/ui/card";
 import { TaskItem } from "../atoms/TaskItem.client.atom";
 import { createTasksStore } from "@modules/tasks/tasks.container";
 

@@ -1,5 +1,5 @@
 import { AboutHere, HomeHere } from "@modules/common";
-import { BackgroundLines } from "@shared/ui/background-lines";
+import { BackgroundLines } from "@ui-kit/effects";
 
 export default function HomePage() {
 	return (

@@ -1,6 +1,4 @@
-"use client";
-
-import { Button } from "@shared/ui/button";
+import { Button } from "@ui-kit/ui/button";
 import {
 	Card,
 	CardAction,
@@ -9,13 +7,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@shared/ui/card";
-import { Input } from "@shared/ui/input";
-import { Label } from "@shared/ui/label";
-import { ScanFaceIcon } from "lucide-react";
+} from "@ui-kit/ui/card";
+import { Input } from "@ui-kit/ui/input";
+import { Label } from "@ui-kit/ui/label";
+import { ScanFaceIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 
-export function LoginForm() {
+export const EmailAndPassword = () => {
 	return (
 		<Card className="w-full max-w-sm">
 			<CardHeader>
@@ -58,12 +56,9 @@ export function LoginForm() {
 			</CardContent>
 			<CardFooter className="flex-col gap-2">
 				<Button type="submit" className="w-full">
-					Вход
-				</Button>
-				<Button variant="outline" className="w-full">
-					Войти с помощью Google
+					<UserIcon /> Вход
 				</Button>
 			</CardFooter>
 		</Card>
 	);
-}
+};

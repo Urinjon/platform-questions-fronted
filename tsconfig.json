@@ -25,6 +25,7 @@
 		"baseUrl": ".",
 		"paths": {
 			"@modules/*": ["modules/*"],
+			"@ui-kit/*": ["shared/ui-kit/*"],
 			"@shared/*": ["shared/*"],
 			"@app/*": ["app/*"],
 			"@/*": ["./*"]

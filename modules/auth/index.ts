@@ -1,1 +1,1 @@
-export { LoginForm } from "./components/LoginForm.organisms";
+export { LoginForm } from "./components/organisms/LoginForm.organism";

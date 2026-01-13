@@ -11,17 +11,17 @@ import {
 	NavigationMenuLink,
 	NavigationMenuList,
 	NavigationMenuTrigger,
-} from "@shared/ui/navigation-menu";
-import { LinkApp } from "@shared/ui/link";
+} from "@ui-kit/ui/navigation-menu";
+import { LinkApp } from "@ui-kit/ui/link";
 
 import { NewFeaturesLinks } from "@shared/config/routing.config";
 
-import { Space } from "@shared/ui/space";
+import { Space } from "@ui-kit/ui/space";
 
 import Image from "next/image";
 
 import { SettingModal } from "@modules/common";
-import { ImageBackground } from "@shared/ui/image-background";
+import { ImageBackground } from "@ui-kit/ui/image-background";
 
 function useIsMobile() {
 	const [isMobile, setIsMobile] = React.useState(false);

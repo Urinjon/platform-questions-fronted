@@ -1,9 +1,9 @@
 "use client";
 
 import { SwitchTheme } from "@shared/features/SwitchTheme.feature";
-import { Alert, AlertDescription, AlertTitle } from "@shared/ui/alert";
-import { Button } from "@shared/ui/button";
-import { ButtonGroup } from "@shared/ui/button-group";
+import { Alert, AlertDescription, AlertTitle } from "@ui-kit/ui/alert";
+import { Button } from "@ui-kit/ui/button";
+import { ButtonGroup } from "@ui-kit/ui/button-group";
 import {
 	Card,
 	CardAction,
@@ -12,13 +12,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@shared/ui/card";
-import { Input } from "@shared/ui/input";
+} from "@ui-kit/ui/card";
+import { Input } from "@ui-kit/ui/input";
 import {
 	InputGroup,
 	InputGroupAddon,
 	InputGroupInput,
-} from "@shared/ui/input-group";
+} from "@ui-kit/ui/input-group";
 import {
 	Pagination,
 	PaginationContent,
@@ -27,7 +27,7 @@ import {
 	PaginationLink,
 	PaginationNext,
 	PaginationPrevious,
-} from "@shared/ui/pagination";
+} from "@ui-kit/ui/pagination";
 import {
 	AlertCircleIcon,
 	CheckCircle2Icon,
@@ -40,7 +40,7 @@ import {
 	StarIcon,
 } from "lucide-react";
 
-import { InputFile } from "@shared/ui/input-file";
+import { InputFile } from "@ui-kit/ui/input-file";
 
 import {
 	Sidebar,
@@ -53,7 +53,7 @@ import {
 	SidebarMenuItem,
 	SidebarProvider,
 	SidebarTrigger,
-} from "@shared/ui/sidebar";
+} from "@ui-kit/ui/sidebar";
 import { Container } from "./Container.widget";
 import { SideBarLinks } from "@shared/config/routing.config";
 

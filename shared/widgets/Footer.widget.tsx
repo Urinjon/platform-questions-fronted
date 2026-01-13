@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BackgroundRippleEffect } from "@shared/ui/background-ripple-effect";
+import { BackgroundRippleEffect } from "@ui-kit/effects";
 import { Container } from "./Container.widget";
 
 export const Footer: React.FC = () => {

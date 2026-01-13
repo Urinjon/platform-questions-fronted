@@ -1,5 +1,5 @@
 import { LoginForm } from "@modules/auth";
-import { Space } from "@shared/ui/space";
+import { Space } from "@ui-kit/ui/space";
 
 export default function LoginPage() {
 	return (

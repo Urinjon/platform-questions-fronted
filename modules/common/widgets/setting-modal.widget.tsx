@@ -12,9 +12,10 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 	AlertDialogTrigger,
-} from "@shared/ui/alert-dialog";
-import { Button } from "@shared/ui/button";
-import { Kbd } from "@shared/ui/kbd";
+} from "@ui-kit/ui/alert-dialog";
+import { Button } from "@ui-kit/ui/button";
+import { Kbd } from "@ui-kit/ui/kbd";
+import { Label } from "@ui-kit/ui/label";
 import {
 	Select,
 	SelectContent,
@@ -23,11 +24,13 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from "@shared/ui/select";
-import { Space } from "@shared/ui/space";
+} from "@ui-kit/ui/select";
+import { Space } from "@ui-kit/ui/space";
+import { Switch } from "@ui-kit/ui/switch";
 import {
 	EclipseIcon,
 	LanguagesIcon,
+	LaptopMinimalCheckIcon,
 	PaintbrushVerticalIcon,
 	SettingsIcon,
 } from "lucide-react";
@@ -121,6 +124,13 @@ export const SettingModal: React.FC = () => {
 									</SelectGroup>
 								</SelectContent>
 							</Select>
+						</Space>
+
+						<Space align="center" gap={3}>
+							<Label htmlFor="is-animated">
+								<LaptopMinimalCheckIcon /> вкл/выкл анимации
+							</Label>
+							<Switch id="is-animated" />
 						</Space>
 					</Space>
 				</AlertBody>
