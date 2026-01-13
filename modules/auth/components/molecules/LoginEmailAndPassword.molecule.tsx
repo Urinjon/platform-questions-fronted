@@ -13,7 +13,7 @@ import { Label } from "@ui-kit/ui/label";
 import { ScanFaceIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 
-export const EmailAndPassword = () => {
+export const LoginEmailAndPassword = () => {
 	return (
 		<Card className="w-full max-w-sm">
 			<CardHeader>
@@ -23,7 +23,8 @@ export const EmailAndPassword = () => {
 				</CardDescription>
 				<CardAction>
 					<Button variant="link">
-						<ScanFaceIcon /> Регистрация
+						<ScanFaceIcon />
+						<Link href="/auth/register">Регистрация</Link>
 					</Button>
 				</CardAction>
 			</CardHeader>
