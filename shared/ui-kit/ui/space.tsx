@@ -3,7 +3,7 @@
 import { cn } from "@shared/lib/utils";
 
 interface ISpaceProps extends React.HTMLAttributes<HTMLDivElement> {
-	as?: "section" | "div";
+	as?: "section" | "div" | "main";
 	axios?: "col" | "row";
 	justify?: "start" | "center" | "end";
 	align?: "start" | "center" | "end";

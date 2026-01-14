@@ -5,7 +5,7 @@ import { cn } from "@shared/lib/utils";
 
 import { TextGenerateEffect } from "@ui-kit/effects";
 import { Button } from "@ui-kit/ui/button";
-import { Spotlight } from "@ui-kit/ui/spotlight";
+import { Spotlight } from "@ui-kit/effects/spotlight";
 
 import { MoveRight, Sparkles } from "lucide-react";
 import { motion } from "motion/react";

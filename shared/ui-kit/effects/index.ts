@@ -3,3 +3,4 @@ export { BackgroundLines } from "./background-lines";
 export { BackgroundRippleEffect } from "./background-ripple-effect";
 export { GlowingEffect } from "./glowing-effect";
 export { TextGenerateEffect } from "./text-generate-effect";
+export { Spotlight } from "./spotlight";

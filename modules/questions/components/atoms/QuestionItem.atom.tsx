@@ -1,4 +1,4 @@
-import type { TaskEntity } from "@modules/tasks/Task.entity";
+import type { QuestionEntity } from "@modules/questions/questions.entity";
 import { Button } from "@ui-kit/ui/button";
 import { Calendar } from "@ui-kit/ui/calendar";
 
@@ -15,10 +15,10 @@ import { CalendarIcon, CheckIcon, InfoIcon, XIcon } from "lucide-react";
 import React from "react";
 
 interface Props {
-	task: TaskEntity;
+	task: QuestionEntity;
 }
 
-export const TaskItem: React.FC<Props> = ({ task }) => {
+export const QuestionItem: React.FC<Props> = ({ task }) => {
 	const [date, setDate] = React.useState<Date | undefined>(new Date());
 
 	return (

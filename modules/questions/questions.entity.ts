@@ -1,4 +1,4 @@
-export class TaskEntity {
+export class QuestionEntity {
 	constructor(
 		public id: string,
 		public title: string,
