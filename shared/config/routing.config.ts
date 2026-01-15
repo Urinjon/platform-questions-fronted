@@ -32,8 +32,8 @@ export const NewFeaturesLinks: {
 	icon: LucideIcon;
 }[] = [
 	{
-		title: "Задачи",
-		href: "/tasks",
+		title: "Вопросы",
+		href: "/questions",
 		description: "Управление задачами. Создание, редактирование, удаление.",
 		icon: ClipboardListIcon,
 	},

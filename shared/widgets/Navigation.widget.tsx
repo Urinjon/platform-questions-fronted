@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
+
 import { DiamondPlusIcon, HomeIcon, type LucideIcon } from "lucide-react";
 
 import {
@@ -12,7 +12,6 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from "@ui-kit/ui/navigation-menu";
-import { LinkApp } from "@ui-kit/ui/link";
 
 import { NewFeaturesLinks } from "@shared/config/routing.config";
 
@@ -22,6 +21,8 @@ import Image from "next/image";
 
 import { SettingModal } from "@modules/common";
 import { ImageBackground } from "@ui-kit/ui/image-background";
+import Link from "next/link";
+import { localStorageService } from "@shared/container";
 
 function useIsMobile() {
 	const [isMobile, setIsMobile] = React.useState(false);
@@ -45,20 +46,25 @@ function useIsMobile() {
 export function Navigation() {
 	const isMobile = useIsMobile();
 
+	localStorageService.setItem("isMobile", "true");
+	console.log(localStorageService.getItem("isMobile"));
+
 	return (
 		<NavigationMenu
 			viewport={isMobile}
-			className="fixed z-50 top-0 bg-primary-foreground/50 backdrop-blur-md w-full p-3 rounded-b-2xl"
+			className="fixed z-50 top-3 bg-primary-foreground/50 backdrop-blur-md w-full p-3 rounded-2xl"
 		>
-			<NavigationMenuList className="flex-wrap pt-2 ">
+			<NavigationMenuList className="flex-wrap pt-2">
 				<NavigationMenuItem>
-					<Image
-						src="/logo.png"
-						alt="Logo"
-						width={60}
-						height={60}
-						className=""
-					/>
+					<Link href="/">
+						<Image
+							src="/logo.png"
+							alt="Logo"
+							width={40}
+							height={40}
+							className=""
+						/>
+					</Link>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuTrigger>
@@ -71,7 +77,7 @@ export function Navigation() {
 						<ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
 							<li className="row-span-3">
 								<NavigationMenuLink asChild>
-									<LinkApp
+									<Link
 										className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
 										href="/"
 									>
@@ -89,7 +95,7 @@ export function Navigation() {
 												Ask questions and get answers from the community.
 											</p>
 										</ImageBackground>
-									</LinkApp>
+									</Link>
 								</NavigationMenuLink>
 							</li>
 							<ListItem href="/docs" title="Для кого данная платформа ?">

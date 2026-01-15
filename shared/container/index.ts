@@ -1,3 +1,2 @@
-import { CookieService } from "@shared/config/cookie.service";
-
-export const cookieService = new CookieService();
+export { cookieService } from "./container.client";
+export { localStorageService } from "./container.client";
