@@ -1,13 +1,17 @@
 import { AboutHere, HomeHere } from "@modules/common";
-import { BackgroundLines } from "@ui-kit/effects";
+import { Navigation } from "@shared/widgets/Navigation.widget";
 
 export default function HomePage() {
 	return (
-		<div className="flex flex-col space-y-10">
-			<HomeHere />
-			<AboutHere />
+		<>
+			<div className="flex justify-center items-center w-full">
+				<Navigation />
+			</div>
 
-			<BackgroundLines>Hello world !</BackgroundLines>
-		</div>
+			<div className="flex flex-col space-y-10">
+				<HomeHere />
+				<AboutHere />
+			</div>
+		</>
 	);
 }

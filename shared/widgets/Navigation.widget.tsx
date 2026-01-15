@@ -2,7 +2,12 @@
 
 import * as React from "react";
 
-import { DiamondPlusIcon, HomeIcon, type LucideIcon } from "lucide-react";
+import {
+	DiamondPlusIcon,
+	HomeIcon,
+	SettingsIcon,
+	type LucideIcon,
+} from "lucide-react";
 
 import {
 	NavigationMenu,
@@ -19,10 +24,10 @@ import { Space } from "@ui-kit/ui/space";
 
 import Image from "next/image";
 
-import { SettingModal } from "@modules/common";
 import { ImageBackground } from "@ui-kit/ui/image-background";
 import Link from "next/link";
 import { localStorageService } from "@shared/container";
+import { SettingModal } from "@modules/settings";
 
 function useIsMobile() {
 	const [isMobile, setIsMobile] = React.useState(false);
@@ -174,7 +179,9 @@ export function Navigation() {
 				</NavigationMenuItem>
 
 				<NavigationMenuItem>
-					<SettingModal />
+					<SettingModal>
+						<SettingsIcon />
+					</SettingModal>
 				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>

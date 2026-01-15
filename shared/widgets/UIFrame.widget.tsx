@@ -1,6 +1,5 @@
 "use client";
 
-import { SwitchTheme } from "@shared/features/SwitchTheme.feature";
 import { Alert, AlertDescription, AlertTitle } from "@ui-kit/ui/alert";
 import { Button } from "@ui-kit/ui/button";
 import { ButtonGroup } from "@ui-kit/ui/button-group";
@@ -56,6 +55,7 @@ import {
 } from "@ui-kit/ui/sidebar";
 import { Container } from "./Container.widget";
 import { SideBarLinks } from "@shared/config/routing.config";
+import { SwitchTheme } from "@modules/settings";
 
 export const UIFrame: React.FC = () => {
 	return (

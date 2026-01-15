@@ -1,27 +1,27 @@
 import {
 	ClipboardListIcon,
-	Home,
-	Inbox,
+	HomeIcon,
+	InboxIcon,
+	InfoIcon,
 	KeyRoundIcon,
 	type LucideIcon,
-	Settings,
 } from "lucide-react";
 
 export const SideBarLinks = [
 	{
 		title: "Главная",
 		url: "/",
-		icon: Home,
+		icon: HomeIcon,
 	},
 	{
 		title: "Вопросы",
-		url: "/student/questions",
-		icon: Inbox,
+		url: "/questions",
+		icon: InboxIcon,
 	},
 	{
-		title: "Настройки",
-		url: "/settings",
-		icon: Settings,
+		title: "Как пользоваться",
+		url: "/help",
+		icon: InfoIcon,
 	},
 ];
 
