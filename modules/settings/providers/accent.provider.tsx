@@ -12,8 +12,15 @@ export function AccentProvider({ children }: { children: React.ReactNode }) {
 	const [accent, setAccent] = useState<AccentColor>("neutral");
 
 	useEffect(() => {
+		const stored = localStorage.getItem("accent") as AccentColor | null;
+		if (stored) setAccent(stored);
+	}, []);
+
+	useEffect(() => {
 		document.documentElement.dataset.accent =
 			accent === "neutral" ? "" : accent;
+
+		localStorage.setItem("accent", accent);
 	}, [accent]);
 
 	return (

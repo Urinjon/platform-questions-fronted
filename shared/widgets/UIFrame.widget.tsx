@@ -56,6 +56,7 @@ import {
 import { Container } from "./Container.widget";
 import { SideBarLinks } from "@shared/config/routing.config";
 import { SwitchTheme } from "@modules/settings";
+import { SwitchAccentColor } from "@modules/settings/features/SwitchAccentColor.feature";
 
 export const UIFrame: React.FC = () => {
 	return (
@@ -85,6 +86,7 @@ export const UIFrame: React.FC = () => {
 					</SidebarContent>
 				</Sidebar>
 
+				<SwitchAccentColor />
 				<div className="text-red-500">TEST</div>
 
 				<SidebarTrigger />
