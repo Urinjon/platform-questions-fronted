@@ -1,23 +1,14 @@
 "use client";
 
 import { Button } from "@ui-kit/ui/button";
-import {
-	Card,
-	CardAction,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@ui-kit/ui/card";
+import { Card, CardContent, CardFooter } from "@ui-kit/ui/card";
 
 import { Input } from "@ui-kit/ui/input";
 
 import {
 	ArrowLeftIcon,
 	CircleQuestionMarkIcon,
-	ScanFaceIcon,
-	UserIcon,
+	SmartphoneIcon,
 } from "lucide-react";
 
 import Link from "next/link";
@@ -34,6 +25,7 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@ui-kit/ui/form";
+import { LoginHeaderCard } from "../atoms/LoginHeaderCard.atom";
 
 export const LoginViaPhone: React.FC = () => {
 	const form = useForm<LoginPhoneFormValues>({
@@ -47,18 +39,7 @@ export const LoginViaPhone: React.FC = () => {
 
 	return (
 		<Card className="w-full max-w-sm">
-			<CardHeader>
-				<CardTitle>Войти</CardTitle>
-				<CardDescription>
-					Чтобы продолжить, войдите в свою учетную запись
-				</CardDescription>
-				<CardAction>
-					<Button variant="link">
-						<ScanFaceIcon />
-						<Link href="/auth/register">Регистрация</Link>
-					</Button>
-				</CardAction>
-			</CardHeader>
+			<LoginHeaderCard />
 			<CardContent>
 				<Form {...form}>
 					<form onSubmit={onSubmit} className="space-y-8">
@@ -89,7 +70,7 @@ export const LoginViaPhone: React.FC = () => {
 							)}
 						/>
 						<Button type="submit" className="w-full">
-							<UserIcon /> Вход
+							<SmartphoneIcon /> Вход
 						</Button>
 					</form>
 				</Form>
