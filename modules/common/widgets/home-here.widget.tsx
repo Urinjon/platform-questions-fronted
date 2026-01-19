@@ -7,9 +7,10 @@ import { BackgroundLines, TextGenerateEffect } from "@ui-kit/effects";
 import { Button } from "@ui-kit/ui/button";
 import { Spotlight } from "@ui-kit/effects/spotlight";
 
-import { MoveRight, Sparkles } from "lucide-react";
+import { MoveRightIcon, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import { Title } from "@ui-kit/ui/Title";
+import Link from "next/link";
 
 const words = `Создавай, проходи, соревнуйся.
 Платформа с тысячами интересных вопросов
@@ -66,18 +67,20 @@ export const HomeHere = () => {
 						/>
 
 						<div className="mt-10 flex flex-col gap-4 sm:flex-row sm:gap-6">
-							<Button
-								size="lg"
-								className={cn(
-									"group h-13 sm:h-14 rounded-full px-8 sm:px-10 text-base sm:text-lg",
-									"bg-primary text-primary-foreground hover:bg-primary/90",
-									"shadow-lg shadow-primary/20 hover:shadow-primary/30",
-									"transition-all duration-300",
-								)}
-							>
-								Начать сейчас
-								<MoveRight className="ml-2.5 h-5 w-5 transition-transform group-hover:translate-x-2" />
-							</Button>
+							<Link href={"/questions"}>
+								<Button
+									size="lg"
+									className={cn(
+										"group h-13 sm:h-14 rounded-full px-8 sm:px-10 text-base sm:text-lg",
+										"bg-primary text-primary-foreground hover:bg-primary/90",
+										"shadow-lg shadow-primary/20 hover:shadow-primary/30",
+										"transition-all duration-300",
+									)}
+								>
+									Начать сейчас
+									<MoveRightIcon className="ml-2.5 h-5 w-5 transition-transform group-hover:translate-x-2" />
+								</Button>
+							</Link>
 
 							<Button
 								size="lg"

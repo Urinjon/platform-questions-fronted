@@ -6,11 +6,12 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@ui-kit/ui/card";
+
 import { Space } from "@ui-kit/ui/space";
 import { TicketCheckIcon } from "lucide-react";
 import Image from "next/image";
 
-export const AlternativeLoginMethods: React.FC = () => {
+export const LoginViaEmail = () => {
 	return (
 		<Card>
 			<CardHeader>

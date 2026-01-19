@@ -28,6 +28,7 @@ import { ImageBackground } from "@ui-kit/ui/image-background";
 import Link from "next/link";
 import { localStorageService } from "@shared/container";
 import { SettingModal } from "@modules/settings";
+import { AuthActions } from "@modules/auth";
 
 function useIsMobile() {
 	const [isMobile, setIsMobile] = React.useState(false);
@@ -144,44 +145,14 @@ export function Navigation() {
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 
-				<NavigationMenuItem className="hidden md:block">
-					<NavigationMenuTrigger>О нас</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className="grid w-[300px] gap-4">
-							<li>
-								<NavigationMenuLink asChild>
-									<Link href="#">
-										<div className="font-medium">Components</div>
-										<div className="text-muted-foreground">
-											Browse all components in the library.
-										</div>
-									</Link>
-								</NavigationMenuLink>
-								<NavigationMenuLink asChild>
-									<Link href="#">
-										<div className="font-medium">Documentation</div>
-										<div className="text-muted-foreground">
-											Learn how to use the library.
-										</div>
-									</Link>
-								</NavigationMenuLink>
-								<NavigationMenuLink asChild>
-									<Link href="#">
-										<div className="font-medium">Blog</div>
-										<div className="text-muted-foreground">
-											Read our latest blog posts.
-										</div>
-									</Link>
-								</NavigationMenuLink>
-							</li>
-						</ul>
-					</NavigationMenuContent>
-				</NavigationMenuItem>
-
 				<NavigationMenuItem>
 					<SettingModal>
 						<SettingsIcon />
 					</SettingModal>
+				</NavigationMenuItem>
+
+				<NavigationMenuItem>
+					<AuthActions />
 				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>
