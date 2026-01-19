@@ -57,7 +57,7 @@ export function Navigation() {
 	return (
 		<NavigationMenu
 			viewport={isMobile}
-			className="fixed z-50 top-3 bg-primary-foreground/50 backdrop-blur-md w-full p-3 rounded-2xl"
+			className="fixed z-50 top-3  backdrop-blur-md w-full p-3 rounded-2xl"
 		>
 			<NavigationMenuList className="flex-wrap pt-2">
 				<NavigationMenuItem>

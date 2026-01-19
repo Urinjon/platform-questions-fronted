@@ -71,6 +71,8 @@ const SVG = ({
 		"#1A1A1A",
 		"#1A1A1A",
 		"#1A1A1A",
+		"#1A1A1A",
+		"#FFFFFF",
 		"#FFFFFF",
 		"#FFFFFF",
 		"#FFFFFF",

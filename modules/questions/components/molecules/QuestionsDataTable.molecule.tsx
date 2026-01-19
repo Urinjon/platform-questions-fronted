@@ -11,7 +11,7 @@ import {
 import { Badge } from "@ui-kit/ui/badge";
 import { cn } from "@shared/lib/utils";
 import { Clock, MessageSquare, HelpCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { Question } from "./QuestionsList.molecule";
 import { QuestionDetailModal } from "./QuestionDetailModal.molecule";
 
