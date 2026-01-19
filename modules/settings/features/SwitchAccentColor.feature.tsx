@@ -11,22 +11,15 @@ import {
 } from "@ui-kit/ui/select";
 import { Space } from "@ui-kit/ui/space";
 import { EclipseIcon, PaintbrushVerticalIcon } from "lucide-react";
-import { useState } from "react";
 
-type AccentColor =
-	| "color-classic"
-	| "color-green"
-	| "color-blue"
-	| "color-orange"
-	| "color-rose"
-	| "color-violet"
-	| "color-yellow";
+import { type AccentColor, accentsList } from "../settings.config";
+import { useAccent } from "../providers/accent.provider";
 
 export const SwitchAccentColor = () => {
-	const [accentColor, setAccentColor] = useState<AccentColor>("color-classic");
+	const { accent, setAccent } = useAccent();
 
 	const handleAccentColorChange = (value: AccentColor) => {
-		setAccentColor(value);
+		setAccent(value);
 	};
 
 	return (
@@ -34,7 +27,7 @@ export const SwitchAccentColor = () => {
 			<Space>
 				<PaintbrushVerticalIcon /> Акцент цвета:
 			</Space>
-			<Select value={accentColor} onValueChange={handleAccentColorChange}>
+			<Select value={accent} onValueChange={handleAccentColorChange}>
 				<SelectTrigger className="w-[180px]">
 					<SelectValue placeholder="Выберите цвет" />
 				</SelectTrigger>
@@ -45,34 +38,40 @@ export const SwitchAccentColor = () => {
 								<PaintbrushVerticalIcon size={16} /> Акценты:
 							</Space>
 						</SelectLabel>
-						<SelectItem value="color-classic">
-							<EclipseIcon color="black" />
-							Классический
-						</SelectItem>
-						<SelectItem value="color-green">
-							<EclipseIcon color="green" />
-							Зелёный
-						</SelectItem>
-						<SelectItem value="color-blue">
-							<EclipseIcon color="blue" />
-							Синий
-						</SelectItem>
-						<SelectItem value="color-orange">
-							<EclipseIcon color="orange" />
-							Оранжевый
-						</SelectItem>
-						<SelectItem value="color-rose">
-							<EclipseIcon color="rose" />
-							Розовый
-						</SelectItem>
-						<SelectItem value="color-violet">
-							<EclipseIcon color="violet" />
-							Фиолетовый
-						</SelectItem>
-						<SelectItem value="color-yellow">
-							<EclipseIcon color="yellow" />
-							Желтый
-						</SelectItem>
+						{accentsList.map((color) => (
+							<SelectItem key={color} value={color}>
+								<EclipseIcon color={color} />
+								{color}
+							</SelectItem>
+						))}
+						{/*<SelectItem value="color-classic">
+              <EclipseIcon color="black" />
+              Классический
+            </SelectItem>
+            <SelectItem value="color-green">
+              <EclipseIcon color="green" />
+              Зелёный
+            </SelectItem>
+            <SelectItem value="color-blue">
+              <EclipseIcon color="blue" />
+              Синий
+            </SelectItem>
+            <SelectItem value="color-orange">
+              <EclipseIcon color="orange" />
+              Оранжевый
+            </SelectItem>
+            <SelectItem value="color-rose">
+              <EclipseIcon color="rose" />
+              Розовый
+            </SelectItem>
+            <SelectItem value="color-violet">
+              <EclipseIcon color="violet" />
+              Фиолетовый
+            </SelectItem>
+            <SelectItem value="color-yellow">
+              <EclipseIcon color="yellow" />
+              Желтый
+            </SelectItem>*/}
 					</SelectGroup>
 				</SelectContent>
 			</Select>

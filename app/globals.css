@@ -154,3 +154,82 @@
 		transform: translate(-50%, -40%) scale(1);
 	}
 }
+
+/*----AccentsColor----*/
+
+:root {
+	--accent-hue: 0;
+	--accent-chroma: 0;
+}
+
+[data-accent="blue"] {
+	--primary: oklch(0.488 0.243 264.376);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.92 0.06 250);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.62 0.18 250);
+}
+
+[data-accent="green"] {
+	--primary: oklch(0.64 0.17 145);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.92 0.07 145);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.64 0.17 145);
+}
+
+[data-accent="orange"] {
+	--primary: oklch(0.646 0.222 41.116);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.9 0.09 290);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.75 0.183 55.934);
+}
+
+[data-accent="red"] {
+	--primary: oklch(0.577 0.245 27.325);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.9 0.09 290);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.704 0.191 22.216);
+}
+
+[data-accent="rose"] {
+	--primary: oklch(0.586 0.253 17.585);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.9 0.09 290);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.712 0.194 13.428);
+}
+
+[data-accent="violet"] {
+	--primary: oklch(0.541 0.281 293.009);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.9 0.09 290);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.702 0.183 293.541);
+}
+
+[data-accent="yellow"] {
+	--primary: oklch(0.852 0.199 91.936);
+	--primary-foreground: oklch(0.98 0 0);
+
+	--accent: oklch(0.9 0.09 290);
+	--accent-foreground: oklch(0.25 0 0);
+
+	--ring: oklch(0.852 0.199 91.936);
+}
+
+/*-----*/
