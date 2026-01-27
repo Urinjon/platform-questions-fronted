@@ -10,15 +10,16 @@ import {
 } from "lucide-react";
 import { cn } from "@shared/lib/utils";
 import { QuestionDetailModal } from "./QuestionDetailModal.molecule";
+import type { Question } from "@modules/questions/questions.model";
 
-export type Question = {
-	id: string;
-	title: string;
-	hint?: string;
-	timeAgo?: string; // "3 часа назад", "вчера" и т.п.
-	answersCount?: number; // количество ответов/просмотров
-	isNew?: boolean;
-};
+// export type Question = {
+//   id: string;
+//   title: string;
+//   hint?: string;
+//   timeAgo?: string; // "3 часа назад", "вчера" и т.п.
+//   answersCount?: number; // количество ответов/просмотров
+//   isNew?: boolean;
+// };
 
 interface QuestionsListProps {
 	questions: Question[];
@@ -38,7 +39,7 @@ export function QuestionsList({
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.38, delay: index * 0.055 }}
 				>
-					<QuestionDetailModal questionId={q.id}>
+					<QuestionDetailModal question={q}>
 						<button
 							type="button"
 							onClick={() => onQuestionClick?.(q.id)}

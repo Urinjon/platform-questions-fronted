@@ -4,10 +4,7 @@
 import { useState } from "react";
 import { useMediaQuery } from "@shared/hooks/use-media-query.hook";
 import { QuestionsDataTable } from "../molecules/QuestionsDataTable.molecule";
-import {
-	type Question,
-	QuestionsList,
-} from "../molecules/QuestionsList.molecule";
+import { QuestionsList } from "../molecules/QuestionsList.molecule";
 import { Input } from "@ui-kit/ui/input";
 import { Button } from "@ui-kit/ui/button";
 import {
@@ -22,34 +19,95 @@ import { X } from "lucide-react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui-kit/ui/tabs";
 import { ContainerTextFlip } from "@ui-kit/effects";
+import type { Question } from "@modules/questions/questions.model";
 
 export function QuestionsView() {
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 
+	// const allQuestions: Question[] = [
+	// 	{
+	// 		id: "1",
+	// 		title: "Question 1",
+	// 		hint: "Hint 1",
+	// 		timeAgo: "1 hour ago",
+	// 		answersCount: 0,
+	// 		isNew: true,
+	// 	},
+	// 	{
+	// 		id: "2",
+	// 		title: "Question 2",
+	// 		hint: "Hint 2",
+	// 		timeAgo: "2 hours ago",
+	// 		answersCount: 1,
+	// 		isNew: false,
+	// 	},
+	// 	{
+	// 		id: "3",
+	// 		title: "Question 3",
+	// 		hint: "Hint 3",
+	// 		timeAgo: "3 hours ago",
+	// 		answersCount: 2,
+	// 		isNew: false,
+	// 	},
+	// ];
+	//
 	const allQuestions: Question[] = [
 		{
 			id: "1",
-			title: "Question 1",
+			title: "Question 1 type text",
 			hint: "Hint 1",
-			timeAgo: "1 hour ago",
-			answersCount: 0,
 			isNew: true,
+			answersCount: 20,
+			timeLimitSeconds: 60,
+			points: 10,
+			timeAgo: "1 hour ago",
+			type: "text",
 		},
 		{
 			id: "2",
-			title: "Question 2",
+			title: "Question 2 type options",
 			hint: "Hint 2",
-			timeAgo: "2 hours ago",
-			answersCount: 1,
 			isNew: false,
+			answersCount: 10,
+			options: [
+				{
+					id: "3",
+					text: "Option 3",
+					isCorrect: true,
+				},
+				{
+					id: "4",
+					text: "Option 4",
+					isCorrect: false,
+				},
+			],
+			timeLimitSeconds: 60,
+			points: 10,
+			timeAgo: "3 hours ago",
+			type: "options",
 		},
 		{
 			id: "3",
-			title: "Question 3",
-			hint: "Hint 3",
-			timeAgo: "3 hours ago",
-			answersCount: 2,
+			title: "Question 3 type options",
 			isNew: false,
+			hint: "Hint 3",
+			answersCount: 5,
+			type: "options",
+			options: [
+				{
+					id: "5",
+					text: "Option 5",
+					isCorrect: true,
+				},
+				{
+					id: "6",
+					text: "Option 6",
+					isCorrect: false,
+				},
+			],
+			timeLimitSeconds: 60,
+			points: 10,
+			timeAgo: "2 hours ago",
 		},
 	];
 

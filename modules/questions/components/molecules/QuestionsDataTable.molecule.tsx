@@ -12,8 +12,9 @@ import { Badge } from "@ui-kit/ui/badge";
 import { cn } from "@shared/lib/utils";
 import { Clock, MessageSquare, HelpCircle } from "lucide-react";
 import { motion } from "motion/react";
-import type { Question } from "./QuestionsList.molecule";
+
 import { QuestionDetailModal } from "./QuestionDetailModal.molecule";
+import type { Question } from "@modules/questions/questions.model";
 
 // Создаем анимированную версию TableRow
 const MotionTableRow = motion(TableRow);
@@ -39,7 +40,7 @@ export function QuestionsDataTable({ questions, onRowClick }: Props) {
 
 				<TableBody>
 					{questions.map((q, i) => (
-						<QuestionDetailModal key={q.id} questionId={q.id}>
+						<QuestionDetailModal key={q.id} question={q}>
 							<MotionTableRow
 								key={q.id}
 								initial={{ opacity: 0, y: 8 }}
