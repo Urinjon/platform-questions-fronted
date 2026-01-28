@@ -1,9 +1,7 @@
 "use client";
 
-import "reflect-metadata";
-
-import { AccentProvider, ThemeProvider } from "modules/settings";
 import type { PropsWithChildren } from "react";
+import { AccentProvider, ThemeProvider } from "@features/setting";
 
 export const AppProviders: React.FC<PropsWithChildren> = ({ children }) => {
 	return (

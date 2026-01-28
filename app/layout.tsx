@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppProviders } from "@shared/providers";
-
-import { Footer } from "@shared/widgets/Footer.widget";
+import { Footer } from "@widgets/footer";
 
 export const metadata: Metadata = {
 	title: "Platform Questions",

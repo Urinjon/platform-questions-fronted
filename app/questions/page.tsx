@@ -1,4 +1,4 @@
-import { QuestionsView } from "@modules/questions";
+import { QuestionsView } from "@features/question-display";
 
 export default function QuestionsPage() {
 	return <QuestionsView />;

@@ -1,5 +1,6 @@
-import { AboutHere, HomeHere } from "@modules/common";
-import { Navigation } from "@shared/widgets/Navigation.widget";
+import { AboutHere } from "@widgets/about-here";
+import { HomeHere } from "@widgets/home-here";
+import { Navigation } from "@widgets/navigation";
 
 export default function HomePage() {
 	return (

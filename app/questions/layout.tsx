@@ -1,10 +1,12 @@
-import { Container } from "@shared/widgets/Container.widget";
 import { Space } from "@ui-kit/ui/space";
 import { Spotlight } from "@ui-kit/effects";
-import { AppSideBar } from "@modules/common";
+
 import { SidebarProvider, SidebarTrigger } from "@ui-kit/ui/sidebar";
 import type React from "react";
 import type { Metadata } from "next";
+
+import { Container } from "@widgets/container";
+import { AppSideBar } from "@widgets/side-bar";
 
 export const metadata: Metadata = {
 	title: "Questions",
