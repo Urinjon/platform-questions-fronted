@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui-kit/ui/tabs";
 
 import { AtSignIcon, SmartphoneIcon } from "lucide-react";
 import { LoginViaPhone } from "../phone/LoginViaPhone";
-import { LoginViaEmail } from "../email/LoginViaEmail";
+import { LoginViaEmail } from "../email/ui/LoginViaEmail";
 
 export function LoginForm() {
 	return (

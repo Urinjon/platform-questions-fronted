@@ -17,8 +17,10 @@ import {
 	FormMessage,
 } from "@ui-kit/ui/form";
 import { Input } from "@ui-kit/ui/input";
-import { LoginHeaderCard } from "../ui/LoginHeaderCard";
-import { type LoginEmailFormValues, loginEmailSchema } from "../config";
+import { LoginHeaderCard } from "../../ui/LoginHeaderCard";
+import { type LoginEmailFormValues, loginEmailSchema } from "../../config";
+import { useAuthEmailAdapter } from "../api/use-auth-email.adapter";
+import type { LoginEmailDto } from "../model/types";
 
 export const LoginViaEmail = () => {
 	const form = useForm<LoginEmailFormValues>({
@@ -26,8 +28,17 @@ export const LoginViaEmail = () => {
 		mode: "onChange",
 	});
 
-	const onSubmit = form.handleSubmit((data) => {
+	const { loginViaEmail } = useAuthEmailAdapter();
+
+	const onSubmit = form.handleSubmit(async (data) => {
 		console.log(data);
+
+		const dto: LoginEmailDto = {
+			email: data.email,
+			password: data.password,
+		};
+
+		await loginViaEmail(dto);
 	});
 
 	return (
