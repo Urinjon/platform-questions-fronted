@@ -1,5 +1,6 @@
 "use client";
 
+import { attachAccessToken, updateRefreshToken } from "@features/auth";
 import axios, { type AxiosInstance, type CreateAxiosDefaults } from "axios";
 
 export type TClientRestApi = AxiosInstance;
@@ -10,9 +11,13 @@ const defaultOptions: CreateAxiosDefaults = {
 	withCredentials: true,
 };
 
-export function factoryClientRestApi(
+export async function factoryClientRestApi(
 	init: CreateAxiosDefaults = defaultOptions,
-): TClientRestApi {
+): Promise<TClientRestApi> {
 	const instance = axios.create({ ...init });
+
+	await attachAccessToken(instance);
+	await updateRefreshToken(instance);
+
 	return instance;
 }

@@ -28,7 +28,9 @@ import { ImageBackground } from "@ui-kit/ui/image-background";
 import Link from "next/link";
 import { localStorageService } from "@shared/container";
 import { SettingModal } from "../../setting";
-import { AuthActions } from "@features/auth";
+
+import { HeaderAuth } from "@features/auth/actions";
+import { Button } from "@ui-kit/ui/button";
 
 function useIsMobile() {
 	const [isMobile, setIsMobile] = React.useState(false);
@@ -53,7 +55,6 @@ export function Navigation() {
 	const isMobile = useIsMobile();
 
 	localStorageService.setItem("isMobile", "true");
-	console.log(localStorageService.getItem("isMobile"));
 
 	return (
 		<NavigationMenu
@@ -147,12 +148,14 @@ export function Navigation() {
 
 				<NavigationMenuItem>
 					<SettingModal>
-						<SettingsIcon />
+						<Button variant="secondary">
+							<SettingsIcon /> Настройки
+						</Button>
 					</SettingModal>
 				</NavigationMenuItem>
 
 				<NavigationMenuItem>
-					<AuthActions />
+					<HeaderAuth />
 				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>

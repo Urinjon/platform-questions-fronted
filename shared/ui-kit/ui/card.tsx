@@ -15,6 +15,40 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
+function CardInDevelopment({
+	className,
+	children,
+	...props
+}: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="card"
+			className={cn(
+				"bg-card text-card-foreground relative flex flex-col gap-6 rounded-xl border py-6 shadow-sm overflow-hidden",
+				className,
+			)}
+			{...props}
+		>
+			{/* Размытый контент */}
+			<div className="relative z-0 blur-sm select-none pointer-events-none opacity-70">
+				{children}
+			</div>
+
+			{/* Оверлей "В разработке" */}
+			<div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
+				<div className="rounded-lg bg-background/90 px-6 py-4 text-center shadow-lg">
+					<div className="text-lg font-semibold tracking-tight">
+						В разработке
+					</div>
+					<div className="mt-1 text-sm text-muted-foreground">
+						Скоро будет доступно
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+
 function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
@@ -83,6 +117,7 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
 	Card,
+	CardInDevelopment,
 	CardHeader,
 	CardFooter,
 	CardTitle,

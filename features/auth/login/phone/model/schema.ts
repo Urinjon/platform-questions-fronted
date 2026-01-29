@@ -1,5 +1,5 @@
+import { phoneRegex } from "@features/auth/auth.util";
 import { z } from "zod";
-import { phoneRegex } from "../auth.util";
 
 export const loginPhoneSchema = z.object({
 	phone: z
@@ -13,16 +13,4 @@ export const loginPhoneSchema = z.object({
 		.nonempty("Пароль не может быть пустым"),
 });
 
-export const loginEmailSchema = z.object({
-	email: z
-		.string("Email не может быть пустым")
-		.email("Неверный email")
-		.nonempty("Email не может быть пустым"),
-	password: z
-		.string("Пароль не может быть пустым")
-		.min(8, "Минимум 8 символов")
-		.nonempty("Пароль не может быть пустым"),
-});
-
-export type LoginEmailFormValues = z.infer<typeof loginEmailSchema>;
 export type LoginPhoneFormValues = z.infer<typeof loginPhoneSchema>;

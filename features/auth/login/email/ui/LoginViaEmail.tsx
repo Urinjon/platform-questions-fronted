@@ -2,12 +2,9 @@ import { Button } from "@ui-kit/ui/button";
 import { Card, CardContent, CardFooter } from "@ui-kit/ui/card";
 
 import { Space } from "@ui-kit/ui/space";
-import { AtSignIcon } from "lucide-react";
+import { ArrowLeftIcon, AtSignIcon } from "lucide-react";
 import Image from "next/image";
 
-import { useForm } from "react-hook-form";
-
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
 	Form,
 	FormControl,
@@ -18,28 +15,14 @@ import {
 } from "@ui-kit/ui/form";
 import { Input } from "@ui-kit/ui/input";
 import { LoginHeaderCard } from "../../ui/LoginHeaderCard";
-import { type LoginEmailFormValues, loginEmailSchema } from "../../config";
-import { useAuthEmailAdapter } from "../api/use-auth-email.adapter";
-import type { LoginEmailDto } from "../model/types";
+
+import Link from "next/link";
+
+import { useLoginEmailForm } from "../model/use-login-email-form";
+import { Spinner } from "@ui-kit/ui/spinner";
 
 export const LoginViaEmail = () => {
-	const form = useForm<LoginEmailFormValues>({
-		resolver: zodResolver(loginEmailSchema),
-		mode: "onChange",
-	});
-
-	const { loginViaEmail } = useAuthEmailAdapter();
-
-	const onSubmit = form.handleSubmit(async (data) => {
-		console.log(data);
-
-		const dto: LoginEmailDto = {
-			email: data.email,
-			password: data.password,
-		};
-
-		await loginViaEmail(dto);
-	});
+	const { form, onSubmit, isLoading } = useLoginEmailForm();
 
 	return (
 		<Card>
@@ -77,8 +60,8 @@ export const LoginViaEmail = () => {
 								</FormItem>
 							)}
 						/>
-						<Button type="submit" className="w-full">
-							<AtSignIcon /> Вход
+						<Button type="submit" className="w-full" disabled={isLoading}>
+							{isLoading ? <Spinner /> : <AtSignIcon />} Вход
 						</Button>
 					</form>
 				</Form>
@@ -102,6 +85,12 @@ export const LoginViaEmail = () => {
 							height={24}
 						/>
 						Войти с помощью Yandex
+					</Button>
+					<Button asChild variant="outline" className="w-full">
+						<Link href="/">
+							<ArrowLeftIcon className="mr-2" />
+							Назад
+						</Link>
 					</Button>
 				</Space>
 			</CardFooter>

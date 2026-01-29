@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AppProviders } from "@shared/providers";
 import { Footer } from "@widgets/footer";
+import { Toaster } from "@ui-kit/ui/sonner";
 
 export const metadata: Metadata = {
 	title: "Platform Questions",
@@ -22,6 +23,7 @@ export default function RootLayout({
 				<AppProviders>
 					{children}
 					<Footer />
+					<Toaster />
 				</AppProviders>
 			</body>
 		</html>

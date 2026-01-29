@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@ui-kit/ui/button";
-import { Card, CardContent, CardFooter } from "@ui-kit/ui/card";
+import { CardContent, CardFooter, CardInDevelopment } from "@ui-kit/ui/card";
 
 import { Input } from "@ui-kit/ui/input";
 
@@ -25,8 +25,8 @@ import {
 	FormMessage,
 } from "@ui-kit/ui/form";
 
-import { type LoginPhoneFormValues, loginPhoneSchema } from "../config";
 import { LoginHeaderCard } from "../ui/LoginHeaderCard";
+import { type LoginPhoneFormValues, loginPhoneSchema } from "./model/schema";
 
 export const LoginViaPhone: React.FC = () => {
 	const form = useForm<LoginPhoneFormValues>({
@@ -39,7 +39,7 @@ export const LoginViaPhone: React.FC = () => {
 	});
 
 	return (
-		<Card className="w-full max-w-sm">
+		<CardInDevelopment className="w-full max-w-sm">
 			<LoginHeaderCard />
 			<CardContent>
 				<Form {...form}>
@@ -88,6 +88,6 @@ export const LoginViaPhone: React.FC = () => {
 					</Button>
 				</Link>
 			</CardFooter>
-		</Card>
+		</CardInDevelopment>
 	);
 };
