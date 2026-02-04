@@ -90,10 +90,14 @@ import {
 } from "@ui-kit/ui/select";
 import { Paintbrush } from "lucide-react";
 import { useAccent } from "../providers/accent.provider";
-import { accentsList } from "../settings.config";
+import { type AccentColor, accentsList } from "../settings.config";
 
 export const SwitchAccentColor = () => {
 	const { accent, setAccent } = useAccent();
+
+	const hanlderAccentChange = (value: AccentColor) => {
+		setAccent(value);
+	};
 
 	return (
 		<div className="flex items-center justify-between gap-4 rounded-lg border p-3 hover:bg-accent/50 transition-colors">
@@ -102,7 +106,7 @@ export const SwitchAccentColor = () => {
 				<span className="text-sm font-medium">Акцентный цвет</span>
 			</div>
 
-			<Select value={accent} onValueChange={(v) => setAccent(v as any)}>
+			<Select value={accent} onValueChange={hanlderAccentChange}>
 				<SelectTrigger className="w-[180px]">
 					<SelectValue placeholder="Выберите цвет" />
 				</SelectTrigger>
