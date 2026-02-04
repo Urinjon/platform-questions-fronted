@@ -1,187 +1,68 @@
 "use client";
 
-import * as React from "react";
-
-import {
-	DiamondPlusIcon,
-	HomeIcon,
-	SettingsIcon,
-	type LucideIcon,
-} from "lucide-react";
-
-import {
-	NavigationMenu,
-	NavigationMenuContent,
-	NavigationMenuItem,
-	NavigationMenuLink,
-	NavigationMenuList,
-	NavigationMenuTrigger,
-} from "@ui-kit/ui/navigation-menu";
-
-import { NewFeaturesLinks } from "@shared/config/routing.config";
-
-import { Space } from "@ui-kit/ui/space";
-
-import Image from "next/image";
-
-import { ImageBackground } from "@ui-kit/ui/image-background";
-import Link from "next/link";
-import { localStorageService } from "@shared/container";
+import { cn } from "@shared/lib/utils";
+import { Sheet } from "@ui-kit/ui/sheet";
 import { SettingModal } from "../../setting";
-
 import { HeaderAuth } from "@features/auth/actions";
 import { Button } from "@ui-kit/ui/button";
-
-function useIsMobile() {
-	const [isMobile, setIsMobile] = React.useState(false);
-
-	React.useEffect(() => {
-		const handleResize = () => {
-			setIsMobile(window.innerWidth < 1024);
-		};
-
-		handleResize();
-		window.addEventListener("resize", handleResize);
-
-		return () => {
-			window.removeEventListener("resize", handleResize);
-		};
-	}, []);
-
-	return isMobile;
-}
+import { Settings } from "lucide-react";
+import { Logo } from "./Logo";
+import { DesktopNav } from "./DesktopNav";
+import { MobileMenuTrigger } from "./MobileMenuTrigger";
+import { MobileMenu } from "./MobileMenu";
+import { useState, useEffect } from "react";
 
 export function Navigation() {
-	const isMobile = useIsMobile();
+	const [openMobile, setOpenMobile] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
 
-	localStorageService.setItem("isMobile", "true");
+	useEffect(() => {
+		const handleScroll = () => setScrolled(window.scrollY > 10);
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	return (
-		<NavigationMenu
-			viewport={isMobile}
-			className="fixed z-50 top-3  backdrop-blur-md w-full p-3 rounded-2xl"
-		>
-			<NavigationMenuList className="flex-wrap pt-2">
-				<NavigationMenuItem>
-					<Link href="/">
-						<Image
-							src="/logo.png"
-							alt="Logo"
-							width={40}
-							height={40}
-							className=""
-						/>
-					</Link>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuTrigger>
-						<Space gap={1} align="center">
-							<HomeIcon />
-							Главное
-						</Space>
-					</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-							<li className="row-span-3">
-								<NavigationMenuLink asChild>
-									<Link
-										className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md md:p-6"
-										href="/"
-									>
-										<ImageBackground
-											src="/logo.png"
-											alt="Logo"
-											width={100}
-											height={100}
-											isBlur
-										>
-											<div className="mb-2 text-lg font-medium sm:mt-4">
-												Platform Questions
-											</div>
-											<p className="text-muted-foreground text-sm leading-tight">
-												Ask questions and get answers from the community.
-											</p>
-										</ImageBackground>
-									</Link>
-								</NavigationMenuLink>
-							</li>
-							<ListItem href="/docs" title="Для кого данная платформа ?">
-								Для кого данная платформа
-							</ListItem>
-							<ListItem
-								href="/docs/installation"
-								title="Что такое Platform Questions ?"
+		<>
+			<header
+				className={cn(
+					"fixed inset-x-3 top-3 z-50 mx-auto max-w-7xl transition-all duration-300",
+					scrolled ? "scale-[0.98] opacity-95" : "scale-100 opacity-100",
+					"rounded-2xl border border-white/15 bg-white/35 dark:bg-black/35",
+					"backdrop-blur-2xl backdrop-saturate-180",
+					"shadow-[0_12px_40px_-12px_rgba(0,0,0,0.12)] dark:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)]",
+				)}
+			>
+				<div className="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
+					<Logo />
+
+					<DesktopNav />
+
+					<div className="flex items-center gap-2.5">
+						<SettingModal>
+							<Button
+								variant="ghost"
+								size="icon"
+								className="hidden md:flex transition-transform hover:scale-110"
+								aria-label="Открыть настройки"
 							>
-								Что такое Platform Questions?
-							</ListItem>
-							<ListItem
-								href="/docs/primitives/typography"
-								title="Часто задаваемые вопросы ?"
-							>
-								Часто задаваемые вопросы
-							</ListItem>
-						</ul>
-					</NavigationMenuContent>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuTrigger>
-						<Space gap={1} align="center">
-							<DiamondPlusIcon size={20} />
-							Нововведение сайта
-						</Space>
-					</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-							{NewFeaturesLinks.map((component) => (
-								<ListItem
-									key={component.title}
-									title={component.title}
-									href={component.href}
-									icon={component.icon}
-								>
-									{component.description}
-								</ListItem>
-							))}
-						</ul>
-					</NavigationMenuContent>
-				</NavigationMenuItem>
+								<Settings className="h-5 w-5" />
+							</Button>
+						</SettingModal>
 
-				<NavigationMenuItem>
-					<SettingModal>
-						<Button variant="secondary">
-							<SettingsIcon /> Настройки
-						</Button>
-					</SettingModal>
-				</NavigationMenuItem>
+						<div className="hidden md:block">
+							<HeaderAuth />
+						</div>
 
-				<NavigationMenuItem>
-					<HeaderAuth />
-				</NavigationMenuItem>
-			</NavigationMenuList>
-		</NavigationMenu>
-	);
-}
-
-type TListItem = React.ComponentPropsWithoutRef<"li"> & { href: string } & {
-	title: string;
-	children: React.ReactNode;
-	href: string;
-	icon?: LucideIcon;
-};
-
-function ListItem({ title, children, href, ...props }: TListItem) {
-	return (
-		<li {...props}>
-			<NavigationMenuLink asChild>
-				<Link href={href}>
-					<div className="text-sm leading-none font-medium flex items-center gap-1">
-						{title}
+						<Sheet open={openMobile} onOpenChange={setOpenMobile}>
+							<MobileMenuTrigger />
+							<MobileMenu onClose={() => setOpenMobile(false)} />
+						</Sheet>
 					</div>
-					<p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
-						{children}
-					</p>
-				</Link>
-			</NavigationMenuLink>
-		</li>
+				</div>
+			</header>
+
+			<div className="h-[76px]" />
+		</>
 	);
 }
