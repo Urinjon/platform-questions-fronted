@@ -6,7 +6,7 @@ export interface LoginEmailDto {
 }
 
 export interface LoginEmailResponseDto {
-	accessToken: string;
-	resfreshToken: string;
+	access_token: string;
+	resfresh_token: string;
 	user: User;
 }

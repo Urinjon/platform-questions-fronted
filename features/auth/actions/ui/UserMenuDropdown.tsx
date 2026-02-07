@@ -12,18 +12,24 @@ import {
 import { UserIcon } from "lucide-react";
 import { useUserMenu } from "../hooks/useUserMenu";
 
+import { Spinner } from "@ui-kit/ui/spinner";
+import { useAuthProvider } from "@features/auth/auth.provider";
+import { useAuthStore } from "@features/auth/auth.store";
+
 export const UserMenuDropdown = () => {
-	const { user, handleLogout, goToProfile } = useUserMenu();
+	const { handleLogout } = useUserMenu();
+
+	const { isLoading } = useAuthProvider();
+	const { user } = useAuthStore();
 
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="outline">
-					<UserIcon /> {user?.username}
+					{isLoading ? <Spinner /> : <UserIcon />} {user?.username}
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
-				<DropdownMenuItem onClick={goToProfile}>Профиль</DropdownMenuItem>
 				<DropdownMenuItem onClick={handleLogout}>Выход</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

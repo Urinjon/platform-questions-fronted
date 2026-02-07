@@ -1,13 +1,11 @@
-import type { TClientRestApi } from "@shared/api";
 import type { LoginEmailDto, LoginEmailResponseDto } from "../model/types";
 import axios from "axios";
+import api from "@shared/api/axios";
 
 export class LoginEmailApi {
-	constructor(private readonly client: TClientRestApi) {}
-
 	public async execute(dto: LoginEmailDto) {
 		try {
-			const response = await this.client.post<LoginEmailResponseDto>(
+			const response = await api.post<LoginEmailResponseDto>(
 				"v1/auth/login/email/",
 				dto,
 			);

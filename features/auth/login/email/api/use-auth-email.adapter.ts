@@ -4,24 +4,22 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useRouter } from "next/navigation";
 
-import { factoryClientRestApi } from "@shared/api";
 import { LoginEmailApi } from "./auth-email.api";
 import type { LoginEmailDto } from "../model/types";
 import { toast } from "sonner";
 import { useAuthStore } from "@features/auth/auth.store";
 
-const client = await factoryClientRestApi();
-const loginEmailApi = new LoginEmailApi(client);
+const loginEmailApi = new LoginEmailApi();
 
 export function useAuthEmailAdapter() {
 	const router = useRouter();
 
-	const { setUser } = useAuthStore();
+	const { setUser, setAccessToken } = useAuthStore();
 
 	const { mutateAsync, isPending, error, isError } = useMutation({
 		mutationFn: async (data: LoginEmailDto) =>
 			await loginEmailApi.execute(data),
-		onSuccess: ({ data, error }) => {
+		onSuccess: async ({ data, error }) => {
 			if (error || !data) {
 				toast.error(error, { position: "top-center" });
 				return;
@@ -32,6 +30,7 @@ export function useAuthEmailAdapter() {
 			});
 
 			setUser(data.user);
+			setAccessToken(data.access_token);
 
 			router.push("/");
 		},

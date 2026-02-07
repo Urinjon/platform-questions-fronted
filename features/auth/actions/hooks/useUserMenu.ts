@@ -8,16 +8,14 @@ export const useUserMenu = () => {
 	const { user } = useAuthStore();
 
 	const { logout } = useLogoutAdapter();
+	const { logout: LogoutState } = useAuthStore();
 
 	const handleLogout = async () => {
 		await logout();
+		LogoutState();
 
 		router.push("/auth/login");
 	};
 
-	const goToProfile = () => {
-		router.push("/profile");
-	};
-
-	return { user, handleLogout, goToProfile };
+	return { user, handleLogout };
 };
