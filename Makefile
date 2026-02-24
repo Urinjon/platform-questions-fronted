@@ -1,4 +1,6 @@
 
+dev:
+	bun run dev
 
 ci:
 	bun run lint:fix

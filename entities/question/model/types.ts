@@ -4,15 +4,27 @@ interface QuestionOption {
 	isCorrect?: boolean;
 }
 
+interface QuestionCategory {
+	id: number;
+	title: string;
+}
+
+interface AnswersCount {
+	success: number;
+	failed: number;
+}
+
+type QuestionType = "text" | "options";
+
 export interface Question {
 	id: string;
 	title: string;
-	hint?: string;
-	answersCount: number;
-	timeAgo: string;
+	answersCount: AnswersCount;
 	options?: QuestionOption[];
-	timeLimitSeconds?: number;
 	points?: number;
 	isNew: boolean;
-	type: "text" | "options";
+	category: QuestionCategory;
+	type: QuestionType;
+	startDeadline: Date;
+	endDeadline: Date;
 }

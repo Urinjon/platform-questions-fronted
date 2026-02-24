@@ -4,20 +4,34 @@ export const allQuestions: Question[] = [
 	{
 		id: "1",
 		title: "Question 1 type text",
-		hint: "Hint 1",
 		isNew: true,
-		answersCount: 20,
-		timeLimitSeconds: 60,
+		answersCount: {
+			success: 10,
+			failed: 10,
+		},
+		category: {
+			id: 1,
+			title: "python",
+		},
+		startDeadline: new Date(),
 		points: 10,
-		timeAgo: "1 hour ago",
+		endDeadline: new Date(),
 		type: "text",
 	},
 	{
 		id: "2",
 		title: "Question 2 type options",
-		hint: "Hint 2",
 		isNew: false,
-		answersCount: 10,
+		startDeadline: new Date(),
+		endDeadline: new Date(),
+		category: {
+			id: 1,
+			title: "python",
+		},
+		answersCount: {
+			success: 50,
+			failed: 10,
+		},
 		options: [
 			{
 				id: "3",
@@ -30,17 +44,25 @@ export const allQuestions: Question[] = [
 				isCorrect: false,
 			},
 		],
-		timeLimitSeconds: 60,
 		points: 10,
-		timeAgo: "3 hours ago",
+
 		type: "options",
 	},
 	{
 		id: "3",
 		title: "Question 3 type options",
 		isNew: false,
-		hint: "Hint 3",
-		answersCount: 5,
+		category: {
+			id: 2,
+			title: "nodeJs",
+		},
+		startDeadline: new Date(),
+		endDeadline: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
+
+		answersCount: {
+			success: 10,
+			failed: 10,
+		},
 		type: "options",
 		options: [
 			{
@@ -54,8 +76,6 @@ export const allQuestions: Question[] = [
 				isCorrect: false,
 			},
 		],
-		timeLimitSeconds: 60,
 		points: 10,
-		timeAgo: "2 hours ago",
 	},
 ];

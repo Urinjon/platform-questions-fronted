@@ -22,6 +22,7 @@ import { ContainerTextFlip } from "@ui-kit/effects";
 import { allQuestions } from "../model/data";
 import { QuestionsTable } from "@features/question-display/table";
 import { QuestionsList } from "@features/question-display/list";
+import { CardInDevelopment } from "@ui-kit/ui/card";
 
 export function QuestionsView() {
 	const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -33,24 +34,20 @@ export function QuestionsView() {
 	// Фильтрация и сортировка (клиентская — для простоты)
 	const filteredQuestions = allQuestions
 		.filter((q) => {
-			const matchesSearch =
-				q.title.toLowerCase().includes(search.toLowerCase()) ||
-				(q.hint?.toLowerCase().includes(search.toLowerCase()) ?? false);
+			const matchesSearch = q.title
+				.toLowerCase()
+				.includes(search.toLowerCase());
 			const matchesStatus =
 				statusFilter === "all" ||
 				(statusFilter === "new" && q.isNew) ||
-				(statusFilter === "answered" && (q.answersCount ?? 0) > 0) ||
-				(statusFilter === "unanswered" && (q.answersCount ?? 0) === 0);
+				(statusFilter === "answered" && (q.answersCount.success ?? 0) > 0) ||
+				(statusFilter === "unanswered" && (q.answersCount.success ?? 0) === 0);
 
 			return matchesSearch && matchesStatus;
 		})
 		.sort((a, b) => {
-			if (sortBy === "newest")
-				return (b.timeAgo || "").localeCompare(a.timeAgo || "");
-			if (sortBy === "oldest")
-				return (a.timeAgo || "").localeCompare(b.timeAgo || "");
 			if (sortBy === "answers")
-				return (b.answersCount ?? 0) - (a.answersCount ?? 0);
+				return (b.answersCount.success ?? 0) - (a.answersCount.success ?? 0);
 			return 0;
 		});
 
@@ -69,6 +66,7 @@ export function QuestionsView() {
 	return (
 		<div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
 			{/* Sticky шапка с фильтрами */}
+
 			<div className="sticky top-0 z-20 -mx-4 bg-background/85 backdrop-blur-lg px-4 py-3 sm:px-6 lg:px-8 border-b shadow-sm">
 				<div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 					<h1 className="text-2xl font-bold tracking-tight flex items-center gap-3">
@@ -78,38 +76,39 @@ export function QuestionsView() {
 							className="text-sm md:text-sm"
 						/>
 					</h1>
+					<CardInDevelopment title="Фильтрация">
+						<div className="flex flex-wrap items-center gap-2">
+							<Input
+								placeholder="Поиск по вопросу или подсказке..."
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+								className="w-full min-w-[220px] md:w-72"
+							/>
 
-					<div className="flex flex-wrap items-center gap-2">
-						<Input
-							placeholder="Поиск по вопросу или подсказке..."
-							value={search}
-							onChange={(e) => setSearch(e.target.value)}
-							className="w-full min-w-[220px] md:w-72"
-						/>
+							<Select value={statusFilter} onValueChange={setStatusFilter}>
+								<SelectTrigger className="w-40">
+									<SelectValue placeholder="Статус" />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectItem value="all">Все</SelectItem>
+									<SelectItem value="new">Новые</SelectItem>
+									<SelectItem value="answered">С ответами</SelectItem>
+									<SelectItem value="unanswered">Без ответов</SelectItem>
+								</SelectContent>
+							</Select>
 
-						<Select value={statusFilter} onValueChange={setStatusFilter}>
-							<SelectTrigger className="w-40">
-								<SelectValue placeholder="Статус" />
-							</SelectTrigger>
-							<SelectContent>
-								<SelectItem value="all">Все</SelectItem>
-								<SelectItem value="new">Новые</SelectItem>
-								<SelectItem value="answered">С ответами</SelectItem>
-								<SelectItem value="unanswered">Без ответов</SelectItem>
-							</SelectContent>
-						</Select>
-
-						<Select value={sortBy} onValueChange={setSortBy}>
-							<SelectTrigger className="w-40">
-								<SelectValue placeholder="Сортировка" />
-							</SelectTrigger>
-							<SelectContent>
-								<SelectItem value="newest">Сначала новые</SelectItem>
-								<SelectItem value="oldest">Сначала старые</SelectItem>
-								<SelectItem value="answers">По кол-ву ответов</SelectItem>
-							</SelectContent>
-						</Select>
-					</div>
+							<Select value={sortBy} onValueChange={setSortBy}>
+								<SelectTrigger className="w-40">
+									<SelectValue placeholder="Сортировка" />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectItem value="newest">Сначала новые</SelectItem>
+									<SelectItem value="oldest">Сначала старые</SelectItem>
+									<SelectItem value="answers">По кол-ву ответов</SelectItem>
+								</SelectContent>
+							</Select>
+						</div>
+					</CardInDevelopment>
 				</div>
 
 				{/* Чипы применённых фильтров */}

@@ -18,6 +18,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
 function CardInDevelopment({
 	className,
 	children,
+	title,
 	...props
 }: React.ComponentProps<"div">) {
 	return (
@@ -38,7 +39,7 @@ function CardInDevelopment({
 			<div className="absolute inset-0 z-10 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
 				<div className="rounded-lg bg-background/90 px-6 py-4 text-center shadow-lg">
 					<div className="text-lg font-semibold tracking-tight">
-						В разработке
+						В разработке '{title}'
 					</div>
 					<div className="mt-1 text-sm text-muted-foreground">
 						Скоро будет доступно

@@ -13,14 +13,23 @@ import { Button } from "@ui-kit/ui/button";
 import { RadioGroup, RadioGroupItem } from "@ui-kit/ui/radio-group";
 import { Label } from "@ui-kit/ui/label";
 import { Textarea } from "@ui-kit/ui/textarea";
-
 import { Progress } from "@ui-kit/ui/progress";
-import { Clock, HelpCircle, ChevronLeft, SendIcon } from "lucide-react";
+import { Badge } from "@ui-kit/ui/badge";
+import {
+	Clock,
+	ChevronLeft,
+	Send,
+	Tag,
+	Text as TextIcon,
+	ListChecks,
+	CheckCircle2,
+	XCircle,
+} from "lucide-react";
 import { cn } from "@shared/lib/utils";
 import React from "react";
-
-import { Badge } from "@ui-kit/ui/badge";
 import type { Question } from "@entities/question";
+import { format, isPast, isToday, isTomorrow } from "date-fns";
+import { ru } from "date-fns/locale";
 
 interface QuestionDetailModalProps {
 	children: React.ReactNode;
@@ -42,6 +51,26 @@ export const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({
 	const isOptionsType = question.type === "options";
 	const isTextType = question.type === "text";
 
+	const totalAnswers =
+		(question.answersCount?.success ?? 0) +
+		(question.answersCount?.failed ?? 0);
+	const successRate =
+		totalAnswers > 0 ? (question.answersCount.success / totalAnswers) * 100 : 0;
+
+	const getDeadlineLabel = (date: Date) => {
+		if (isPast(date)) return "Просрочен";
+		if (isToday(date)) return "Сегодня";
+		if (isTomorrow(date)) return "Завтра";
+		return format(date, "d MMM yyyy", { locale: ru });
+	};
+
+	const getDeadlineColor = (date: Date) => {
+		if (isPast(date)) return "text-destructive";
+		if (isToday(date) || isTomorrow(date))
+			return "text-orange-600 dark:text-orange-400";
+		return "text-muted-foreground";
+	};
+
 	const handleSubmit = () => {
 		if (submitted) return;
 
@@ -58,8 +87,8 @@ export const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({
 		setSubmitted(true);
 		onAnswer?.(answer);
 
-		// Опционально: авто-закрытие через 1–1.5 сек
-		// setTimeout(() => onClose?.(), 1200);
+		// Можно добавить авто-закрытие через 1.5–2 секунды
+		// setTimeout(() => onClose?.(), 1800);
 	};
 
 	const canSubmit = isOptionsType ? !!selected : !!textAnswer.trim();
@@ -68,50 +97,88 @@ export const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({
 		<AlertDialog>
 			<AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
 
-			<AlertDialogContent className="max-w-2xl sm:max-w-[min(90vw,640px)] p-0 gap-0 overflow-hidden">
+			<AlertDialogContent className="max-w-2xl sm:max-w-[min(92vw,720px)] p-0 gap-0 overflow-hidden rounded-2xl">
 				{/* Header */}
-				<div className="bg-gradient-to-r from-primary/60 to-secondary px-6 py-4 border-b border-slate-700">
-					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-3">
-							<span className="text-sm font-medium text-slate-400">
-								<Badge variant="secondary">Вопрос {question.id}</Badge>
-							</span>
+				<div className="bg-gradient-to-r from-primary/70 via-primary/50 to-primary/30 px-6 py-5 border-b border-border/40">
+					<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+						<div className="flex items-center gap-3 flex-wrap">
+							<Badge variant="outline" className="text-sm">
+								Вопрос {question.id}
+							</Badge>
+
+							<div className="flex items-center gap-2">
+								<Badge variant="secondary" className="gap-1.5">
+									<Tag className="h-3.5 w-3.5" />
+									{question.category.title}
+								</Badge>
+
+								<Badge
+									variant="outline"
+									className={cn(
+										"gap-1.5 px-3",
+										isTextType
+											? "bg-blue-50/50 text-blue-700 border-blue-200 dark:bg-blue-950/30 dark:text-blue-300 dark:border-blue-800/40"
+											: "bg-purple-50/50 text-purple-700 border-purple-200 dark:bg-purple-950/30 dark:text-purple-300 dark:border-purple-800/40",
+									)}
+								>
+									{isTextType ? (
+										<TextIcon className="h-3.5 w-3.5" />
+									) : (
+										<ListChecks className="h-3.5 w-3.5" />
+									)}
+									{isTextType ? "Текст" : "Выбор"}
+								</Badge>
+							</div>
+
 							{question.points && (
-								<Badge variant={"success"}>+{question.points} баллов</Badge>
+								<Badge variant="success" className="text-sm">
+									+{question.points} балл{question.points > 1 ? "а" : ""}
+								</Badge>
 							)}
 						</div>
 
-						{question.timeLimitSeconds && (
-							<div className="flex items-center gap-2 text-sm text-primary">
-								<Clock className="h-4 w-4" />
-								<span>{question.timeAgo}</span>
-							</div>
-						)}
+						<div
+							className={cn(
+								"flex items-center gap-2 text-sm font-medium",
+								getDeadlineColor(question.endDeadline),
+							)}
+						>
+							<Clock className="h-4 w-4" />
+							<span>до {getDeadlineLabel(question.endDeadline)}</span>
+						</div>
 					</div>
 
-					<Progress
-						value={33} // ← можно сделать динамическим
-						className="mt-4 h-1 bg-slate-700"
-						// indicatorClassName="bg-violet-600"
-					/>
+					{/* Прогресс ответов (если есть данные) */}
+					{totalAnswers > 0 && (
+						<div className="mt-4 space-y-1.5">
+							<div className="flex justify-between text-xs text-muted-foreground">
+								<Badge>Статистика ответов</Badge>
+								<Badge>{successRate.toFixed(0)}% верно</Badge>
+							</div>
+							<div className="flex items-center gap-3">
+								<Progress value={successRate} className="h-2" />
+								<div className="flex items-center gap-3 text-xs whitespace-nowrap">
+									<span className="text-green-600 dark:text-green-400">
+										{question.answersCount.success}
+									</span>
+									<span className="text-red-600 dark:text-red-400">
+										{question.answersCount.failed}
+									</span>
+								</div>
+							</div>
+						</div>
+					)}
 				</div>
 
-				{/* Контент */}
-				<div className="p-6 sm:p-8 space-y-8">
-					<AlertDialogHeader className="text-center sm:text-left">
-						<AlertDialogTitle className="text-2xl sm:text-3xl font-bold leading-tight tracking-tight text-slate-100">
+				{/* Основной контент */}
+				<div className="p-6 sm:p-8 space-y-7 bg-gradient-to-b from-background/80 to-background">
+					<AlertDialogHeader>
+						<AlertDialogTitle className="text-2xl sm:text-3xl font-bold leading-tight tracking-tight">
 							{question.title}
 						</AlertDialogTitle>
-
-						{question.hint && (
-							<div className="mt-3 flex items-start gap-2 text-slate-400 text-sm">
-								<HelpCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-								<p>{question.hint}</p>
-							</div>
-						)}
 					</AlertDialogHeader>
 
-					{/* Разные поля ввода в зависимости от типа */}
+					{/* Варианты ответа */}
 					{isOptionsType && question.options && (
 						<RadioGroup
 							value={selected}
@@ -120,18 +187,17 @@ export const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({
 							disabled={submitted}
 						>
 							{question.options.map((option) => (
-								<Button
-									variant={"secondary"}
+								<button
+									type="button"
 									key={option.id}
-									className={cn(
-										"relative flex items-center rounded-xl border px-5 py-4 sm:py-5 transition-all duration-200",
-										"cursor-pointer select-none group",
-										selected === option.id
-											? "border-primary bg-primary/40 shadow-sm hover:bg-primary/60"
-											: "border-secondary hover:border-primary bg-secondary/50 hover:bg-primary/60",
-										submitted && "pointer-events-none opacity-70",
-									)}
 									onClick={() => !submitted && setSelected(option.id)}
+									className={cn(
+										"relative w-full flex items-center rounded-xl border px-5 py-4 sm:py-5 transition-all duration-200 cursor-pointer group",
+										selected === option.id
+											? "border-primary bg-primary/15 shadow-sm"
+											: "border-border hover:border-primary/50 bg-card/50 hover:bg-primary/5",
+										submitted && "opacity-75 pointer-events-none",
+									)}
 								>
 									<RadioGroupItem
 										value={option.id}
@@ -140,11 +206,22 @@ export const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({
 									/>
 									<Label
 										htmlFor={option.id}
-										className="flex-1 cursor-pointer text-base sm:text-lg font-medium leading-relaxed text-slate-200 group-hover:text-slate-100 transition-colors"
+										className="flex-1 cursor-pointer text-base sm:text-lg font-medium leading-relaxed"
 									>
 										{option.text}
 									</Label>
-								</Button>
+
+									{/* Показываем правильность после отправки (если знаете правильный ответ) */}
+									{submitted && option.isCorrect !== undefined && (
+										<div className="ml-3">
+											{option.isCorrect ? (
+												<CheckCircle2 className="h-5 w-5 text-green-500" />
+											) : (
+												<XCircle className="h-5 w-5 text-red-500" />
+											)}
+										</div>
+									)}
+								</button>
 							))}
 						</RadioGroup>
 					)}
@@ -154,61 +231,61 @@ export const QuestionDetailModal: React.FC<QuestionDetailModalProps> = ({
 							<Textarea
 								value={textAnswer}
 								onChange={(e) => setTextAnswer(e.target.value)}
-								placeholder="Ваш ответ..."
+								placeholder="Введите ваш ответ..."
 								disabled={submitted}
-								className="min-h-[120px] sm:min-h-[140px] resize-none bg-slate-900/60 border-slate-700 focus:border-violet-500 focus:ring-violet-500/30 text-slate-100 placeholder:text-slate-500"
+								className="min-h-[140px] sm:min-h-[160px] resize-none bg-background/60 border-input focus-visible:ring-primary/40"
 								autoFocus
 							/>
-							<p className="text-xs text-slate-500 text-right">
-								{textAnswer.length} символов
-							</p>
+							<div className="flex justify-end">
+								<span className="text-sm text-muted-foreground">
+									{textAnswer.length} символов
+								</span>
+							</div>
 						</div>
 					)}
 				</div>
 
 				{/* Footer */}
-				<AlertDialogFooter className="px-6 py-5 border-t border-slate-700 flex-col-reverse sm:flex-row sm:justify-between gap-4">
+				<AlertDialogFooter className="px-6 py-5 border-t border-border flex-col-reverse sm:flex-row sm:justify-between gap-4 bg-muted/30">
 					<AlertDialogCancel
 						onClick={onClose}
-						className="sm:w-auto border-slate-700 text-slate-300 hover:bg-slate-800"
+						className="sm:w-auto border-input text-muted-foreground hover:bg-muted"
 					>
 						<ChevronLeft className="mr-2 h-4 w-4" />
 						Назад
 					</AlertDialogCancel>
 
 					<div className="flex gap-3 w-full sm:w-auto">
-						{isOptionsType && (
-							<Button
-								variant="outline"
-								className="flex-1 sm:flex-none border-slate-600"
-								disabled={!selected || submitted}
-								onClick={() => setSelected(undefined)}
-							>
-								Сбросить
+						{submitted ? (
+							<Button disabled className="flex-1 sm:flex-none">
+								Отправлено...
 							</Button>
-						)}
+						) : (
+							<>
+								{(isOptionsType || isTextType) && (
+									<Button
+										variant="outline"
+										className="flex-1 sm:flex-none border-input"
+										disabled={isOptionsType ? !selected : !textAnswer.trim()}
+										onClick={() => {
+											if (isOptionsType) setSelected(undefined);
+											if (isTextType) setTextAnswer("");
+										}}
+									>
+										Очистить
+									</Button>
+								)}
 
-						{isTextType && (
-							<Button
-								variant="outline"
-								className="flex-1 sm:flex-none border-slate-600"
-								disabled={!textAnswer.trim() || submitted}
-								onClick={() => setTextAnswer("")}
-							>
-								Очистить
-							</Button>
-						)}
-
-						<Button disabled={!canSubmit || submitted} onClick={handleSubmit}>
-							{submitted ? (
-								"Отправлено..."
-							) : (
-								<>
+								<Button
+									disabled={!canSubmit}
+									onClick={handleSubmit}
+									className="flex-1 sm:flex-none gap-2"
+								>
 									Ответить
-									<SendIcon className="h-4 w-4" />
-								</>
-							)}
-						</Button>
+									<Send className="h-4 w-4" />
+								</Button>
+							</>
+						)}
 					</div>
 				</AlertDialogFooter>
 			</AlertDialogContent>
