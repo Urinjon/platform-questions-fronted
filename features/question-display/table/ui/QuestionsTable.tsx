@@ -19,7 +19,7 @@ import {
 	XCircle,
 	Tag,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import type { Question } from "@entities/question";
 import { QuestionDetailModal } from "@features/question-display/detail";
 import { format, isPast, isToday, isTomorrow } from "date-fns";

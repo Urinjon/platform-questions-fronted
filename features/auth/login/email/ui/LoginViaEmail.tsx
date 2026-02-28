@@ -20,9 +20,12 @@ import Link from "next/link";
 
 import { useLoginEmailForm } from "../model/use-login-email-form";
 import { Spinner } from "@ui-kit/ui/spinner";
+import { Alert, AlertDescription, AlertTitle } from "@ui-kit/ui/alert";
+import type { ApiError } from "@shared/api/types";
+import { generateUniqId } from "@shared/lib/generate-uniq-id.lib";
 
 export const LoginViaEmail = () => {
-	const { form, onSubmit, isLoading } = useLoginEmailForm();
+	const { form, onSubmit, isLoading, errors } = useLoginEmailForm();
 
 	return (
 		<Card>
@@ -63,6 +66,16 @@ export const LoginViaEmail = () => {
 						<Button type="submit" className="w-full" disabled={isLoading}>
 							{isLoading ? <Spinner /> : <AtSignIcon />} Вход
 						</Button>
+						{form.formState &&
+							errors.map((error: ApiError) => (
+								<Alert
+									variant="destructive"
+									key={generateUniqId(String(error.title))}
+								>
+									<AlertTitle>Ошибка</AlertTitle>
+									<AlertDescription>{error.detail}</AlertDescription>
+								</Alert>
+							))}
 					</form>
 				</Form>
 			</CardContent>

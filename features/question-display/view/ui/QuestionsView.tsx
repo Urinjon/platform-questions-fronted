@@ -23,6 +23,7 @@ import { allQuestions } from "../model/data";
 import { QuestionsTable } from "@features/question-display/table";
 import { QuestionsList } from "@features/question-display/list";
 import { CardInDevelopment } from "@ui-kit/ui/card";
+import { QuestionsPagination } from "@features/question-display/pagination";
 
 export function QuestionsView() {
 	const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -194,6 +195,10 @@ export function QuestionsView() {
 						</Button>
 					</div>
 				)}
+
+				<div className="mt-5">
+					<QuestionsPagination />
+				</div>
 			</div>
 		</div>
 	);

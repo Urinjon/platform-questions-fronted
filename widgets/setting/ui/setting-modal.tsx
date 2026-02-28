@@ -7,7 +7,6 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@ui-kit/ui/dialog";
-import { Button } from "@ui-kit/ui/button";
 
 import { Separator } from "@ui-kit/ui/separator";
 import {
@@ -67,11 +66,6 @@ export const SettingModal: React.FC<SettingModalProps> = ({ children }) => {
 						</h3>
 						<SwitchLanguage />
 					</div>
-				</div>
-
-				<div className="flex justify-end gap-3 pt-6 border-t">
-					<Button variant="outline">Отмена</Button>
-					<Button>Сохранить</Button>
 				</div>
 			</DialogContent>
 		</Dialog>

@@ -5,14 +5,10 @@ import { Navigation } from "@widgets/navigation";
 export default function HomePage() {
 	return (
 		<>
-			<div className="flex justify-center items-center w-full">
-				<Navigation />
-			</div>
+			<Navigation />
 
-			<div className="flex flex-col space-y-10">
-				<HomeHere />
-				<AboutHere />
-			</div>
+			<HomeHere />
+			<AboutHere />
 		</>
 	);
 }
