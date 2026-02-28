@@ -12,4 +12,3 @@ export const loginEmail = async (dto: LoginEmailDto) => {
 
 	return response.data;
 };
-

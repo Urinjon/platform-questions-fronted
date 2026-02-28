@@ -17,4 +17,3 @@ export const getFirstData = <TData>(
 	}
 	return data ?? null;
 };
-

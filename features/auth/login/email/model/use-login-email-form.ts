@@ -24,8 +24,7 @@ export const useLoginEmailForm = () => {
 				email: data.email,
 				password: data.password,
 			});
-		} catch {
-		}
+		} catch {}
 	});
 
 	return { form, onSubmit, isLoading };

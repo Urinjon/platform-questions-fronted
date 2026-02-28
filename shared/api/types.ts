@@ -14,4 +14,3 @@ export interface ApiResponse<TData> {
 	meta?: ApiMeta | null;
 	errors?: ApiError[] | null;
 }
-

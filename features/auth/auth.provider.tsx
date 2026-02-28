@@ -24,10 +24,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		const initAuth = async () => {
 			try {
-				// Пытаемся получить текущего пользователя.
-				// Если accessToken отсутствует или истёк, response‑интерцептор
-				// сам дернёт /v1/auth/refresh/ по refresh_token (HttpOnly cookie)
-				// и повторит запрос /v1/auth/me/.
 				const meRes = await authService.me();
 				setUser(meRes.data.data);
 			} catch {

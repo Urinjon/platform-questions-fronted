@@ -26,4 +26,3 @@ export const getErrorDetailFromAxiosError = <TData>(
 	// fallback — текст ошибки из Axios
 	return error.message || null;
 };
-
