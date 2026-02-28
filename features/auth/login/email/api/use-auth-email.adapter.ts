@@ -4,38 +4,59 @@ import { useMutation } from "@tanstack/react-query";
 
 import { useRouter } from "next/navigation";
 
-import { LoginEmailApi } from "./auth-email.api";
-import type { LoginEmailDto } from "../model/types";
+import { loginEmail } from "./auth-email.api";
+import type { LoginEmailDto, LoginEmailResponseDto } from "../model/types";
 import { toast } from "sonner";
 import { useAuthStore } from "@features/auth/auth.store";
-
-const loginEmailApi = new LoginEmailApi();
+import type { ApiResponse } from "@shared/api/types";
+import {
+	getErrorDetailFromAxiosError,
+	getFirstErrorDetail,
+} from "@shared/api/error.utils";
+import type { AxiosError } from "axios";
+import { getFirstData, getFirstError } from "@shared/api/response.utils";
 
 export function useAuthEmailAdapter() {
 	const router = useRouter();
 
 	const { setUser, setAccessToken } = useAuthStore();
 
-	const { mutateAsync, isPending, error, isError } = useMutation({
-		mutationFn: async (data: LoginEmailDto) =>
-			await loginEmailApi.execute(data),
-		onSuccess: async ({ data, error }) => {
-			if (error || !data) {
-				toast.error(error, { position: "top-center" });
+	const { mutateAsync, isPending, error, isError } = useMutation<
+		ApiResponse<LoginEmailResponseDto>,
+		AxiosError<ApiResponse<never>>,
+		LoginEmailDto
+	>({
+		mutationFn: async (data: LoginEmailDto) => await loginEmail(data),
+		onSuccess: (response) => {
+			const firstError = getFirstError(response);
+			if (firstError) {
+				const messageFromErrors = getFirstErrorDetail([firstError]);
+				toast.error(messageFromErrors ?? "Произошла ошибка", {
+					position: "top-center",
+				});
 				return;
 			}
 
-			toast.success(`Добро пожаловать ${data?.user.username}!`, {
+			const payload = getFirstData(response);
+
+			if (!payload) {
+				toast.error("Ошибка. Попробуйте еще раз.", { position: "top-center" });
+				return;
+			}
+
+			toast.success(`Добро пожаловать ${payload.user.username}!`, {
 				position: "top-center",
 			});
 
-			setUser(data.user);
-			setAccessToken(data.access_token);
+			setUser(payload.user);
+			setAccessToken(payload.access_token);
 
 			router.push("/");
 		},
 		onError: (error) => {
-			toast.error(error.message, {
+			const detail = getErrorDetailFromAxiosError(error);
+
+			toast.error(detail ?? "Произошла ошибка", {
 				position: "top-center",
 			});
 		},

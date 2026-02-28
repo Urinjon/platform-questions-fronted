@@ -19,10 +19,13 @@ export const useLoginEmailForm = () => {
 	});
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		await loginViaEmail({
-			email: data.email,
-			password: data.password,
-		});
+		try {
+			await loginViaEmail({
+				email: data.email,
+				password: data.password,
+			});
+		} catch {
+		}
 	});
 
 	return { form, onSubmit, isLoading };
