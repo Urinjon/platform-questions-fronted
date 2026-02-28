@@ -1,5 +1,8 @@
+import { requireAuth } from "@features/auth/require-auth.server";
 import { QuestionsView } from "@features/question-display";
 
-export default function QuestionsPage() {
+export default async function QuestionsPage() {
+	await requireAuth("/questions");
+
 	return <QuestionsView />;
 }
