@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useAuthStore } from "@features/auth/auth.store";
+import type { ApiResponse } from "./types";
+import { getFirstData } from "./response.utils";
 
 const api = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api",
@@ -15,7 +17,8 @@ const api = axios.create({
 //   return config;
 // });
 api.interceptors.request.use((config) => {
-	const skipUrls = ["/v1/auth/refresh/", "/v1/auth/logout/", "/v1/auth/me/"];
+	// Для refresh/logout не прикрепляем access token, для остальных — прикрепляем.
+	const skipUrls = ["/v1/auth/refresh/", "/v1/auth/logout/"];
 	if (!skipUrls.some((url) => config.url?.includes(url))) {
 		const token = useAuthStore.getState().accessToken;
 		if (token) {
@@ -40,9 +43,21 @@ api.interceptors.response.use(
 		if (error.response?.status === 401 && !originalRequest._retry) {
 			originalRequest._retry = true;
 			try {
-				const refreshRes = await api.post("/v1/auth/refresh/");
-				useAuthStore.getState().setAccessToken(refreshRes.data.access_token);
-				originalRequest.headers.Authorization = `Bearer ${refreshRes.data.access_token}`;
+				type RefreshPayload = { access_token: string };
+
+				const refreshRes =
+					await api.post<ApiResponse<RefreshPayload>>("/v1/auth/refresh/");
+
+				const payload = getFirstData(refreshRes.data);
+
+				if (!payload?.access_token) {
+					useAuthStore.getState().logout();
+					return Promise.reject(error);
+				}
+
+				useAuthStore.getState().setAccessToken(payload.access_token);
+				originalRequest.headers.Authorization = `Bearer ${payload.access_token}`;
+
 				return api.request(originalRequest);
 			} catch (err) {
 				useAuthStore.getState().logout();

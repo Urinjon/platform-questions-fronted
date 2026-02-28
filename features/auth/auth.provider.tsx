@@ -12,25 +12,24 @@ import { authService } from "./auth.service";
 
 interface AuthContextType {
 	isLoading: boolean;
+	isAuthenticated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const [isLoading, setIsLoading] = useState(true);
-	const { setUser, setAccessToken, logout: storeLogout } = useAuthStore();
+	const { setUser, logout: storeLogout } = useAuthStore();
 
 	useEffect(() => {
 		const initAuth = async () => {
 			try {
-				const refreshRes = await authService.refreshToken();
-				const accessToken = refreshRes.data.access_token;
-				if (!accessToken) throw new Error("No access token from refresh");
-
-				setAccessToken(accessToken);
-
+				// Пытаемся получить текущего пользователя.
+				// Если accessToken отсутствует или истёк, response‑интерцептор
+				// сам дернёт /v1/auth/refresh/ по refresh_token (HttpOnly cookie)
+				// и повторит запрос /v1/auth/me/.
 				const meRes = await authService.me();
-				setUser(meRes.data);
+				setUser(meRes.data.data);
 			} catch {
 				storeLogout();
 				setUser(null);
@@ -40,10 +39,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		};
 
 		initAuth();
-	}, [storeLogout, setUser, setAccessToken]);
+	}, [storeLogout, setUser]);
 
 	return (
-		<AuthContext.Provider value={{ isLoading }}>
+		<AuthContext.Provider
+			value={{
+				isLoading,
+				isAuthenticated: !isLoading && !!useAuthStore.getState().user,
+			}}
+		>
 			{children}
 		</AuthContext.Provider>
 	);
