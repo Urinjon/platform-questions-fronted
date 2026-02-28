@@ -1,15 +1,14 @@
 import z from "zod";
-import { phoneRegex } from "../auth.util";
 
 export const universityList = ["TDTU"];
 
 export const registerSchema = z
 	.object({
-		phone: z
-			.string("Номер телефона не может быть пустым")
-			.regex(phoneRegex, "Неверная структура номера телефона")
+		email: z
+			.email("Не правельно указана электронная почта")
 			.min(13, "Неверный номер телефона")
 			.nonempty("Номер телефона не может быть пустым"),
+		username: z.string().min(2, "Минимум 2 символа"),
 		password: z.string().min(8, "Минимум 8 символов"),
 		confirmPassword: z.string().min(8, "Минимум 8 символов"),
 		lastName: z
