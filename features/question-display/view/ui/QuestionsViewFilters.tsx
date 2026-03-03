@@ -37,15 +37,13 @@ export function QuestionsViewFilters(props: QuestionsViewFiltersProps) {
 		<Card className="border-muted bg-muted/40 px-3 py-2 shadow-none sm:px-4 sm:py-3">
 			<div className="flex w-full flex-col gap-2 md:flex-row md:items-center md:justify-between">
 				<div className="flex w-full items-center gap-2 md:max-w-md">
-					<div className="flex items-center gap-1 rounded-md border bg-background px-2">
-						<Search className="h-4 w-4 text-muted-foreground" />
-						<Input
-							placeholder="Поиск по вопросу или подсказке..."
-							value={search}
-							onChange={(event) => onSearchChange(event.target.value)}
-							className="h-8 border-0 bg-transparent px-1 text-sm shadow-none focus-visible:ring-0"
-						/>
-					</div>
+					<Search className="h-4 w-4 text-muted-foreground" />
+					<Input
+						placeholder="Поиск по названию вопроса..."
+						value={search}
+						onChange={(event) => onSearchChange(event.target.value)}
+						className="h-8 w-full text-xs"
+					/>
 				</div>
 
 				<div className="flex flex-wrap items-center gap-2 md:justify-end">
