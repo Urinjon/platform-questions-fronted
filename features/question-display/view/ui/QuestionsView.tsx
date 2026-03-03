@@ -1,64 +1,35 @@
 // QuestionsView.tsx
 "use client";
 
-import { useState } from "react";
 import { useMediaQuery } from "@shared/hooks/use-media-query.hook";
 
-import { Input } from "@ui-kit/ui/input";
 import { Button } from "@ui-kit/ui/button";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@ui-kit/ui/select";
-import { Badge } from "@ui-kit/ui/badge";
-import { X } from "lucide-react";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui-kit/ui/tabs";
 import { ContainerTextFlip } from "@ui-kit/effects";
+import { AnimatePresence } from "motion/react";
 
-import { allQuestions } from "../model/data";
 import { QuestionsTable } from "@features/question-display/table";
 import { QuestionsList } from "@features/question-display/list";
-import { CardInDevelopment } from "@ui-kit/ui/card";
 import { QuestionsPagination } from "@features/question-display/pagination";
+
+import { useQuestionsView } from "../model/use-questions-view";
+import { QuestionsViewFilters } from "./QuestionsViewFilters";
+import { QuestionsViewFilterChips } from "./QuestionsViewFilterChips";
 
 export function QuestionsView() {
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 
-	const [search, setSearch] = useState("");
-	const [statusFilter, setStatusFilter] = useState("all"); // all | new | answered | unanswered
-	const [sortBy, setSortBy] = useState("newest");
-
-	// Фильтрация и сортировка (клиентская — для простоты)
-	const filteredQuestions = allQuestions
-		.filter((q) => {
-			const matchesSearch = q.title
-				.toLowerCase()
-				.includes(search.toLowerCase());
-			const matchesStatus =
-				statusFilter === "all" ||
-				(statusFilter === "new" && q.isNew) ||
-				(statusFilter === "answered" && (q.answersCount.success ?? 0) > 0) ||
-				(statusFilter === "unanswered" && (q.answersCount.success ?? 0) === 0);
-
-			return matchesSearch && matchesStatus;
-		})
-		.sort((a, b) => {
-			if (sortBy === "answers")
-				return (b.answersCount.success ?? 0) - (a.answersCount.success ?? 0);
-			return 0;
-		});
-
-	const hasFilters = search || statusFilter !== "all";
-
-	const resetFilters = () => {
-		setSearch("");
-		setStatusFilter("all");
-		setSortBy("newest");
-	};
+	const {
+		search,
+		statusFilter,
+		sortBy,
+		filteredQuestions,
+		hasFilters,
+		setSearch,
+		setStatusFilter,
+		setSortBy,
+		resetFilters,
+	} = useQuestionsView();
 
 	const handleClick = () => {
 		console.log("Clicked!");
@@ -77,86 +48,29 @@ export function QuestionsView() {
 							className="text-sm md:text-sm"
 						/>
 					</h1>
-					<CardInDevelopment title="Фильтрация">
-						<div className="flex flex-wrap items-center gap-2">
-							<Input
-								placeholder="Поиск по вопросу или подсказке..."
-								value={search}
-								onChange={(e) => setSearch(e.target.value)}
-								className="w-full min-w-[220px] md:w-72"
-							/>
-
-							<Select value={statusFilter} onValueChange={setStatusFilter}>
-								<SelectTrigger className="w-40">
-									<SelectValue placeholder="Статус" />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectItem value="all">Все</SelectItem>
-									<SelectItem value="new">Новые</SelectItem>
-									<SelectItem value="answered">С ответами</SelectItem>
-									<SelectItem value="unanswered">Без ответов</SelectItem>
-								</SelectContent>
-							</Select>
-
-							<Select value={sortBy} onValueChange={setSortBy}>
-								<SelectTrigger className="w-40">
-									<SelectValue placeholder="Сортировка" />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectItem value="newest">Сначала новые</SelectItem>
-									<SelectItem value="oldest">Сначала старые</SelectItem>
-									<SelectItem value="answers">По кол-ву ответов</SelectItem>
-								</SelectContent>
-							</Select>
-						</div>
-					</CardInDevelopment>
+					<QuestionsViewFilters
+						search={search}
+						statusFilter={statusFilter}
+						sortBy={sortBy}
+						onSearchChange={setSearch}
+						onStatusFilterChange={setStatusFilter}
+						onSortByChange={setSortBy}
+					/>
 				</div>
 
 				{/* Чипы применённых фильтров */}
-				{hasFilters && (
-					<div className="mt-3 flex flex-wrap gap-2">
-						{search && (
-							<Badge variant="secondary" className="gap-1 pl-2 pr-1">
-								Поиск: {search}
-								<Button
-									variant="ghost"
-									size="icon"
-									className="h-5 w-5"
-									onClick={() => setSearch("")}
-								>
-									<X className="h-3 w-3" />
-								</Button>
-							</Badge>
-						)}
-
-						{statusFilter !== "all" && (
-							<Badge variant="secondary" className="gap-1 pl-2 pr-1">
-								{statusFilter === "new"
-									? "Новые"
-									: statusFilter === "answered"
-										? "С ответами"
-										: "Без ответов"}
-								<Button
-									variant="ghost"
-									size="icon"
-									className="h-5 w-5"
-									onClick={() => setStatusFilter("all")}
-								>
-									<X className="h-3 w-3" />
-								</Button>
-							</Badge>
-						)}
-
-						<Button
-							variant="ghost"
-							size="sm"
-							className="h-7 text-xs"
-							onClick={resetFilters}
-						>
-							Сбросить всё
-						</Button>
-					</div>
-				)}
+				<AnimatePresence initial={false}>
+					{hasFilters && (
+						<QuestionsViewFilterChips
+							key="questions-filter-chips"
+							search={search}
+							statusFilter={statusFilter}
+							onClearSearch={() => setSearch("")}
+							onResetFilters={resetFilters}
+							onResetStatusFilter={() => setStatusFilter("all")}
+						/>
+					)}
+				</AnimatePresence>
 			</div>
 
 			{/* Контент */}
