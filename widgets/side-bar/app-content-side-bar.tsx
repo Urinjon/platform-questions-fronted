@@ -39,7 +39,7 @@ export const AppContentSideBar: React.FC = () => {
 						<SidebarMenuItem>
 							<SettingModal>
 								<SidebarMenuButton>
-									<SettingsIcon /> Кастомизация
+									<SettingsIcon /> Настройки
 								</SidebarMenuButton>
 							</SettingModal>
 						</SidebarMenuItem>

@@ -22,7 +22,8 @@ export interface UseQuestionsViewResult {
 
 export function useQuestionsView(): UseQuestionsViewResult {
 	const [search, setSearch] = useState("");
-	const [statusFilter, setStatusFilter] = useState<QuestionsStatusFilter>("all");
+	const [statusFilter, setStatusFilter] =
+		useState<QuestionsStatusFilter>("all");
 	const [sortBy, setSortBy] = useState<QuestionsSortBy>("newest");
 
 	const filteredQuestions = useMemo(
@@ -45,7 +46,9 @@ export function useQuestionsView(): UseQuestionsViewResult {
 				})
 				.sort((a, b) => {
 					if (sortBy === "answers") {
-						return (b.answersCount.success ?? 0) - (a.answersCount.success ?? 0);
+						return (
+							(b.answersCount.success ?? 0) - (a.answersCount.success ?? 0)
+						);
 					}
 
 					// TODO: добавить сортировку по датам, когда они будут доступны
@@ -74,4 +77,3 @@ export function useQuestionsView(): UseQuestionsViewResult {
 		resetFilters,
 	};
 }
-

@@ -14,8 +14,13 @@ interface QuestionsViewFilterChipsProps {
 }
 
 export function QuestionsViewFilterChips(props: QuestionsViewFilterChipsProps) {
-	const { search, statusFilter, onClearSearch, onResetFilters, onResetStatusFilter } =
-		props;
+	const {
+		search,
+		statusFilter,
+		onClearSearch,
+		onResetFilters,
+		onResetStatusFilter,
+	} = props;
 
 	return (
 		<motion.div
@@ -89,4 +94,3 @@ export function QuestionsViewFilterChips(props: QuestionsViewFilterChipsProps) {
 		</motion.div>
 	);
 }
-

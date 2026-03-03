@@ -1,5 +1,5 @@
-import { RegisterForm } from "@features/auth";
 import type { Metadata } from "next";
+import { RegisterPageClient } from "@features/auth/register/ui/RegisterPageClient";
 
 export const metadata: Metadata = {
 	title: "Регистрация",
@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function RegisterPage() {
-	return <RegisterForm />;
+	return <RegisterPageClient />;
 }
