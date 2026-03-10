@@ -24,15 +24,18 @@ export function QuestionsView() {
 		statusFilter,
 		sortBy,
 		filteredQuestions,
+		page,
+		totalPages,
 		hasFilters,
 		setSearch,
 		setStatusFilter,
 		setSortBy,
+		setPage,
 		resetFilters,
 	} = useQuestionsView();
 
-	const handleClick = () => {
-		console.log("Clicked!");
+	const handleClick = (id: number) => {
+		console.log("Clicked!", id);
 	};
 
 	return (
@@ -110,9 +113,15 @@ export function QuestionsView() {
 					</div>
 				)}
 
-				<div className="mt-5">
-					<QuestionsPagination />
-				</div>
+				{filteredQuestions.length > 0 && totalPages > 1 && (
+					<div className="mt-5">
+						<QuestionsPagination
+							page={page}
+							totalPages={totalPages}
+							onPageChange={setPage}
+						/>
+					</div>
+				)}
 			</div>
 		</div>
 	);

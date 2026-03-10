@@ -5,7 +5,15 @@ export interface ApiError {
 	detail: string;
 }
 
+export interface ApiPagination {
+	page: number;
+	limit: number;
+	total: number;
+	totalPages: number;
+}
+
 export interface ApiMeta {
+	pagination?: ApiPagination | null;
 	[key: string]: string | number | boolean | null | undefined | object;
 }
 

@@ -1,30 +1,36 @@
-interface QuestionOption {
-	id: string;
+export interface QuestionOption {
+	id: number;
 	text: string;
-	isCorrect?: boolean;
+	isCorrect: boolean;
 }
 
-interface QuestionCategory {
+export interface QuestionCategory {
 	id: number;
 	title: string;
 }
 
-interface AnswersCount {
+export interface AnswersCount {
 	success: number;
 	failed: number;
 }
 
-type QuestionType = "text" | "options";
-
-export interface Question {
-	id: string;
+interface QuestionBase {
+	id: number;
 	title: string;
 	answersCount: AnswersCount;
-	options?: QuestionOption[];
-	points?: number;
 	isNew: boolean;
+	startDeadline: string;
+	endDeadline: string;
 	category: QuestionCategory;
-	type: QuestionType;
-	startDeadline: Date;
-	endDeadline: Date;
 }
+
+export interface TextQuestion extends QuestionBase {
+	type: "text";
+}
+
+export interface OptionsQuestion extends QuestionBase {
+	type: "options";
+	options: QuestionOption[];
+}
+
+export type Question = TextQuestion | OptionsQuestion;

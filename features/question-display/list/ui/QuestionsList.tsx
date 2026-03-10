@@ -19,7 +19,7 @@ import { ru } from "date-fns/locale";
 
 interface QuestionsListProps {
 	questions: Question[];
-	onQuestionClick?: (id: string) => void;
+	onQuestionClick?: (id: number) => void;
 }
 
 export function QuestionsList({
@@ -47,6 +47,7 @@ export function QuestionsList({
 					(q.answersCount?.success ?? 0) + (q.answersCount?.failed ?? 0);
 				const successRate =
 					totalAnswers > 0 ? (q.answersCount.success / totalAnswers) * 100 : 0;
+				const endDeadlineDate = new Date(q.endDeadline);
 
 				return (
 					<motion.div
@@ -143,13 +144,6 @@ export function QuestionsList({
 										) : (
 											<span>Нет ответов</span>
 										)}
-
-										{q.points && (
-											<div className="flex items-center gap-1.5">
-												<span className="font-medium">{q.points}</span>
-												<span>балл{q.points > 1 ? "а" : ""}</span>
-											</div>
-										)}
 									</div>
 
 									{/* Дедлайн */}
@@ -158,10 +152,10 @@ export function QuestionsList({
 										<span
 											className={cn(
 												"font-medium",
-												getDeadlineColor(q.endDeadline),
+												getDeadlineColor(endDeadlineDate),
 											)}
 										>
-											до {getDeadlineLabel(q.endDeadline)}
+											до {getDeadlineLabel(endDeadlineDate)}
 										</span>
 									</div>
 								</div>

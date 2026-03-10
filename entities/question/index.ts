@@ -1,1 +1,8 @@
-export type { Question } from "./model/types";
+export type {
+	Question,
+	TextQuestion,
+	OptionsQuestion,
+	QuestionOption,
+	QuestionCategory,
+	AnswersCount,
+} from "./model/types";

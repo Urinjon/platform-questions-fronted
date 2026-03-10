@@ -1,7 +1,7 @@
 import api from "@shared/api/axios";
 import type { LoginEmailDto } from "./login/email/model/types";
 
-export class AuthService {
+class AuthService {
 	async login(data: LoginEmailDto) {
 		return api.post("/v1/auth/login/", data, { withCredentials: true });
 	}

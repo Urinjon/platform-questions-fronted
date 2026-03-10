@@ -29,7 +29,7 @@ const MotionTableRow = motion(TableRow);
 
 type Props = {
 	questions: Question[];
-	onRowClick?: (id: string) => void;
+	onRowClick?: (id: number) => void;
 };
 
 export function QuestionsTable({ questions, onRowClick }: Props) {
@@ -63,9 +63,6 @@ export function QuestionsTable({ questions, onRowClick }: Props) {
 						<TableHead className="w-48 text-center hidden md:table-cell">
 							Правильно / Неправильно
 						</TableHead>
-						<TableHead className="w-32 text-center hidden lg:table-cell">
-							Баллы
-						</TableHead>
 						<TableHead className="w-36 text-right hidden sm:table-cell">
 							Начало
 						</TableHead>
@@ -81,6 +78,8 @@ export function QuestionsTable({ questions, onRowClick }: Props) {
 							totalAnswers > 0
 								? (q.answersCount.success / totalAnswers) * 100
 								: 0;
+						const startDeadlineDate = new Date(q.startDeadline);
+						const endDeadlineDate = new Date(q.endDeadline);
 
 						return (
 							<QuestionDetailModal key={q.id} question={q}>
@@ -118,7 +117,7 @@ export function QuestionsTable({ questions, onRowClick }: Props) {
 												</span>
 											</div>
 
-											{q.options && q.options.length > 0 && (
+											{q.type === "options" && q.options.length > 0 && (
 												<span className="text-xs text-muted-foreground line-clamp-1 md:hidden">
 													{q.options.map((o) => o.text).join(" • ")}
 												</span>
@@ -183,26 +182,21 @@ export function QuestionsTable({ questions, onRowClick }: Props) {
 										)}
 									</TableCell>
 
-									{/* Баллы */}
-									<TableCell className="text-center text-sm font-medium hidden lg:table-cell">
-										{q.points ? `${q.points} балл.` : "—"}
-									</TableCell>
-
 									{/* Начало */}
 									<TableCell className="text-right text-xs text-muted-foreground hidden sm:table-cell">
-										{format(q.startDeadline, "dd.MM HH:mm", { locale: ru })}
+										{format(startDeadlineDate, "dd.MM HH:mm", { locale: ru })}
 									</TableCell>
 
 									{/* Дедлайн */}
 									<TableCell
 										className={cn(
 											"text-right text-sm font-medium",
-											getDeadlineColor(q.endDeadline),
+											getDeadlineColor(endDeadlineDate),
 										)}
 									>
 										<div className="flex items-center justify-end gap-1.5">
 											<Clock className="h-3.5 w-3.5 opacity-70" />
-											<span>{getDeadlineLabel(q.endDeadline)}</span>
+											<span>{getDeadlineLabel(endDeadlineDate)}</span>
 										</div>
 									</TableCell>
 								</MotionTableRow>
