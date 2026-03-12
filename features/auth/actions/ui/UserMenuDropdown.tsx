@@ -17,7 +17,7 @@ import { useAuthProvider } from "@features/auth/auth.provider";
 import { useAuthStore } from "@features/auth/auth.store";
 
 export const UserMenuDropdown = () => {
-	const { handleLogout } = useUserMenu();
+	const { handleLogout, handleProfile } = useUserMenu();
 
 	const { isLoading } = useAuthProvider();
 	const { user } = useAuthStore();
@@ -30,6 +30,7 @@ export const UserMenuDropdown = () => {
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
+				<DropdownMenuItem onClick={handleProfile}>Профиль</DropdownMenuItem>
 				<DropdownMenuItem onClick={handleLogout}>Выход</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

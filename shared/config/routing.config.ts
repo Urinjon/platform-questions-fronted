@@ -4,6 +4,7 @@ import {
 	InboxIcon,
 	InfoIcon,
 	KeyRoundIcon,
+	UserIcon,
 	type LucideIcon,
 } from "lucide-react";
 
@@ -17,6 +18,11 @@ export const SideBarLinks = [
 		title: "Вопросы",
 		url: "/questions",
 		icon: InboxIcon,
+	},
+	{
+		title: "Профиль",
+		url: "/profile",
+		icon: UserIcon,
 	},
 	{
 		title: "Как пользоваться",

@@ -1,7 +1,16 @@
 export interface User {
+	id: number;
+	username: string;
 	email: string;
 	first_name: string;
-	id: number;
 	last_name: string;
-	username: string;
+	is_active?: boolean;
+	role?: string;
+}
+
+export interface UpdateUserDto {
+	username?: string;
+	email?: string;
+	first_name?: string;
+	last_name?: string;
 }

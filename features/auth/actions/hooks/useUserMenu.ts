@@ -10,6 +10,10 @@ export const useUserMenu = () => {
 	const { logout } = useLogoutAdapter();
 	const { logout: LogoutState } = useAuthStore();
 
+	const handleProfile = () => {
+		router.push("/profile");
+	};
+
 	const handleLogout = async () => {
 		await logout();
 		LogoutState();
@@ -17,5 +21,5 @@ export const useUserMenu = () => {
 		router.push("/auth/login");
 	};
 
-	return { user, handleLogout };
+	return { user, handleLogout, handleProfile };
 };
