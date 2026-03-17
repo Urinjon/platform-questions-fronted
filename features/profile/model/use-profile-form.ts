@@ -19,6 +19,8 @@ export const useProfileForm = (user: User | null) => {
 			email: user?.email ?? "",
 			first_name: user?.first_name ?? "",
 			last_name: user?.last_name ?? "",
+			university: user?.university ?? "",
+			birthday: user?.birthday ? new Date(user.birthday) : undefined,
 		},
 	});
 
@@ -29,12 +31,19 @@ export const useProfileForm = (user: User | null) => {
 				email: user.email ?? "",
 				first_name: user.first_name ?? "",
 				last_name: user.last_name ?? "",
+				university: user.university ?? "",
+				birthday: user.birthday ? new Date(user.birthday) : undefined,
 			});
 		}
 	}, [user, form]);
 
 	const onSubmit = form.handleSubmit(async (data) => {
-		await updateProfile(data);
+		await updateProfile({
+			...data,
+			birthday: data.birthday
+				? data.birthday.toISOString().slice(0, 10)
+				: undefined,
+		});
 	});
 
 	const isDirty = form.formState.isDirty;

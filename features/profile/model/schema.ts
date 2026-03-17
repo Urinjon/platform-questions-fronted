@@ -18,6 +18,12 @@ export const profileFormSchema = z.object({
 		.max(100, "Фамилия не может быть длиннее 100 символов")
 		.optional()
 		.or(z.literal("")),
+	university: z
+		.string()
+		.max(200, "Название университета не может быть длиннее 200 символов")
+		.optional()
+		.or(z.literal("")),
+	birthday: z.date(),
 });
 
 export type ProfileFormValues = z.infer<typeof profileFormSchema>;

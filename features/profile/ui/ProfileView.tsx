@@ -14,6 +14,7 @@ import { useProfileQuery } from "../api/use-profile.adapter";
 import { getFirstData } from "@shared/api/response.utils";
 
 import { ProfileHeader } from "./ProfileHeader";
+import { ProfileIsActive } from "./ProfileIsActive";
 import { ProfileInfoCard } from "./ProfileInfoCard";
 import { ProfileForm } from "./ProfileForm";
 import { ProfileSkeleton } from "./ProfileSkeleton";
@@ -29,6 +30,8 @@ export const ProfileView = () => {
 
 	return (
 		<div className="mx-auto w-full max-w-3xl space-y-6 p-4 sm:p-6">
+			{user && <ProfileIsActive user={user} />}
+
 			<Card>
 				<CardHeader>
 					<ProfileHeader user={user} />

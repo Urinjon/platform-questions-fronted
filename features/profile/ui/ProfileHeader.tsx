@@ -2,7 +2,7 @@
 
 import type { User } from "@entities/user";
 import { Badge } from "@ui-kit/ui/badge";
-import { Shield, CheckCircle } from "lucide-react";
+import { Shield, CheckCircle, XCircleIcon } from "lucide-react";
 
 import { ProfileAvatar } from "./ProfileAvatar";
 
@@ -43,10 +43,15 @@ export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
 						</Badge>
 					)}
 
-					{user?.is_active && (
+					{user?.is_active ? (
 						<Badge variant="success" className="gap-1">
 							<CheckCircle className="size-3" />
 							Активен
+						</Badge>
+					) : (
+						<Badge variant="destructive" className="gap-1">
+							<XCircleIcon className="size-3" />
+							Не активирован
 						</Badge>
 					)}
 				</div>

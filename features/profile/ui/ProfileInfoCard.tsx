@@ -1,7 +1,7 @@
 "use client";
 
 import type { User } from "@entities/user";
-import { Mail, UserIcon, Hash } from "lucide-react";
+import { Mail, UserIcon, Hash, GraduationCap, Calendar } from "lucide-react";
 
 interface ProfileInfoCardProps {
 	user: User | null;
@@ -42,6 +42,16 @@ export const ProfileInfoCard = ({ user }: ProfileInfoCardProps) => {
 				icon={<Mail className="size-4 text-muted-foreground" />}
 				label="Email"
 				value={user?.email}
+			/>
+			<InfoRow
+				icon={<GraduationCap className="size-4 text-muted-foreground" />}
+				label="Университет"
+				value={user?.university ?? undefined}
+			/>
+			<InfoRow
+				icon={<Calendar className="size-4 text-muted-foreground" />}
+				label="Дата рождения"
+				value={user?.birthday ?? undefined}
 			/>
 		</div>
 	);
