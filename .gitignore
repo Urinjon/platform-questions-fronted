@@ -2,3 +2,5 @@ node_modules
 .next
 bun.lock
 .vscode
+.env
+next-env.d.ts
