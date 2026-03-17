@@ -1,10 +1,10 @@
-// QuestionsView.tsx
 "use client";
 
 import { useMediaQuery } from "@shared/hooks/use-media-query.hook";
 
 import { Button } from "@ui-kit/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@ui-kit/ui/tabs";
+import { Skeleton } from "@ui-kit/ui/skeleton";
 import { ContainerTextFlip } from "@ui-kit/effects";
 import { AnimatePresence } from "motion/react";
 
@@ -27,6 +27,8 @@ export function QuestionsView() {
 		page,
 		totalPages,
 		hasFilters,
+		isLoading,
+		isError,
 		setSearch,
 		setStatusFilter,
 		setSortBy,
@@ -76,53 +78,75 @@ export function QuestionsView() {
 				</AnimatePresence>
 			</div>
 
-			{/* Контент */}
-			<div className="pt-6 pb-16">
-				{isDesktop ? (
-					<Tabs defaultValue="table">
-						<TabsList className="mb-4">
-							<TabsTrigger value="table">Таблица</TabsTrigger>
-							<TabsTrigger value="list">Список</TabsTrigger>
-						</TabsList>
+		{/* Контент */}
+		<div className="pt-6 pb-16">
+			{isLoading ? (
+				<div className="space-y-4">
+					{Array.from({ length: 5 }).map((_, i) => (
+						<Skeleton key={`skeleton-${i}`} className="h-20 w-full rounded-xl" />
+					))}
+				</div>
+			) : isError ? (
+				<div className="mt-16 text-center text-muted-foreground">
+					Не удалось загрузить вопросы
+					<br />
+					<Button
+						variant="link"
+						onClick={() => window.location.reload()}
+						className="mt-2"
+					>
+						Попробовать снова
+					</Button>
+				</div>
+			) : (
+				<>
+					{isDesktop ? (
+						<Tabs defaultValue="table">
+							<TabsList className="mb-4">
+								<TabsTrigger value="table">Таблица</TabsTrigger>
+								<TabsTrigger value="list">Список</TabsTrigger>
+							</TabsList>
 
-						<TabsContent value="table">
-							<QuestionsTable questions={filteredQuestions} />
-						</TabsContent>
+							<TabsContent value="table">
+								<QuestionsTable questions={filteredQuestions} />
+							</TabsContent>
 
-						<TabsContent value="list">
-							<QuestionsList
-								questions={filteredQuestions}
-								onQuestionClick={handleClick}
-							/>
-						</TabsContent>
-					</Tabs>
-				) : (
-					<QuestionsList
-						questions={filteredQuestions}
-						onQuestionClick={handleClick}
-					/>
-				)}
-
-				{filteredQuestions.length === 0 && (
-					<div className="mt-16 text-center text-muted-foreground">
-						Ничего не найдено по выбранным фильтрам
-						<br />
-						<Button variant="link" onClick={resetFilters} className="mt-2">
-							Сбросить фильтры
-						</Button>
-					</div>
-				)}
-
-				{filteredQuestions.length > 0 && totalPages > 1 && (
-					<div className="mt-5">
-						<QuestionsPagination
-							page={page}
-							totalPages={totalPages}
-							onPageChange={setPage}
+							<TabsContent value="list">
+								<QuestionsList
+									questions={filteredQuestions}
+									onQuestionClick={handleClick}
+								/>
+							</TabsContent>
+						</Tabs>
+					) : (
+						<QuestionsList
+							questions={filteredQuestions}
+							onQuestionClick={handleClick}
 						/>
-					</div>
-				)}
-			</div>
+					)}
+
+					{filteredQuestions.length === 0 && (
+						<div className="mt-16 text-center text-muted-foreground">
+							Ничего не найдено по выбранным фильтрам
+							<br />
+							<Button variant="link" onClick={resetFilters} className="mt-2">
+								Сбросить фильтры
+							</Button>
+						</div>
+					)}
+
+					{filteredQuestions.length > 0 && totalPages > 1 && (
+						<div className="mt-5">
+							<QuestionsPagination
+								page={page}
+								totalPages={totalPages}
+								onPageChange={setPage}
+							/>
+						</div>
+					)}
+				</>
+			)}
+		</div>
 		</div>
 	);
 }

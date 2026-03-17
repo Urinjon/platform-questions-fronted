@@ -184,7 +184,8 @@ export function QuestionsTable({ questions, onRowClick }: Props) {
 
 									{/* Начало */}
 									<TableCell className="text-right text-xs text-muted-foreground hidden sm:table-cell">
-										{format(startDeadlineDate, "dd.MM HH:mm", { locale: ru })}
+										{/* {format(startDeadlineDate, "dd.MM HH:mm", { locale: ru })} */}
+										{startDeadlineDate.toLocaleString()}
 									</TableCell>
 
 									{/* Дедлайн */}
@@ -196,7 +197,8 @@ export function QuestionsTable({ questions, onRowClick }: Props) {
 									>
 										<div className="flex items-center justify-end gap-1.5">
 											<Clock className="h-3.5 w-3.5 opacity-70" />
-											<span>{getDeadlineLabel(endDeadlineDate)}</span>
+											{/* <span>{getDeadlineLabel(endDeadlineDate)}</span> */}
+											<span>{endDeadlineDate.toLocaleString()}</span>
 										</div>
 									</TableCell>
 								</MotionTableRow>

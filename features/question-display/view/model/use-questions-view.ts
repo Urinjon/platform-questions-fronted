@@ -1,8 +1,9 @@
+"use client";
+
 import { useEffect, useMemo, useState } from "react";
 
-import { allQuestions } from "../model/data";
-
 import type { Question } from "@entities/question";
+import { useQuestionsQuery } from "@features/question-display/api";
 
 export type QuestionsStatusFilter = "all" | "new" | "answered" | "unanswered";
 
@@ -18,6 +19,8 @@ export interface UseQuestionsViewResult {
 	total: number;
 	totalPages: number;
 	hasFilters: boolean;
+	isLoading: boolean;
+	isError: boolean;
 	setSearch: (value: string) => void;
 	setStatusFilter: (value: QuestionsStatusFilter) => void;
 	setSortBy: (value: QuestionsSortBy) => void;
@@ -33,9 +36,20 @@ export function useQuestionsView(): UseQuestionsViewResult {
 	const [page, setPage] = useState(1);
 	const pageSize = 10;
 
+	const { data, isLoading, isError } = useQuestionsQuery({
+		page,
+		limit: pageSize,
+	});
+
+	const questions = data?.questions ?? [];
+	const pagination = data?.pagination ?? null;
+
+	const serverTotal = pagination?.total ?? questions.length;
+	const serverTotalPages = pagination?.totalPages ?? 1;
+
 	const filteredAndSorted = useMemo(
 		() =>
-			allQuestions
+			questions
 				.filter((q) => {
 					const matchesSearch = q.title
 						.toLowerCase()
@@ -58,33 +72,28 @@ export function useQuestionsView(): UseQuestionsViewResult {
 						);
 					}
 
-					// TODO: добавить сортировку по датам, когда они будут доступны
+					if (sortBy === "oldest") {
+						return (
+							new Date(a.startDeadline).getTime() -
+							new Date(b.startDeadline).getTime()
+						);
+					}
+
+					if (sortBy === "newest") {
+						return (
+							new Date(b.startDeadline).getTime() -
+							new Date(a.startDeadline).getTime()
+						);
+					}
+
 					return 0;
 				}),
-		[search, sortBy, statusFilter],
+		[questions, search, sortBy, statusFilter],
 	);
 
-	const total = filteredAndSorted.length;
-	const totalPages = total > 0 ? Math.ceil(total / pageSize) : 1;
-
-	// При смене фильтров/поиска/сортировки сбрасываем страницу на первую
 	useEffect(() => {
 		setPage(1);
-	}, []);
-
-	// Гарантируем, что текущая страница не выходит за пределы
-	useEffect(() => {
-		if (page > totalPages) {
-			setPage(totalPages);
-		}
-	}, [page, totalPages]);
-
-	const paginatedQuestions = useMemo(() => {
-		if (total === 0) return [];
-		const start = (page - 1) * pageSize;
-		const end = start + pageSize;
-		return filteredAndSorted.slice(start, end);
-	}, [filteredAndSorted, page, total]);
+	}, [search, statusFilter, sortBy]);
 
 	const hasFilters = Boolean(search) || statusFilter !== "all";
 
@@ -98,12 +107,14 @@ export function useQuestionsView(): UseQuestionsViewResult {
 		search,
 		statusFilter,
 		sortBy,
-		filteredQuestions: paginatedQuestions,
+		filteredQuestions: filteredAndSorted,
 		page,
 		pageSize,
-		total,
-		totalPages,
+		total: serverTotal,
+		totalPages: serverTotalPages,
 		hasFilters,
+		isLoading,
+		isError,
 		setSearch,
 		setStatusFilter,
 		setSortBy,
