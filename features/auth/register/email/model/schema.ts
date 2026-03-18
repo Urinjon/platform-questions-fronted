@@ -1,7 +1,5 @@
 import z from "zod";
 
-export const universityList = ["TDTU"];
-
 export const registerSchema = z
 	.object({
 		email: z
@@ -21,10 +19,6 @@ export const registerSchema = z
 			.date("Дата рождения не может быть пустой")
 			.min(new Date(1900, 0, 1), "Дата рождения не может быть раньше 1900 года")
 			.max(new Date(), "Дата рождения не может быть в будущем"),
-		university: z.string().refine((value) => universityList.includes(value), {
-			message: "Неверное название университета",
-			path: ["university"],
-		}),
 	})
 	.superRefine((data, ctx) => {
 		if (data.password !== data.confirmPassword) {

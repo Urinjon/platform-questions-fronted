@@ -20,7 +20,7 @@ const InfoRow = ({ icon, label, value }: InfoRowProps) => (
 		</div>
 		<div className="flex flex-col">
 			<span className="text-xs text-muted-foreground">{label}</span>
-			<span className="text-sm font-medium">{value ?? "—"}</span>
+			<span className="text-sm font-medium">{value ? value : "—"}</span>
 		</div>
 	</div>
 );

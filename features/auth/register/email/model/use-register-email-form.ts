@@ -23,7 +23,6 @@ export const useRegisterEmailForm = () => {
 			password: "12345678",
 			confirmPassword: "12345678",
 			email: "freyzan2006@gmail.com",
-			university: "TDTU",
 			birthday: new Date(1999, 11, 20),
 			username: "freyzan",
 		},
@@ -36,7 +35,6 @@ export const useRegisterEmailForm = () => {
 				last_name: data.lastName,
 				password: data.password,
 				email: data.email,
-				university: data.university,
 				birthday: formatLocal(data.birthday),
 				username: data.username,
 			};
