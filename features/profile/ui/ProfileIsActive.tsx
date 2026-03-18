@@ -18,8 +18,8 @@ export const ProfileIsActive = ({ user }: ProfileIsActiveProps) => {
 			<AlertDescription>
 				Похоже, ваш аккаунт ещё не активирован. Пожалуйста, перейдите по ссылке
 				из письма для подтверждения (обычно оно приходит на{" "}
-				<span className="font-medium">{user.email}</span>), чтобы получить полный
-				доступ к платформе.
+				<span className="font-medium">{user.email}</span>), чтобы получить
+				полный доступ к платформе.
 			</AlertDescription>
 		</Alert>
 	);
