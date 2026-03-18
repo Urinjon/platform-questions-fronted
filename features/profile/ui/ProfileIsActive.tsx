@@ -17,8 +17,9 @@ export const ProfileIsActive = ({ user }: ProfileIsActiveProps) => {
 			<AlertTitle>Требуется активация аккаунта</AlertTitle>
 			<AlertDescription>
 				Похоже, ваш аккаунт ещё не активирован. Пожалуйста, перейдите по ссылке
-				из письма для подтверждения регистрации, чтобы получить полный доступ к
-				платформе.
+				из письма для подтверждения (обычно оно приходит на{" "}
+				<span className="font-medium">{user.email}</span>), чтобы получить полный
+				доступ к платформе.
 			</AlertDescription>
 		</Alert>
 	);

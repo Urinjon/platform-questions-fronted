@@ -18,6 +18,9 @@ export function useProfileQuery() {
 		queryKey: PROFILE_QUERY_KEY,
 		queryFn: fetchProfile,
 		staleTime: 1000 * 60 * 5,
+		refetchOnMount: "always",
+		refetchOnWindowFocus: "always",
+		refetchOnReconnect: "always",
 	});
 }
 
@@ -31,13 +34,21 @@ export function useProfileUpdateAdapter() {
 		UpdateUserDto
 	>({
 		mutationFn: updateProfile,
-		onSuccess: (response) => {
+		onSuccess: (response, variables) => {
 			const user = getFirstData(response);
 			if (user) {
 				setUser(user);
-				toast.success("Профиль успешно обновлён", {
-					position: "top-center",
-				});
+				if (variables.email) {
+					toast.message("Email изменён", {
+						description:
+							"Мы отправили письмо для подтверждения на новый адрес. Пока вы не подтвердите email, аккаунт может быть помечен как неактивный.",
+						position: "top-center",
+					});
+				} else {
+					toast.success("Профиль успешно обновлён", {
+						position: "top-center",
+					});
+				}
 			}
 			queryClient.invalidateQueries({ queryKey: PROFILE_QUERY_KEY });
 		},
