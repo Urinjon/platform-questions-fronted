@@ -6,7 +6,6 @@ export interface RegisterEmailDto {
 	password: string;
 	last_name: string;
 	first_name: string;
-	university: string;
 	birthday: string;
 }
 

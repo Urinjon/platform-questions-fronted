@@ -30,17 +30,9 @@ import Link from "next/link";
 
 import { Space } from "@ui-kit/ui/space";
 import { Calendar } from "@ui-kit/ui/calendar";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@ui-kit/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@ui-kit/ui/popover";
 
 import { useRegisterEmailForm } from "../model/use-register-email-form";
-import { universityList } from "../model/schema";
 import { Spinner } from "@ui-kit/ui/spinner";
 
 export const RegisterViaEmail: React.FC = () => {
@@ -189,34 +181,6 @@ export const RegisterViaEmail: React.FC = () => {
 														/>
 													</PopoverContent>
 												</Popover>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-
-								<FormField
-									control={form.control}
-									name="university"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>ВУЗ</FormLabel>
-											<FormControl>
-												<Select
-													onValueChange={field.onChange}
-													defaultValue={field.value}
-												>
-													<SelectTrigger>
-														<SelectValue placeholder="Выберите университет" />
-													</SelectTrigger>
-													<SelectContent>
-														{universityList.map((university: string) => (
-															<SelectItem key={university} value={university}>
-																{university}
-															</SelectItem>
-														))}
-													</SelectContent>
-												</Select>
 											</FormControl>
 											<FormMessage />
 										</FormItem>
