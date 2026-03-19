@@ -4,3 +4,4 @@ bun.lock
 .vscode
 .env
 next-env.d.ts
+tsconfig.tsbuildinfo
