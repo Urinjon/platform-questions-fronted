@@ -5,27 +5,27 @@ import { Footer } from "@widgets/footer";
 import { Toaster } from "@ui-kit/ui/sonner";
 
 export const metadata: Metadata = {
-	title: "Platform Questions",
-	description: "Платформа с вопросами для улучшения знаний и навыков",
-	icons: {
-		icon: "/logo.png",
-	},
+  title: "Aiautomation. PQ",
+  description: "Платформа с вопросами для улучшения знаний и навыков",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="ru" suppressHydrationWarning>
-			<body>
-				<AppProviders>
-					{children}
-					<Footer />
-					<Toaster />
-				</AppProviders>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="ru" suppressHydrationWarning>
+      <body>
+        <AppProviders>
+          {children}
+          <Footer />
+          <Toaster />
+        </AppProviders>
+      </body>
+    </html>
+  );
 }
