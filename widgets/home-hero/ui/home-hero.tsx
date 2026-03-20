@@ -8,7 +8,7 @@ import { HomeHeroBentoCards } from "./home-hero-bento-cards";
 import { motion } from "motion/react";
 
 export const HomeHero: React.FC = () => (
-	<header className="relative min-h-[100vh] w-full overflow-hidden bg-background antialiased">
+	<header className="mt-10 mb-10 relative min-h-[100vh] w-full overflow-hidden bg-background antialiased">
 		<BackgroundLines>
 			<AnimationHero />
 

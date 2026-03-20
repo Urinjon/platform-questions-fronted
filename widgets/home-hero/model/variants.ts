@@ -1,5 +1,6 @@
 import type React from "react";
-import { Brain, BookOpen, HelpCircle, Lightbulb, Trophy } from "lucide-react";
+import { Brain, HelpCircle, Lightbulb, Trophy, CodeIcon } from "lucide-react";
+import type { Variants } from "motion/react";
 
 export type YRange = [number, number];
 
@@ -65,9 +66,9 @@ export const floatingItems: Array<{
 	},
 	{ id: "bulb", icon: Lightbulb, delay: 1.2, y: [-18, 18], color: true },
 	{
-		id: "ege",
-		icon: BookOpen,
-		text: "ЕГЭ",
+		id: "code",
+		icon: CodeIcon,
+		text: "</>",
 		delay: 2.4,
 		y: [-30, 30],
 		color: false,
@@ -83,3 +84,13 @@ export const floatingItems: Array<{
 		small: true,
 	},
 ];
+
+export const categoryVariants: Variants = {
+	hidden: { opacity: 0, y: 12, filter: "blur(4px)" },
+	visible: {
+		opacity: 1,
+		y: 0,
+		filter: "blur(0px)",
+		transition: { duration: 0.35, ease: "easeOut" },
+	},
+} as const;

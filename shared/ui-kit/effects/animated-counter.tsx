@@ -36,7 +36,7 @@ export function AnimatedCounter({
 		};
 
 		rafRef.current = requestAnimationFrame(tick);
-		return () => cancelAnimationFrame(rafRef.current!);
+		return () => cancelAnimationFrame(rafRef.current as number);
 	}, [from, to, duration]);
 
 	return <span>{value.toLocaleString("ru")}</span>;
