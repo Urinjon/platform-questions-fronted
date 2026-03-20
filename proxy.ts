@@ -1,7 +1,7 @@
 import { paraglideMiddleware } from "./paraglide/server.js";
 import { NextResponse } from "next/server";
 
-export async function middleware(request: Request) {
+export async function proxy(request: Request) {
 	return paraglideMiddleware(request, async () => {
 		return NextResponse.next();
 	});
