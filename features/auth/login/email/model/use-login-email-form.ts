@@ -9,29 +9,29 @@ import { useState } from "react";
 import type { ApiError } from "@shared/api/types";
 
 export const useLoginEmailForm = () => {
-  const { loginViaEmail, isLoading, error } = useAuthEmailAdapter();
-  const [errors, setErrors] = useState<ApiError[]>([]);
+	const { loginViaEmail, isLoading, error } = useAuthEmailAdapter();
+	const [errors, setErrors] = useState<ApiError[]>([]);
 
-  const form = useForm<LoginEmailFormValues>({
-    resolver: zodResolver(loginEmailSchema),
-    mode: "onChange",
-    defaultValues: {
-      email: "",
-      password: "",
-    },
-  });
+	const form = useForm<LoginEmailFormValues>({
+		resolver: zodResolver(loginEmailSchema),
+		mode: "onChange",
+		defaultValues: {
+			email: "",
+			password: "",
+		},
+	});
 
-  const onSubmit = form.handleSubmit(async (data) => {
-    setErrors([]);
-    try {
-      await loginViaEmail({
-        email: data.email,
-        password: data.password,
-      });
-    } catch {
-      setErrors(error?.response?.data.errors || []);
-    }
-  });
+	const onSubmit = form.handleSubmit(async (data) => {
+		setErrors([]);
+		try {
+			await loginViaEmail({
+				email: data.email,
+				password: data.password,
+			});
+		} catch {
+			setErrors(error?.response?.data.errors || []);
+		}
+	});
 
-  return { form, onSubmit, isLoading, errors };
+	return { form, onSubmit, isLoading, errors };
 };

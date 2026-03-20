@@ -1,11 +1,11 @@
 "use client";
 
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
 } from "@ui-kit/ui/select";
 import { Languages } from "lucide-react";
 import { useState } from "react";
@@ -13,36 +13,36 @@ import { useState } from "react";
 type Language = "ru" | "en" | "uz";
 
 const languageNames: Record<Language, string> = {
-  ru: "Русский",
-  en: "English",
-  uz: "O‘zbek",
+	ru: "Русский",
+	en: "English",
+	uz: "O‘zbek",
 };
 
 export const SwitchLanguage = () => {
-  const [language, setLanguage] = useState<Language>("ru");
+	const [language, setLanguage] = useState<Language>("ru");
 
-  return (
-    <div className="flex items-center justify-between gap-4 rounded-lg border p-3 hover:bg-accent/50 transition-colors">
-      <div className="flex items-center gap-3">
-        <Languages className="h-5 w-5 text-muted-foreground" />
-        <span className="text-sm font-medium">Язык интерфейса</span>
-      </div>
+	return (
+		<div className="flex items-center justify-between gap-4 rounded-lg border p-3 hover:bg-accent/50 transition-colors">
+			<div className="flex items-center gap-3">
+				<Languages className="h-5 w-5 text-muted-foreground" />
+				<span className="text-sm font-medium">Язык интерфейса</span>
+			</div>
 
-      <Select
-        value={language}
-        onValueChange={(v) => setLanguage(v as Language)}
-      >
-        <SelectTrigger className="w-[160px]">
-          <SelectValue placeholder="Выберите язык" />
-        </SelectTrigger>
-        <SelectContent>
-          {Object.entries(languageNames).map(([code, name]) => (
-            <SelectItem key={code} value={code}>
-              {name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  );
+			<Select
+				value={language}
+				onValueChange={(v) => setLanguage(v as Language)}
+			>
+				<SelectTrigger className="w-[160px]">
+					<SelectValue placeholder="Выберите язык" />
+				</SelectTrigger>
+				<SelectContent>
+					{Object.entries(languageNames).map(([code, name]) => (
+						<SelectItem key={code} value={code}>
+							{name}
+						</SelectItem>
+					))}
+				</SelectContent>
+			</Select>
+		</div>
+	);
 };

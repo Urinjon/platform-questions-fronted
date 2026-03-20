@@ -1,5 +1,9 @@
 export { AccentProvider } from "./providers/accent.provider";
 export { ThemeProvider } from "./providers/theme.provider";
+export { AnimationProvider } from "./providers/animations.provider";
+
+export { useAnimationsEnabled } from "./hooks/use-animations-enabled.hook";
+export { AnimationGate } from "./ui/AnimationGate.feature";
 
 export { SwitchTheme } from "./ui/SwitchTheme.feature";
 export { SwitchLanguage } from "./ui/SwitchLanguage.feature";

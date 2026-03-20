@@ -1,5 +1,5 @@
 import { AboutHere } from "@widgets/about-here";
-import { HomeHere } from "@widgets/home-here";
+import { HomeHero } from "@widgets/home-hero";
 import { Navigation } from "@widgets/navigation";
 
 export default function HomePage() {
@@ -7,7 +7,7 @@ export default function HomePage() {
 		<>
 			<Navigation />
 
-			<HomeHere />
+			<HomeHero />
 			<AboutHere />
 		</>
 	);

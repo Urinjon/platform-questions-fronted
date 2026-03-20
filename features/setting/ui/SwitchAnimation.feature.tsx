@@ -32,10 +32,11 @@
 import { Label } from "@ui-kit/ui/label";
 import { Switch } from "@ui-kit/ui/switch";
 import { LaptopMinimalCheckIcon } from "lucide-react"; // или LaptopMinimalCheckIcon
-import { useState } from "react";
+import { useAnimationsSettings } from "../providers/animations.provider";
 
 export const SwitchAnimation = () => {
-	const [enabled, setEnabled] = useState(true);
+	const { animationsMode, setAnimationsMode } = useAnimationsSettings();
+	const enabled = animationsMode === "on";
 
 	return (
 		<div className="flex items-center justify-between rounded-lg border p-3 hover:bg-accent/50 transition-colors">
@@ -54,7 +55,13 @@ export const SwitchAnimation = () => {
 				</div>
 			</div>
 
-			<Switch id="animation" checked={enabled} onCheckedChange={setEnabled} />
+			<Switch
+				id="animation"
+				checked={enabled}
+				onCheckedChange={(checked: boolean) =>
+					setAnimationsMode(checked ? "on" : "off")
+				}
+			/>
 		</div>
 	);
 };

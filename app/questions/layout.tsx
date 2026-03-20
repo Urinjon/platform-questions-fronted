@@ -9,30 +9,30 @@ import { Container } from "@widgets/container";
 import { AppSideBar } from "@widgets/side-bar";
 
 export const metadata: Metadata = {
-  title: "Questions | Aiautomation. PQ",
-  description: "Страница с вопросами",
-  openGraph: {
-    title: "Questions | Aiautomation. PQ",
-    description: "Страница с вопросами",
-    url: "https://platform-questions-fronted.vercel.app/questions",
-    siteName: "Aiautomation. PQ",
-  },
+	title: "Questions | Aiautomation. PQ",
+	description: "Страница с вопросами",
+	openGraph: {
+		title: "Questions | Aiautomation. PQ",
+		description: "Страница с вопросами",
+		url: "https://platform-questions-fronted.vercel.app/questions",
+		siteName: "Aiautomation. PQ",
+	},
 };
 
 export default function QuestionsLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <Space as="main" align="center" fullScreenHeight>
-      <SidebarProvider>
-        <Spotlight />
-        <AppSideBar />
+	return (
+		<Space as="main" align="center" fullScreenHeight>
+			<SidebarProvider>
+				<Spotlight />
+				<AppSideBar />
 
-        <SidebarTrigger />
-        <Container>{children}</Container>
-      </SidebarProvider>
-    </Space>
-  );
+				<SidebarTrigger />
+				<Container>{children}</Container>
+			</SidebarProvider>
+		</Space>
+	);
 }
