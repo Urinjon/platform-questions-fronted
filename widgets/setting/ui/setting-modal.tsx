@@ -17,6 +17,8 @@ import {
 } from "@features/setting";
 import { HeaderAuth } from "@features/auth/actions";
 
+import * as m from "@/paraglide/messages.js";
+
 interface SettingModalProps {
 	children?: React.ReactNode;
 }
@@ -29,18 +31,18 @@ export const SettingModal: React.FC<SettingModalProps> = ({ children }) => {
 			<DialogContent className="sm:max-w-[460px] max-h-[90vh] overflow-y-auto">
 				<DialogHeader className="relative pb-4">
 					<DialogTitle className="text-xl font-semibold tracking-tight">
-						Настройки
+						{m.settingtitle()}
 					</DialogTitle>
 
 					<p className="text-sm text-muted-foreground mt-1">
-						Персонализация интерфейса и аккаунта
+						{m.settingdescription()}
 					</p>
 				</DialogHeader>
 
 				<div className="space-y-6 py-2">
 					<div className="space-y-4">
 						<h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
-							Аккаунт
+							{m.settingAccount()}
 						</h3>
 						<HeaderAuth />
 					</div>
@@ -49,7 +51,7 @@ export const SettingModal: React.FC<SettingModalProps> = ({ children }) => {
 
 					<div className="space-y-4">
 						<h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
-							Внешний вид
+							{m.settingAppearance()}
 						</h3>
 						<div className="grid gap-4">
 							<SwitchTheme />
@@ -62,7 +64,7 @@ export const SettingModal: React.FC<SettingModalProps> = ({ children }) => {
 
 					<div className="space-y-4">
 						<h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
-							Язык и регион
+							{m.language()}
 						</h3>
 						<SwitchLanguage />
 					</div>

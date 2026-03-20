@@ -1,0 +1,18 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"test": "тест",
+
+	"settingtitle": "Настройки",
+	"settingdescription": "Персонализация интерфейса и аккаунта",
+	"settingAccount": "Аккаунт",
+	"settingAppearance": "Внешний вид",
+	"language": "Язык",
+	"languageDescription": "Язык интерфейса",
+	"settingTheme": "Тема",
+	"settingAccentColor": "Акцентный цвет",
+	"settingAnimation": "Анимация",
+	"animationDescription": "Плавные переходы и эффекты",
+	"animationMode": "Режим анимации",
+	"animationModeDescription": "Плавные переходы и эффекты",
+	"accentColorTitle": "Акцентный цвет"
+}

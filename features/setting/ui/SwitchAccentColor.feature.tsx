@@ -91,6 +91,7 @@ import {
 import { Paintbrush } from "lucide-react";
 import { useAccent } from "../providers/accent.provider";
 import { type AccentColor, accentsList } from "../settings.config";
+import * as m from "@/paraglide/messages.js";
 
 export const SwitchAccentColor = () => {
 	const { accent, setAccent } = useAccent();
@@ -103,7 +104,7 @@ export const SwitchAccentColor = () => {
 		<div className="flex items-center justify-between gap-4 rounded-lg border p-3 hover:bg-accent/50 transition-colors">
 			<div className="flex items-center gap-3">
 				<Paintbrush className="h-5 w-5 text-muted-foreground" />
-				<span className="text-sm font-medium">Акцентный цвет</span>
+				<span className="text-sm font-medium">{m.accentColorTitle()}</span>
 			</div>
 
 			<Select value={accent} onValueChange={hanlderAccentChange}>

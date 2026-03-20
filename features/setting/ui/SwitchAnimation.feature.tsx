@@ -1,38 +1,11 @@
-// "use client";
-
-// import { Label } from "@ui-kit/ui/label";
-// import { Space } from "@ui-kit/ui/space";
-// import { Switch } from "@ui-kit/ui/switch";
-// import { LaptopMinimalCheckIcon } from "lucide-react";
-// import { useState } from "react";
-
-// export const SwitchAnimation = () => {
-// 	const [isAnimated, setIsAnimated] = useState<boolean>(true);
-
-// 	const toggleAnimation = () => {
-// 		setIsAnimated(!isAnimated);
-// 	};
-
-// 	return (
-// 		<Space align="center" gap={3}>
-// 			<Label htmlFor="is-animated">
-// 				<LaptopMinimalCheckIcon /> вкл/выкл анимации
-// 			</Label>
-// 			<Switch
-// 				id="is-animated"
-// 				checked={isAnimated}
-// 				onChange={toggleAnimation}
-// 			/>
-// 		</Space>
-// 	);
-// };
-
 "use client";
 
 import { Label } from "@ui-kit/ui/label";
 import { Switch } from "@ui-kit/ui/switch";
 import { LaptopMinimalCheckIcon } from "lucide-react"; // или LaptopMinimalCheckIcon
 import { useAnimationsSettings } from "../providers/animations.provider";
+
+import * as m from "@/paraglide/messages.js";
 
 export const SwitchAnimation = () => {
 	const { animationsMode, setAnimationsMode } = useAnimationsSettings();
@@ -47,10 +20,10 @@ export const SwitchAnimation = () => {
 						htmlFor="animation"
 						className="text-sm font-medium leading-none"
 					>
-						Анимации интерфейса
+						{m.animationMode()}
 					</Label>
 					<p className="text-xs text-muted-foreground mt-0.5">
-						Плавные переходы и эффекты
+						{m.animationModeDescription()}
 					</p>
 				</div>
 			</div>
