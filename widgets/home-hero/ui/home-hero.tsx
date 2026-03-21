@@ -6,10 +6,11 @@ import { containerVariants } from "../model/variants";
 import { HomeHeroMainCard } from "./home-hero-main-card";
 import { HomeHeroBentoCards } from "./home-hero-bento-cards";
 import { motion } from "motion/react";
+import { useAnimationsEnabled } from "@features/setting";
 
 export const HomeHero: React.FC = () => (
 	<header className="mt-10 mb-10 relative min-h-[100vh] w-full overflow-hidden bg-background antialiased">
-		<BackgroundLines>
+		<BackgroundLines isActive={useAnimationsEnabled()}>
 			<AnimationHero />
 
 			<div className="relative z-10 container px-5 md:px-8 max-w-7xl mx-auto py-10 md:py-12">

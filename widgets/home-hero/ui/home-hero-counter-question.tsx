@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@shared/lib/utils";
 import { itemVariants } from "../model/variants";
 import { motion } from "motion/react";
@@ -5,8 +7,12 @@ import { AnimationGate } from "@features/setting";
 import { totalQuestions } from "../model/data";
 import { AnimatedCounter } from "@ui-kit/effects/animated-counter";
 import { BarChart3Icon } from "lucide-react";
+import { m } from "@paraglide/messages";
+import { useMounted } from "@shared/hooks/use-mounted";
 
 export const HomeHeroCounterQuestions: React.FC = () => {
+	const mounted = useMounted();
+
 	return (
 		<motion.div
 			variants={itemVariants}
@@ -24,7 +30,7 @@ export const HomeHeroCounterQuestions: React.FC = () => {
 					</AnimationGate>
 				</div>
 				<p className="text-lg text-muted-foreground mt-2">
-					заданий доступно прямо сейчас
+					{mounted ? m.heroCount() : ""}
 				</p>
 			</div>
 		</motion.div>

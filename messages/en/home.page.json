@@ -1,0 +1,8 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"heroStart": "Get started for free",
+	"heroWhat": "What is this platform?",
+	"heroCategory": "Popular category",
+	"heroCount": "tasks available right now"
+}

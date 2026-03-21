@@ -1,0 +1,8 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"heroStart": "Начать бесплатно",
+	"heroWhat": "Что за платформа?",
+	"heroCategory": "Популярные категории",
+	"heroCount": "заданий доступно прямо сейчас"
+}

@@ -11,12 +11,16 @@ import { ArrowRight, InfoIcon } from "lucide-react";
 import { HomeHeroFloatingItems } from "./home-hero-floating-items";
 import { itemVariants } from "../model/variants";
 import Link from "next/link";
+import { m } from "@paraglide/messages";
+import { useMounted } from "@shared/hooks/use-mounted";
 
 const words = `Создавай, проходи, соревнуйся.
 Платформа с тысячами интересных вопросов
 по самым разным темам — от науки до мемов.`;
 
 export function HomeHeroMainCard() {
+	const mounted = useMounted();
+
 	return (
 		<motion.div variants={itemVariants} className="lg:col-span-12 relative">
 			<div className="absolute inset-0 pointer-events-none">
@@ -70,7 +74,7 @@ export function HomeHeroMainCard() {
 							)}
 						>
 							<Link href="/questions">
-								Начать бесплатно
+								{mounted ? m.heroStart() : ""}
 								<ArrowRight className="ml-3 h-5 w-5" />
 							</Link>
 						</Button>
@@ -86,7 +90,7 @@ export function HomeHeroMainCard() {
 							)}
 						>
 							<Link href="/help">
-								Что за платформа?
+								{mounted ? m.heroWhat() : ""}
 								<InfoIcon className="ml-3 h-5 w-5" />
 							</Link>
 						</Button>

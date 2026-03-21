@@ -1,0 +1,8 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"navHome": "Главная",
+	"navHelpLinks1": "Кому будет полезна эта платформа",
+	"navHelpLinks2": "Краткое описание проекта",
+	"navHelpLinks3": "Ответы на популярные вопросы"
+}

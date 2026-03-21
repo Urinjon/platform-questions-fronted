@@ -1,1 +1,1 @@
-export { Navigation } from "./ui/Navigation";
+export { NavigationServer as Navigation } from "./ui/Navigation.server";

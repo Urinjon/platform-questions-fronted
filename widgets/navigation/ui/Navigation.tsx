@@ -12,7 +12,12 @@ import { MobileMenuTrigger } from "./MobileMenuTrigger";
 import { MobileMenu } from "./MobileMenu";
 import { useState, useEffect } from "react";
 
-export function Navigation() {
+interface NavigationProps {
+	navHomeLabel: string;
+	helpLinks: { title: string; href: string }[];
+}
+
+export function Navigation({ navHomeLabel, helpLinks }: NavigationProps) {
 	const [openMobile, setOpenMobile] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
@@ -23,7 +28,7 @@ export function Navigation() {
 	}, []);
 
 	return (
-		<header
+		<nav
 			className={cn(
 				"fixed inset-x-3 top-3 z-50 mx-auto max-w-7xl transition-all duration-300",
 				scrolled ? "scale-[0.98] opacity-95" : "scale-100 opacity-100",
@@ -35,7 +40,7 @@ export function Navigation() {
 			<div className="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
 				<Logo />
 
-				<DesktopNav />
+				<DesktopNav navHomeLabel={navHomeLabel} helpLinks={helpLinks} />
 
 				<div className="flex items-center gap-2.5">
 					<SettingModal>
@@ -59,6 +64,6 @@ export function Navigation() {
 					</Sheet>
 				</div>
 			</div>
-		</header>
+		</nav>
 	);
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import { BookOpenIcon } from "lucide-react";
 import {
 	categoryVariants,
@@ -9,6 +11,8 @@ import { motion } from "motion/react";
 import { useMemo } from "react";
 import { popularCategories } from "../model/data";
 import { AnimationGate } from "@features/setting";
+import { m } from "@paraglide/messages";
+import { useMounted } from "@shared/hooks/use-mounted";
 
 export const HomeHeroCategory: React.FC = () => {
 	const categories = useMemo(
@@ -19,6 +23,8 @@ export const HomeHeroCategory: React.FC = () => {
 			})),
 		[],
 	);
+
+	const mounted = useMounted();
 
 	return (
 		<motion.div
@@ -33,7 +39,7 @@ export const HomeHeroCategory: React.FC = () => {
 			<div className="flex items-center gap-3">
 				<BookOpenIcon className="h-7 w-7 text-primary" />
 				<h3 className="text-xl sm:text-2xl font-semibold">
-					Популярные категории
+					{mounted ? m.heroCategory() : ""}
 				</h3>
 			</div>
 
