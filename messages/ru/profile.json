@@ -1,0 +1,29 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"profileHeaderActive": "Активен",
+	"profileHeaderNotActive": "Не активирован",
+	"profileUser": "Пользователь",
+	"profileAdmin": "Администратор",
+	"profileModerator": "Модератор",
+
+	"profileInfoTitle": "Информация об аккаунте",
+	"profileInfoDescription": "Основные данные вашего аккаунта",
+	"profileUniversity": "Университет",
+	"profileBirthdate": "Дата рождения",
+
+	"profileEditTitle": "Редактирование профиля",
+	"profileEditDescription": "Измените данные профиля и нажмите «Сохранить изменения»",
+	"profileFormFirstName": "Имя",
+	"profileFormFirstNamePlaceholder": "Иван",
+	"profileFormFirstNameDescription": "Ваше настоящее имя",
+	"profileFormLastName": "Фамилия",
+	"profileFormLastNamePlaceholder": "Иванов",
+	"profileFormLastNameDescription": "Ваша фамилия",
+	"profileFormUsernameDescription": "Уникальное имя пользователя для вашего аккаунта",
+	"profileFormEmailDescription": "Адрес электронной почты для уведомлений",
+	"profileFormUniversityDescription": "Учебное заведение, в котором вы учитесь или учились",
+	"profileFormBirthdayLabel": "Дата рождения",
+	"profileFormBirthdayPlaceholder": "Выберите дату",
+	"profileFormBirthdayDescription": "Укажите вашу дату рождения",
+	"profileFormSave": "Сохранить изменения"
+}

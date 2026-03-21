@@ -8,7 +8,9 @@ import {
 	CardTitle,
 } from "@ui-kit/ui/card";
 import { Separator } from "@ui-kit/ui/separator";
-import { UserCog, Info } from "lucide-react";
+import { UserCogIcon, InfoIcon } from "lucide-react";
+
+import * as m from "paraglide/messages";
 
 import { useProfileQuery } from "../api/use-profile.adapter";
 import { getFirstData } from "@shared/api/response.utils";
@@ -41,10 +43,10 @@ export const ProfileView = () => {
 			<Card>
 				<CardHeader>
 					<CardTitle className="flex items-center gap-2">
-						<Info className="size-5" />
-						Информация об аккаунте
+						<InfoIcon className="size-5" />
+						{m.profileInfoTitle()}
 					</CardTitle>
-					<CardDescription>Основные данные вашего аккаунта</CardDescription>
+					<CardDescription>{m.profileInfoDescription()}</CardDescription>
 				</CardHeader>
 				<CardContent>
 					<Separator className="mb-2" />
@@ -55,12 +57,10 @@ export const ProfileView = () => {
 			<Card>
 				<CardHeader>
 					<CardTitle className="flex items-center gap-2">
-						<UserCog className="size-5" />
-						Редактирование профиля
+						<UserCogIcon className="size-5" />
+						{m.profileEditTitle()}
 					</CardTitle>
-					<CardDescription>
-						Измените данные профиля и нажмите «Сохранить изменения»
-					</CardDescription>
+					<CardDescription>{m.profileEditDescription()}</CardDescription>
 				</CardHeader>
 				<CardContent>
 					<Separator className="mb-6" />

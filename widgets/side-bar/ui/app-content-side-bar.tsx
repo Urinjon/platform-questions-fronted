@@ -1,4 +1,3 @@
-import { getSideBarLinks } from "@shared/config/routing.config";
 import {
 	SidebarContent,
 	SidebarGroup,
@@ -12,6 +11,7 @@ import { SettingModal } from "@widgets/setting";
 import { SettingsIcon } from "lucide-react";
 
 import * as m from "@paraglide/messages";
+import { getSideBarLinks } from "../model/side-bar.data";
 
 export const AppContentSideBar: React.FC = async () => {
 	const SideBarLinks = getSideBarLinks();

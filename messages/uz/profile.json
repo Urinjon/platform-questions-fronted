@@ -1,0 +1,29 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"profileHeaderActive": "Faol",
+	"profileHeaderNotActive": "Faollashtirilmagan",
+	"profileUser": "Foydalanuvchi",
+	"profileAdmin": "Administrator",
+	"profileModerator": "Moderator",
+
+	"profileInfoTitle": "Hisob ma'lumotlari",
+	"profileInfoDescription": "Hisobingizning asosiy ma'lumotlari",
+	"profileUniversity": "Universitet",
+	"profileBirthdate": "Tug'ilgan sana",
+
+	"profileEditTitle": "Profilni tahrirlash",
+	"profileEditDescription": "Profil ma'lumotlarini o'zgartiring va «O'zgarishlarni saqlash» tugmasini bosing",
+	"profileFormFirstName": "Ism",
+	"profileFormFirstNamePlaceholder": "Jasur",
+	"profileFormFirstNameDescription": "Sizning haqiqiy ismingiz",
+	"profileFormLastName": "Familiya",
+	"profileFormLastNamePlaceholder": "Karimov",
+	"profileFormLastNameDescription": "Sizning familiyangiz",
+	"profileFormUsernameDescription": "Hisobingiz uchun noyob foydalanuvchi nomi",
+	"profileFormEmailDescription": "Bildirishnomalar uchun elektron pochta manzili",
+	"profileFormUniversityDescription": "O'qiyotgan yoki o'qigan ta'lim muassasangiz",
+	"profileFormBirthdayLabel": "Tug'ilgan sana",
+	"profileFormBirthdayPlaceholder": "Sanani tanlang",
+	"profileFormBirthdayDescription": "Tug'ilgan sanangizni kiriting",
+	"profileFormSave": "O'zgarishlarni saqlash"
+}

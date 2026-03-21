@@ -7,3 +7,6 @@ ci:
 	bun run format:write
 	bun run build
 	bun run knip
+
+t:
+	bun run paraglide:compile

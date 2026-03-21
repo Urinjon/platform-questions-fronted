@@ -5,7 +5,9 @@ import type React from "react";
 import type { Metadata } from "next";
 
 import { Container } from "@widgets/container";
-import { AppSideBar } from "@widgets/side-bar";
+import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
+import { AnimationGate } from "@features/setting";
+import { getServerLocale } from "@shared/lib/get-locale-server";
 
 export const metadata: Metadata = {
 	title: "Профиль | Aiautomation. PQ",
@@ -25,16 +27,23 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function ProfileLayout({
+export default async function ProfileLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	await getServerLocale();
+
 	return (
 		<Space as="main" align="center" fullScreenHeight>
 			<SidebarProvider>
-				<Spotlight />
-				<AppSideBar />
+				<AnimationGate>
+					<Spotlight />
+				</AnimationGate>
+
+				<AppSideBar>
+					<AppContentSideBar />
+				</AppSideBar>
 
 				<SidebarTrigger />
 				<Container>{children}</Container>

@@ -6,9 +6,10 @@ import type React from "react";
 import type { Metadata } from "next";
 
 import { Container } from "@widgets/container";
-import { AppSideBar } from "@widgets/side-bar";
-import { AppContentSideBar } from "@widgets/side-bar/app-content-side-bar";
+import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
+
 import { getServerLocale } from "@shared/lib/get-locale-server";
+import { AnimationGate } from "@features/setting";
 
 export const metadata: Metadata = {
 	title: "Questions | Aiautomation. PQ",
@@ -30,7 +31,9 @@ export default async function QuestionsLayout({
 	return (
 		<Space as="main" align="center" fullScreenHeight>
 			<SidebarProvider>
-				<Spotlight />
+				<AnimationGate>
+					<Spotlight />
+				</AnimationGate>
 
 				<AppSideBar>
 					<AppContentSideBar />

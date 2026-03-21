@@ -1,20 +1,12 @@
 "use client";
 
-import type { User } from "@entities/user";
 import { Badge } from "@ui-kit/ui/badge";
 import { Shield, CheckCircle, XCircleIcon } from "lucide-react";
 
 import { ProfileAvatar } from "./ProfileAvatar";
+import { type ProfileHeaderProps, roleLabels } from "../model/types";
 
-interface ProfileHeaderProps {
-	user: User | null;
-}
-
-const roleLabels: Record<string, string> = {
-	USER: "Пользователь",
-	ADMIN: "Администратор",
-	MODERATOR: "Модератор",
-};
+import * as m from "paraglide/messages";
 
 export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
 	const fullName = [user?.first_name, user?.last_name]
@@ -22,7 +14,7 @@ export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
 		.join(" ");
 
 	const displayName = fullName || user?.username || "—";
-	const roleLabel = user?.role ? (roleLabels[user.role] ?? user.role) : null;
+	const roleLabel = user?.role ? (roleLabels()[user.role] ?? user.role) : null;
 
 	return (
 		<div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-6">
@@ -46,12 +38,12 @@ export const ProfileHeader = ({ user }: ProfileHeaderProps) => {
 					{user?.is_active ? (
 						<Badge variant="success" className="gap-1">
 							<CheckCircle className="size-3" />
-							Активен
+							{m.profileHeaderActive()}
 						</Badge>
 					) : (
 						<Badge variant="destructive" className="gap-1">
 							<XCircleIcon className="size-3" />
-							Не активирован
+							{m.profileHeaderNotActive()}
 						</Badge>
 					)}
 				</div>

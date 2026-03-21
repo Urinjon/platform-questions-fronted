@@ -12,7 +12,8 @@
   "plugin.inlang.messageFormat": {
     "pathPattern": [
       "./messages/{languageTag}/settings.json",
-      "./messages/{languageTag}/side-bar.json"
+      "./messages/{languageTag}/side-bar.json",
+      "./messages/{languageTag}/profile.json"
     ]
   }
 }

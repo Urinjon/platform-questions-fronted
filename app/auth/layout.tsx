@@ -1,3 +1,4 @@
+import { AnimationGate } from "@features/setting";
 import { BackgroundBeams } from "@ui-kit/effects";
 import { Space } from "@ui-kit/ui/space";
 import type { Metadata } from "next";
@@ -26,7 +27,9 @@ export default function AuthLayout({
 			fullWidth
 			fullScreenHeight
 		>
-			<BackgroundBeams />
+			<AnimationGate>
+				<BackgroundBeams />
+			</AnimationGate>
 			{children}
 		</Space>
 	);
