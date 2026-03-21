@@ -5,7 +5,7 @@ import { Switch } from "@ui-kit/ui/switch";
 import { LaptopMinimalCheckIcon } from "lucide-react"; // или LaptopMinimalCheckIcon
 import { useAnimationsSettings } from "../providers/animations.provider";
 
-import * as m from "@/paraglide/messages.js";
+import * as m from "@paraglide/messages";
 
 export const SwitchAnimation = () => {
 	const { animationsMode, setAnimationsMode } = useAnimationsSettings();

@@ -3,7 +3,8 @@ import "./globals.css";
 import { AppProviders } from "@shared/providers";
 import { Footer } from "@widgets/footer";
 import { Toaster } from "@ui-kit/ui/sonner";
-import { getLocale } from "@/paraglide/runtime.js";
+
+import { getServerLocale } from "@shared/lib/get-locale-server";
 
 export const metadata: Metadata = {
 	title: "Aiautomation. PQ",
@@ -13,12 +14,13 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	const locale = getLocale();
+	const locale = await getServerLocale();
+
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<body className="bg-background antialiased">

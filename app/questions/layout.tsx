@@ -7,6 +7,8 @@ import type { Metadata } from "next";
 
 import { Container } from "@widgets/container";
 import { AppSideBar } from "@widgets/side-bar";
+import { AppContentSideBar } from "@widgets/side-bar/app-content-side-bar";
+import { getServerLocale } from "@shared/lib/get-locale-server";
 
 export const metadata: Metadata = {
 	title: "Questions | Aiautomation. PQ",
@@ -19,16 +21,20 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function QuestionsLayout({
+export default async function QuestionsLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	await getServerLocale();
 	return (
 		<Space as="main" align="center" fullScreenHeight>
 			<SidebarProvider>
 				<Spotlight />
-				<AppSideBar />
+
+				<AppSideBar>
+					<AppContentSideBar />
+				</AppSideBar>
 
 				<SidebarTrigger />
 				<Container>{children}</Container>

@@ -91,7 +91,7 @@ import {
 import { Paintbrush } from "lucide-react";
 import { useAccent } from "../providers/accent.provider";
 import { type AccentColor, accentsList } from "../settings.config";
-import * as m from "@/paraglide/messages.js";
+import * as m from "@paraglide/messages";
 
 export const SwitchAccentColor = () => {
 	const { accent, setAccent } = useAccent();

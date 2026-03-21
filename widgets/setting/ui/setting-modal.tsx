@@ -17,7 +17,7 @@ import {
 } from "@features/setting";
 import { HeaderAuth } from "@features/auth/actions";
 
-import * as m from "@/paraglide/messages.js";
+import * as m from "@paraglide/messages";
 
 interface SettingModalProps {
 	children?: React.ReactNode;

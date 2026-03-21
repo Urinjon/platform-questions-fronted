@@ -1,6 +1,5 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"test": "Test uz",
 
 	"settingtitle": "Sozlamalar",
 	"settingdescription": "Interfeys va hisobni shaxsiylashtirish",

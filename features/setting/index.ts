@@ -9,3 +9,5 @@ export { SwitchTheme } from "./ui/SwitchTheme.feature";
 export { SwitchLanguage } from "./ui/SwitchLanguage.feature";
 export { SwitchAccentColor } from "./ui/SwitchAccentColor.feature";
 export { SwitchAnimation } from "./ui/SwitchAnimation.feature";
+
+export type { Language } from "./model/language.types";

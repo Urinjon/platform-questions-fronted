@@ -1,6 +1,6 @@
 "use client";
 
-import { getLocale, setLocale } from "@/paraglide/runtime";
+import { getLocale, setLocale } from "@paraglide/runtime";
 import {
 	Select,
 	SelectContent,
@@ -9,20 +9,20 @@ import {
 	SelectValue,
 } from "@ui-kit/ui/select";
 import { Languages } from "lucide-react";
-import * as m from "@/paraglide/messages.js";
-
-type Language = "ru" | "en" | "uz";
-
-const languageNames: Record<Language, string> = {
-	ru: "Русский",
-	en: "English",
-	uz: "O‘zbek",
-};
+import * as m from "@paraglide/messages.js";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { type Language, languageNames } from "../model/language.types";
 
 export const SwitchLanguage = () => {
-	const language = getLocale();
-	const handleLanguageChange = (language: Language) => {
-		setLocale(language);
+	const router = useRouter();
+
+	const [language, setLanguage] = useState<Language>(getLocale());
+
+	const handleLanguageChange = (newLanguage: Language) => {
+		setLanguage(newLanguage);
+		setLocale(newLanguage, { reload: false });
+		router.refresh();
 	};
 
 	return (

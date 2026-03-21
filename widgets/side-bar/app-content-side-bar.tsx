@@ -1,4 +1,4 @@
-import { SideBarLinks } from "@shared/config/routing.config";
+import { getSideBarLinks } from "@shared/config/routing.config";
 import {
 	SidebarContent,
 	SidebarGroup,
@@ -11,11 +11,15 @@ import {
 import { SettingModal } from "@widgets/setting";
 import { SettingsIcon } from "lucide-react";
 
-export const AppContentSideBar: React.FC = () => {
+import * as m from "@paraglide/messages";
+
+export const AppContentSideBar: React.FC = async () => {
+	const SideBarLinks = getSideBarLinks();
+
 	return (
 		<SidebarContent>
 			<SidebarGroup>
-				<SidebarGroupLabel>Навигация</SidebarGroupLabel>
+				<SidebarGroupLabel>{m.sidebarNav()}</SidebarGroupLabel>
 				<SidebarGroupContent>
 					<SidebarMenu>
 						{SideBarLinks.map((item) => (
@@ -33,13 +37,13 @@ export const AppContentSideBar: React.FC = () => {
 			</SidebarGroup>
 
 			<SidebarGroup>
-				<SidebarGroupLabel>Настройки</SidebarGroupLabel>
+				<SidebarGroupLabel>{m.sidebarSettings()}</SidebarGroupLabel>
 				<SidebarGroupContent>
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<SettingModal>
 								<SidebarMenuButton>
-									<SettingsIcon /> Настройки
+									<SettingsIcon /> {m.sidebarSettings()}
 								</SidebarMenuButton>
 							</SettingModal>
 						</SidebarMenuItem>

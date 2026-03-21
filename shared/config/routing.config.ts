@@ -8,24 +8,26 @@ import {
 	type LucideIcon,
 } from "lucide-react";
 
-export const SideBarLinks = [
+import * as m from "@paraglide/messages";
+
+export const getSideBarLinks = () => [
 	{
-		title: "Главная",
+		title: m.sidebarHome(),
 		url: "/",
 		icon: HomeIcon,
 	},
 	{
-		title: "Вопросы",
+		title: m.sidebarQuestions(),
 		url: "/questions",
 		icon: InboxIcon,
 	},
 	{
-		title: "Профиль",
+		title: m.sidebarProfile(),
 		url: "/profile",
 		icon: UserIcon,
 	},
 	{
-		title: "Как пользоваться",
+		title: m.sidebarHelp(),
 		url: "/help",
 		icon: InfoIcon,
 	},
