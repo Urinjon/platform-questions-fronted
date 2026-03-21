@@ -2,6 +2,9 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
 	"heroStart": "Начать бесплатно",
+	"heroTitlePt1": "Платформа для",
+	"heroTitlePt2": "решения вопросов",
+	"heroDescription": "Создавай, проходи, соревнуйся. Платформа с тысячами интересных вопросов по самым разным темам — от науки до мемов.",
 	"heroWhat": "Что за платформа?",
 	"heroCategory": "Популярные категории",
 	"heroCount": "заданий доступно прямо сейчас"

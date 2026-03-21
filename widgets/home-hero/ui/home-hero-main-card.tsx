@@ -14,11 +14,17 @@ import Link from "next/link";
 import { m } from "@paraglide/messages";
 import { useMounted } from "@shared/hooks/use-mounted";
 
-const words = `Создавай, проходи, соревнуйся.
-Платформа с тысячами интересных вопросов
-по самым разным темам — от науки до мемов.`;
+interface IHomeHeroMainCardProps {
+	titlept1: string;
+	titlept2: string;
+	description: string;
+}
 
-export function HomeHeroMainCard() {
+export function HomeHeroMainCard({
+	titlept1,
+	titlept2,
+	description,
+}: IHomeHeroMainCardProps) {
 	const mounted = useMounted();
 
 	return (
@@ -43,16 +49,18 @@ export function HomeHeroMainCard() {
 
 				<div className="relative z-10 text-center">
 					<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
-						<span className="text-foreground">Твоя личная </span>
+						<span className="text-foreground">{titlept1}</span>
 						<span className="bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
-							база заданий
+							{titlept2}
 						</span>
 					</h1>
 
 					<div className="mt-4">
-						<AnimationGate fallback={<TypogrphySpan>{words}</TypogrphySpan>}>
+						<AnimationGate
+							fallback={<TypogrphySpan>{description}</TypogrphySpan>}
+						>
 							<TextGenerateEffect
-								words={words}
+								words={description}
 								className={cn(
 									"text-muted-foreground sm:text-lg font-light leading-relaxed",
 									"mx-auto max-w-3xl",

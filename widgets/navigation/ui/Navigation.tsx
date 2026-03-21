@@ -6,7 +6,7 @@ import { SettingModal } from "../../setting";
 import { HeaderAuth } from "@features/auth/actions";
 import { Button } from "@ui-kit/ui/button";
 import { Settings } from "lucide-react";
-import { Logo } from "./Logo";
+import { Logo } from "../../../shared/ui/Logo";
 import { DesktopNav } from "./DesktopNav";
 import { MobileMenuTrigger } from "./MobileMenuTrigger";
 import { MobileMenu } from "./MobileMenu";

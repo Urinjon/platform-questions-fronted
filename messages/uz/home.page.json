@@ -2,6 +2,9 @@
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
 	"heroStart": "Bepul boshlash",
+	"heroTitlePt1": "Savollarni yechish",
+	"heroTitlePt2": "platformasi",
+	"heroDescription": "Yarating, bajaring, musobaqalashing. Ilmdan memlargacha bo'lgan turli mavzularda minglab qiziqarli savollar bilan platforma.",
 	"heroWhat": "Bu qanday platforma?",
 	"heroCategory": "Ommabop kategoriya",
 	"heroCount": "vazifalar hozirda mavjud"

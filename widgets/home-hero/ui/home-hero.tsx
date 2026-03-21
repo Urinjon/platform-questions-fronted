@@ -8,7 +8,17 @@ import { HomeHeroBentoCards } from "./home-hero-bento-cards";
 import { motion } from "motion/react";
 import { useAnimationsEnabled } from "@features/setting";
 
-export const HomeHero: React.FC = () => (
+interface IHomeHeroProps {
+	titlept1: string;
+	titlept2: string;
+	description: string;
+}
+
+export const HomeHero: React.FC<IHomeHeroProps> = ({
+	titlept1,
+	titlept2,
+	description,
+}) => (
 	<header className="mt-10 mb-10 relative min-h-[100vh] w-full overflow-hidden bg-background antialiased">
 		<BackgroundLines isActive={useAnimationsEnabled()}>
 			<AnimationHero />
@@ -20,7 +30,11 @@ export const HomeHero: React.FC = () => (
 					initial="hidden"
 					animate="visible"
 				>
-					<HomeHeroMainCard />
+					<HomeHeroMainCard
+						titlept1={titlept1}
+						titlept2={titlept2}
+						description={description}
+					/>
 					<HomeHeroBentoCards />
 				</motion.div>
 			</div>
