@@ -10,7 +10,7 @@ import {
 import { SettingModal } from "@widgets/setting";
 import { SettingsIcon } from "lucide-react";
 
-import * as m from "@paraglide/messages";
+import { m } from "@paraglide/messages";
 import { getSideBarLinks } from "../model/side-bar.data";
 
 export const AppContentSideBar: React.FC = async () => {

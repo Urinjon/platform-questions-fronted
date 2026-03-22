@@ -6,7 +6,7 @@ import { Button } from "@ui-kit/ui/button";
 import { HomeIcon, SettingsIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { NewFeaturesLinks } from "@shared/config/routing.config";
+
 import { SettingModal } from "../../setting";
 import { HeaderAuth } from "@features/auth/actions";
 
@@ -45,18 +45,6 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
 						<HomeIcon className="h-5 w-5" />
 						Главное
 					</Link>
-
-					{NewFeaturesLinks.map((item) => (
-						<Link
-							key={item.href}
-							href={item.href}
-							className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-base font-medium transition-all hover:bg-accent hover:pl-5"
-							onClick={onClose}
-						>
-							{item.icon && <item.icon className="h-5 w-5" />}
-							{item.title}
-						</Link>
-					))}
 
 					<div className="mt-6 border-t pt-6">
 						<SettingModal>

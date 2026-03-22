@@ -15,7 +15,8 @@
       "./messages/{languageTag}/side-bar.json",
       "./messages/{languageTag}/profile.json",
       "./messages/{languageTag}/navbar.json",
-      "./messages/{languageTag}/home.page.json"
+      "./messages/{languageTag}/home.page.json",
+      "./messages/{languageTag}/meta/profile.meta.json"
     ]
   }
 }
