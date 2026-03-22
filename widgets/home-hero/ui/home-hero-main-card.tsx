@@ -12,21 +12,8 @@ import { HomeHeroFloatingItems } from "./home-hero-floating-items";
 import { itemVariants } from "../model/variants";
 import Link from "next/link";
 import { m } from "@paraglide/messages";
-import { useMounted } from "@shared/hooks/use-mounted";
 
-interface IHomeHeroMainCardProps {
-	titlept1: string;
-	titlept2: string;
-	description: string;
-}
-
-export function HomeHeroMainCard({
-	titlept1,
-	titlept2,
-	description,
-}: IHomeHeroMainCardProps) {
-	const mounted = useMounted();
-
+export function HomeHeroMainCard() {
 	return (
 		<motion.div variants={itemVariants} className="lg:col-span-12 relative">
 			<div className="absolute inset-0 pointer-events-none">
@@ -49,18 +36,18 @@ export function HomeHeroMainCard({
 
 				<div className="relative z-10 text-center">
 					<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
-						<span className="text-foreground">{titlept1}</span>
+						<span className="text-foreground">{m.heroTitlePt1()}</span>
 						<span className="bg-gradient-to-r from-primary via-primary/90 to-primary/70 bg-clip-text text-transparent">
-							{titlept2}
+							{m.heroTitlePt2()}
 						</span>
 					</h1>
 
 					<div className="mt-4">
 						<AnimationGate
-							fallback={<TypogrphySpan>{description}</TypogrphySpan>}
+							fallback={<TypogrphySpan>{m.heroDescription()}</TypogrphySpan>}
 						>
 							<TextGenerateEffect
-								words={description}
+								words={m.heroDescription()}
 								className={cn(
 									"text-muted-foreground sm:text-lg font-light leading-relaxed",
 									"mx-auto max-w-3xl",
@@ -82,7 +69,7 @@ export function HomeHeroMainCard({
 							)}
 						>
 							<Link href="/questions">
-								{mounted ? m.heroStart() : ""}
+								{m.heroStart()}
 								<ArrowRight className="ml-3 h-5 w-5" />
 							</Link>
 						</Button>
@@ -98,7 +85,7 @@ export function HomeHeroMainCard({
 							)}
 						>
 							<Link href="/help">
-								{mounted ? m.heroWhat() : ""}
+								{m.heroWhat()}
 								<InfoIcon className="ml-3 h-5 w-5" />
 							</Link>
 						</Button>

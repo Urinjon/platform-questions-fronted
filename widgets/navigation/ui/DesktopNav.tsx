@@ -14,20 +14,17 @@ import { ListItem } from "./ListItem";
 import { cn } from "@shared/lib/utils";
 
 import Link from "next/link";
+import { m } from "@paraglide/messages";
+import { navHelpLinks } from "../model/nav.data";
 
-interface DesktopNavProps {
-	navHomeLabel: string;
-	helpLinks: { title: string; href: string }[];
-}
-
-export function DesktopNav({ navHomeLabel, helpLinks }: DesktopNavProps) {
+export function DesktopNav() {
 	return (
 		<NavigationMenu className="hidden lg:flex">
 			<NavigationMenuList className="gap-1.5">
 				<NavigationMenuItem>
 					<NavigationMenuTrigger className="gap-2 px-4 text-sm font-medium">
 						<HomeIcon className="h-4 w-4" />
-						{navHomeLabel}
+						{m.navHome()}
 					</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid gap-4 p-6 md:w-[520px] lg:w-[620px] lg:grid-cols-[.7fr_1fr]">
@@ -45,7 +42,7 @@ export function DesktopNav({ navHomeLabel, helpLinks }: DesktopNavProps) {
 								/>
 							</li>
 
-							{helpLinks.map((link) => (
+							{navHelpLinks().map((link) => (
 								<ListItem key={link.title} href={link.href} title={link.title}>
 									{link.title}
 								</ListItem>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AppProviders } from "@shared/providers";
+import { ParaglideProvider } from "@shared/providers/paraglide-provider";
 import { Footer } from "@widgets/footer";
 import { Toaster } from "@ui-kit/ui/sonner";
 
@@ -24,11 +25,13 @@ export default async function RootLayout({
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<body className="bg-background antialiased">
-				<AppProviders>
-					{children}
-					<Footer />
-					<Toaster />
-				</AppProviders>
+				<ParaglideProvider locale={locale}>
+					<AppProviders>
+						{children}
+						<Footer />
+						<Toaster />
+					</AppProviders>
+				</ParaglideProvider>
 			</body>
 		</html>
 	);

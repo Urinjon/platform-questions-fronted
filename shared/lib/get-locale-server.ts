@@ -1,41 +1,33 @@
-// shared/lib/get-locale-server.ts
 import { cache } from "react";
 import { headers } from "next/headers";
 import { locales, baseLocale, overwriteGetLocale } from "@paraglide/runtime";
 import type { Language } from "@features/setting";
 
 /**
- * Инициализирует локаль для текущего серверного запроса.
+ * Per-request locale store via React.cache.
  *
- * ## Проблема
- * Paraglide JS использует AsyncLocalStorage для передачи локали между
- * серверными компонентами, но в Next.js 16 AsyncLocalStorage не работает
- * корректно — дочерние Server Components получают дефолтную локаль (en)
- * вместо локали пользователя.
- *
- * ## Решение
- * Функция читает локаль из заголовка `x-paraglide-locale`, который
- * устанавливается в `proxy.ts` на каждый запрос, и переопределяет
- * `getLocale()` через `overwriteGetLocale` — после чего все вызовы
- * `m.someMessage()` в Server Components возвращают правильный перевод.
- *
- * ## Использование
- * Вызывай один раз в layout — благодаря `React.cache` функция выполнится
- * только один раз за запрос, и все дочерние Server Components автоматически
- * получат правильную локаль без дополнительных вызовов.
- *
- * @example
- * ```tsx
- * // app/questions/layout.tsx
- * export default async function QuestionsLayout({ children }) {
- *   await getServerLocale(); // достаточно одного вызова на layout
- *   return <>{children}</>;
- * }
- * ```
- *
- * @returns {Promise<Language>} Текущая локаль пользователя или baseLocale если локаль не найдена
+ * Unlike a plain closure captured by overwriteGetLocale, this store is
+ * scoped to the current server request — concurrent requests each get
+ * their own instance, eliminating race conditions.
  */
-export const getServerLocale = cache(async () => {
+const requestLocaleStore = cache((): { locale: Language } => ({
+	locale: baseLocale as Language,
+}));
+
+/**
+ * Initialises the locale for the current server request.
+ *
+ * Call once in the **root** layout — React.cache ensures it executes at
+ * most once per request.  After the call every `m.someMessage()` in both
+ * Server and Client components returns the correct translation:
+ *
+ * - **Server Components** — `getLocale()` reads from the per-request
+ *   store set here.
+ * - **Client Components** — `getLocale()` reads the `PARAGLIDE_LOCALE`
+ *   cookie that the middleware sets on every response, so the value is
+ *   guaranteed to match the server-rendered output (no hydration errors).
+ */
+export const getServerLocale = cache(async (): Promise<Language> => {
 	const headerStore = await headers();
 	const locale = headerStore.get("x-paraglide-locale");
 	const resolvedLocale =
@@ -43,7 +35,8 @@ export const getServerLocale = cache(async () => {
 			? (locale as Language)
 			: baseLocale;
 
-	overwriteGetLocale(() => resolvedLocale);
+	requestLocaleStore().locale = resolvedLocale;
+	overwriteGetLocale(() => requestLocaleStore().locale);
 
 	return resolvedLocale;
 });

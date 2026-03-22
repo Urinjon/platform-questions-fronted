@@ -8,11 +8,8 @@ import { totalQuestions } from "../model/data";
 import { AnimatedCounter } from "@ui-kit/effects/animated-counter";
 import { BarChart3Icon } from "lucide-react";
 import { m } from "@paraglide/messages";
-import { useMounted } from "@shared/hooks/use-mounted";
 
 export const HomeHeroCounterQuestions: React.FC = () => {
-	const mounted = useMounted();
-
 	return (
 		<motion.div
 			variants={itemVariants}
@@ -29,9 +26,7 @@ export const HomeHeroCounterQuestions: React.FC = () => {
 						<AnimatedCounter to={totalQuestions} duration={8000} />+
 					</AnimationGate>
 				</div>
-				<p className="text-lg text-muted-foreground mt-2">
-					{mounted ? m.heroCount() : ""}
-				</p>
+				<p className="text-lg text-muted-foreground mt-2">{m.heroCount()}</p>
 			</div>
 		</motion.div>
 	);

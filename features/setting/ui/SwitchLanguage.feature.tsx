@@ -9,22 +9,10 @@ import {
 	SelectValue,
 } from "@ui-kit/ui/select";
 import { Languages } from "lucide-react";
-import * as m from "@paraglide/messages.js";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { m } from "@paraglide/messages";
 import { type Language, languageNames } from "../model/language.types";
 
 export const SwitchLanguage = () => {
-	const router = useRouter();
-
-	const [language, setLanguage] = useState<Language>(getLocale());
-
-	const handleLanguageChange = (newLanguage: Language) => {
-		setLanguage(newLanguage);
-		setLocale(newLanguage, { reload: false });
-		router.refresh();
-	};
-
 	return (
 		<div className="flex items-center justify-between gap-4 rounded-lg border p-3 hover:bg-accent/50 transition-colors">
 			<div className="flex items-center gap-3">
@@ -32,7 +20,10 @@ export const SwitchLanguage = () => {
 				<span className="text-sm font-medium">{m.languageDescription()}</span>
 			</div>
 
-			<Select value={language} onValueChange={handleLanguageChange}>
+			<Select
+				value={getLocale()}
+				onValueChange={(value) => setLocale(value as Language)}
+			>
 				<SelectTrigger className="w-[160px]">
 					<SelectValue placeholder="Выберите язык" />
 				</SelectTrigger>

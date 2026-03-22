@@ -7,7 +7,6 @@ import type { Metadata } from "next";
 import { Container } from "@widgets/container";
 import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
 import { AnimationGate } from "@features/setting";
-import { getServerLocale } from "@shared/lib/get-locale-server";
 
 export const metadata: Metadata = {
 	title: "Профиль | Aiautomation. PQ",
@@ -27,13 +26,11 @@ export const metadata: Metadata = {
 	},
 };
 
-export default async function ProfileLayout({
+export default function ProfileLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	await getServerLocale();
-
 	return (
 		<Space as="main" align="center" fullScreenHeight>
 			<SidebarProvider>

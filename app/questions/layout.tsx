@@ -8,7 +8,6 @@ import type { Metadata } from "next";
 import { Container } from "@widgets/container";
 import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
 
-import { getServerLocale } from "@shared/lib/get-locale-server";
 import { AnimationGate } from "@features/setting";
 
 export const metadata: Metadata = {
@@ -22,12 +21,11 @@ export const metadata: Metadata = {
 	},
 };
 
-export default async function QuestionsLayout({
+export default function QuestionsLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	await getServerLocale();
 	return (
 		<Space as="main" align="center" fullScreenHeight>
 			<SidebarProvider>

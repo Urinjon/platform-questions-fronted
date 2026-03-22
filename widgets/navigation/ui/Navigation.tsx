@@ -12,12 +12,7 @@ import { MobileMenuTrigger } from "./MobileMenuTrigger";
 import { MobileMenu } from "./MobileMenu";
 import { useState, useEffect } from "react";
 
-interface NavigationProps {
-	navHomeLabel: string;
-	helpLinks: { title: string; href: string }[];
-}
-
-export function Navigation({ navHomeLabel, helpLinks }: NavigationProps) {
+export function Navigation() {
 	const [openMobile, setOpenMobile] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 
@@ -40,7 +35,7 @@ export function Navigation({ navHomeLabel, helpLinks }: NavigationProps) {
 			<div className="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
 				<Logo />
 
-				<DesktopNav navHomeLabel={navHomeLabel} helpLinks={helpLinks} />
+				<DesktopNav />
 
 				<div className="flex items-center gap-2.5">
 					<SettingModal>
