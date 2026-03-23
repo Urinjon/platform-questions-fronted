@@ -10,17 +10,24 @@ import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
 
 import { AnimationGate } from "@features/setting";
 import { getServerLocale } from "@shared/lib/get-locale-server";
+import { configService } from "@shared/container";
+import { m } from "@paraglide/messages";
 
-export const metadata: Metadata = {
-	title: "Questions | Aiautomation. PQ",
-	description: "Страница с вопросами",
-	openGraph: {
-		title: "Questions | Aiautomation. PQ",
-		description: "Страница с вопросами",
-		url: "https://platform-questions-fronted.vercel.app/questions",
-		siteName: "Aiautomation. PQ",
-	},
-};
+export async function generateMetadata(): Promise<Metadata> {
+	const frontendUrl = configService.getFrontendUrl();
+	await getServerLocale();
+
+	return {
+		title: m.metaQuestionsTitle(),
+		description: m.metaQuestionsDescription(),
+		openGraph: {
+			title: m.metaQuestionsTitle(),
+			description: m.metaQuestionsDescription(),
+			url: `${frontendUrl}/questions`,
+			siteName: m.metaSiteName(),
+		},
+	};
+}
 
 export default async function QuestionsLayout({
 	children,

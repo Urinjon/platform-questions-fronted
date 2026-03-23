@@ -1,0 +1,21 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"metaAuthTitle": "Auth | Aiautomation. PQ",
+	"metaAuthDescription": "Sign in or create an account on the Aiautomation. PQ question platform.",
+	"metaAuthOgTitle": "Authorization | Aiautomation. PQ",
+	"metaAuthOgDescription": "Create a new account or sign in to your existing one to access thousands of questions.",
+
+	"metaRegisterTitle": "Registration | Aiautomation. PQ",
+	"metaRegisterDescription": "Create a new account on the Aiautomation. PQ question platform.",
+	"metaRegisterOgTitle": "Registration | Aiautomation. PQ",
+	"metaRegisterOgDescription": "Join Aiautomation. PQ — create your account and get access to thousands of questions.",
+
+	"metaLoginTitle": "Sign In | Aiautomation. PQ",
+	"metaLoginDescription": "Sign in to your account on the Aiautomation. PQ question platform.",
+	"metaLoginOgTitle": "Sign In | Aiautomation. PQ",
+	"metaLoginOgDescription": "Sign in to your Aiautomation. PQ account and continue improving your knowledge.",
+
+	"metaGoogleAuthTitle": "Google Authorization | Aiautomation. PQ",
+	"metaGoogleAuthDescription": "Processing authorization via Google."
+}

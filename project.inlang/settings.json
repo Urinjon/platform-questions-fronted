@@ -16,7 +16,10 @@
       "./messages/{languageTag}/profile.json",
       "./messages/{languageTag}/navbar.json",
       "./messages/{languageTag}/home.page.json",
-      "./messages/{languageTag}/meta/profile.meta.json"
+      "./messages/{languageTag}/meta/profile.meta.json",
+      "./messages/{languageTag}/meta/questions.meta.json",
+      "./messages/{languageTag}/meta/home.meta.json",
+      "./messages/{languageTag}/meta/auth.meta.json"
     ]
   }
 }

@@ -31,7 +31,7 @@ let storage: any;
  */
 export const getServerLocale = cache(async (): Promise<Language> => {
 	if (!storage) {
-		const { AsyncLocalStorage } = await import("async_hooks");
+		const { AsyncLocalStorage } = await import("node:async_hooks");
 		storage = new AsyncLocalStorage();
 		overwriteServerAsyncLocalStorage(storage);
 	}

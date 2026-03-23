@@ -9,19 +9,20 @@ import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
 import { AnimationGate } from "@features/setting";
 import { getServerLocale } from "@shared/lib/get-locale-server";
 import { m } from "@paraglide/messages";
+import { configService } from "@shared/container";
 
 export async function generateMetadata(): Promise<Metadata> {
+	const frontendUrl = configService.getFrontendUrl();
 	await getServerLocale();
+
 	return {
-		title: m.profileMetaTitle(),
-		description:
-			"Просмотр и редактирование профиля пользователя. Управляйте вашими персональными данными, именем пользователя и электронной почтой.",
+		title: m.metaProfileTitle(),
+		description: m.metaProfileDescription(),
 		openGraph: {
-			title: "Профиль | Aiautomation. PQ",
-			description:
-				"Просмотр и редактирование профиля пользователя на платформе Aiautomation. PQ.",
-			url: "https://platform-questions-fronted.vercel.app/profile",
-			siteName: "Aiautomation. PQ",
+			title: m.metaProfileTitle(),
+			description: m.metaProfileOgDescription(),
+			url: `${frontendUrl}/profile`,
+			siteName: m.metaSiteName(),
 			type: "profile",
 		},
 		robots: {

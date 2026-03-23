@@ -1,5 +1,7 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
-	"profileMetaTitle": "Профиль | Aiautomation. PQ"
+	"metaProfileTitle": "Профиль | Aiautomation. PQ",
+	"metaProfileDescription": "Просмотр и редактирование профиля пользователя. Управляйте вашими персональными данными, именем пользователя и электронной почтой.",
+	"metaProfileOgDescription": "Просмотр и редактирование профиля пользователя на платформе Aiautomation. PQ."
 }
