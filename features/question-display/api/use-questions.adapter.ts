@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 
 import type { ApiResponse, ApiPagination } from "@shared/api/types";
 import type { QuestionDto, Question } from "@entities/question";
@@ -39,6 +39,7 @@ export function useQuestionsQuery(params: FetchQuestionsParams = {}) {
 		queryKey: [QUESTIONS_QUERY_KEY, params] as const,
 		queryFn: () => fetchQuestions(params),
 		select: selectQuestionsData,
+		placeholderData: keepPreviousData,
 		staleTime: 1000 * 60 * 2,
 	});
 }

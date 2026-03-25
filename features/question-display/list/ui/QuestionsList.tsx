@@ -14,8 +14,11 @@ import {
 import { cn } from "@shared/lib/utils";
 import type { Question } from "@entities/question";
 import { QuestionDetailModal } from "@features/question-display/detail";
-import { format, isPast, isToday, isTomorrow } from "date-fns";
-import { ru } from "date-fns/locale";
+
+import {
+	getDeadlineColorClass,
+	getDeadlineLabel,
+} from "@features/question-display/table/model/utils";
 
 interface QuestionsListProps {
 	questions: Question[];
@@ -26,20 +29,6 @@ export function QuestionsList({
 	questions,
 	onQuestionClick,
 }: QuestionsListProps) {
-	const getDeadlineLabel = (date: Date) => {
-		if (isPast(date)) return "Просрочен";
-		if (isToday(date)) return "Сегодня";
-		if (isTomorrow(date)) return "Завтра";
-		return format(date, "d MMM", { locale: ru });
-	};
-
-	const getDeadlineColor = (date: Date) => {
-		if (isPast(date)) return "text-destructive";
-		if (isToday(date) || isTomorrow(date))
-			return "text-orange-600 dark:text-orange-400";
-		return "text-muted-foreground";
-	};
-
 	return (
 		<div className="space-y-3.5 py-2">
 			{questions.map((q, index) => {
@@ -152,7 +141,7 @@ export function QuestionsList({
 										<span
 											className={cn(
 												"font-medium",
-												getDeadlineColor(endDeadlineDate),
+												getDeadlineColorClass(endDeadlineDate),
 											)}
 										>
 											до {getDeadlineLabel(endDeadlineDate)}

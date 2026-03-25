@@ -21,6 +21,7 @@ export interface UseQuestionsViewResult {
 	totalPages: number;
 	hasFilters: boolean;
 	isLoading: boolean;
+	isFetching: boolean;
 	isError: boolean;
 	setSearch: (value: string) => void;
 	setStatusFilter: (value: QuestionsStatusFilter) => void;
@@ -42,7 +43,7 @@ export function useQuestionsView(): UseQuestionsViewResult {
 	const setPage = useQuestionsViewStore((s) => s.setPage);
 	const resetFilters = useQuestionsViewStore((s) => s.resetFilters);
 
-	const { data, isLoading, isError } = useQuestionsQuery({
+	const { data, isLoading, isFetching, isError } = useQuestionsQuery({
 		page,
 		limit: pageSize,
 	});
@@ -110,6 +111,7 @@ export function useQuestionsView(): UseQuestionsViewResult {
 		totalPages: serverTotalPages,
 		hasFilters,
 		isLoading,
+		isFetching,
 		isError,
 		setSearch,
 		setStatusFilter,

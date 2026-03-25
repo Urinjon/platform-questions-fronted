@@ -20,6 +20,7 @@ export function QuestionsView() {
 		totalPages,
 		hasFilters,
 		isLoading,
+		isFetching,
 		isError,
 		setSearch,
 		setStatusFilter,
@@ -50,6 +51,7 @@ export function QuestionsView() {
 			<div className="pt-6 pb-16">
 				<QuestionsViewState
 					isLoading={isLoading}
+					isFetching={isFetching}
 					isError={isError}
 					isEmpty={filteredQuestions.length === 0}
 					onResetFilters={resetFilters}
