@@ -93,7 +93,7 @@ export function useQuestionsView(): UseQuestionsViewResult {
 
 	useEffect(() => {
 		setPage(1);
-	}, [search, statusFilter, sortBy]);
+	}, []);
 
 	const hasFilters = Boolean(search) || statusFilter !== "all";
 
