@@ -16,7 +16,7 @@ import {
 import { motion } from "motion/react";
 import { getDeadlineColorClass, getDeadlineLabel } from "../model/utils";
 
-const MotionTableRow = motion(TableRow);
+const MotionTableRow = motion.create(TableRow);
 
 type Props = {
 	question: Question;
