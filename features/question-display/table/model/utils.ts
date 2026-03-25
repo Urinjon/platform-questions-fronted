@@ -14,4 +14,3 @@ export function getDeadlineColorClass(date: Date) {
 		return "text-orange-600 dark:text-orange-400";
 	return "text-muted-foreground";
 }
-

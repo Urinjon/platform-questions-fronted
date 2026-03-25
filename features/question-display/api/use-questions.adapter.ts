@@ -19,7 +19,9 @@ export interface QuestionsQueryData {
 	pagination: ApiPagination | null;
 }
 
-function selectQuestionsData(response: ApiResponse<QuestionDto>): QuestionsQueryData {
+function selectQuestionsData(
+	response: ApiResponse<QuestionDto>,
+): QuestionsQueryData {
 	const dtos = Array.isArray(response.data)
 		? response.data
 		: response.data

@@ -8,7 +8,11 @@ type Props = {
 	onPageChange: (page: number) => void;
 };
 
-export function QuestionsViewPagination({ page, totalPages, onPageChange }: Props) {
+export function QuestionsViewPagination({
+	page,
+	totalPages,
+	onPageChange,
+}: Props) {
 	return (
 		<div className="mt-5 flex flex-col items-center gap-2">
 			<div className="text-xs text-muted-foreground">
@@ -25,4 +29,3 @@ export function QuestionsViewPagination({ page, totalPages, onPageChange }: Prop
 		</div>
 	);
 }
-

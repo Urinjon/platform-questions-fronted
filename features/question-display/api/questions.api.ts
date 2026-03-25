@@ -10,10 +10,9 @@ export interface FetchQuestionsParams {
 export async function fetchQuestions(
 	params: FetchQuestionsParams = {},
 ): Promise<ApiResponse<QuestionDto>> {
-	const response = await api.get<ApiResponse<QuestionDto>>(
-		"/v1/questions/",
-		{ params },
-	);
+	const response = await api.get<ApiResponse<QuestionDto>>("/v1/questions/", {
+		params,
+	});
 	return response.data;
 }
 

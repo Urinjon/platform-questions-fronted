@@ -60,7 +60,6 @@ export function QuestionsView() {
 						onQuestionClick={handleClick}
 					/>
 
-					
 					{!isLoading && !isError && (
 						<QuestionsViewPagination
 							page={page}

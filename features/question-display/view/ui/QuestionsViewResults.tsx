@@ -18,7 +18,9 @@ export function QuestionsViewResults({
 	onQuestionClick,
 }: Props) {
 	if (!isDesktop) {
-		return <QuestionsList questions={questions} onQuestionClick={onQuestionClick} />;
+		return (
+			<QuestionsList questions={questions} onQuestionClick={onQuestionClick} />
+		);
 	}
 
 	return (
@@ -33,9 +35,11 @@ export function QuestionsViewResults({
 			</TabsContent>
 
 			<TabsContent value="list">
-				<QuestionsList questions={questions} onQuestionClick={onQuestionClick} />
+				<QuestionsList
+					questions={questions}
+					onQuestionClick={onQuestionClick}
+				/>
 			</TabsContent>
 		</Tabs>
 	);
 }
-

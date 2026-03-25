@@ -2,7 +2,10 @@
 
 import { create } from "zustand";
 
-import type { QuestionsSortBy, QuestionsStatusFilter } from "./use-questions-view";
+import type {
+	QuestionsSortBy,
+	QuestionsStatusFilter,
+} from "./use-questions-view";
 
 type FiltersState = {
 	search: string;
@@ -72,4 +75,3 @@ export const useQuestionsViewStore = create<State & Actions>((set) => ({
 			pagination: { ...state.pagination, page: 1 },
 		})),
 }));
-

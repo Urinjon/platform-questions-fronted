@@ -16,7 +16,6 @@ import {
 import { motion } from "motion/react";
 import { getDeadlineColorClass, getDeadlineLabel } from "../model/utils";
 
-
 const MotionTableRow = motion(TableRow);
 
 type Props = {
@@ -104,34 +103,32 @@ export function QuestionsTableRow({ question: q, index, onRowClick }: Props) {
 				</TableCell>
 
 				<TableCell className="hidden md:table-cell">
-					
-						<div className="flex items-center justify-center gap-3 text-xs">
-							<div className="flex items-center gap-1 text-green-600 dark:text-green-400">
-								<CheckCircle2 className="h-3.5 w-3.5" />
-								<span>{q.answersCount.success}</span>
-							</div>
-							<div className="flex items-center gap-1 text-red-600 dark:text-red-400">
-								<XCircle className="h-3.5 w-3.5" />
-								<span>{q.answersCount.failed}</span>
-							</div>
+					<div className="flex items-center justify-center gap-3 text-xs">
+						<div className="flex items-center gap-1 text-green-600 dark:text-green-400">
+							<CheckCircle2 className="h-3.5 w-3.5" />
+							<span>{q.answersCount.success}</span>
+						</div>
+						<div className="flex items-center gap-1 text-red-600 dark:text-red-400">
+							<XCircle className="h-3.5 w-3.5" />
+							<span>{q.answersCount.failed}</span>
+						</div>
 
-							{totalAnswers > 0 ? (
+						{totalAnswers > 0 ? (
 							<div className="h-1.5 w-20 bg-red-500/50 rounded-full overflow-hidden">
 								<div
 									className="h-full bg-green-500 transition-all"
 									style={{ width: `${successRate}%` }}
 								/>
 							</div>
-							) : (
-								<div className="h-1.5 w-20 bg-muted rounded-full overflow-hidden">
-									<div
-										className="h-full bg-muted-foreground/20 transition-all"
-										style={{ width: `100%` }}
-									/>
-								</div>
-							)}
-						</div>
-					
+						) : (
+							<div className="h-1.5 w-20 bg-muted rounded-full overflow-hidden">
+								<div
+									className="h-full bg-muted-foreground/20 transition-all"
+									style={{ width: `100%` }}
+								/>
+							</div>
+						)}
+					</div>
 				</TableCell>
 
 				<TableCell className="text-right text-xs text-muted-foreground hidden sm:table-cell">
@@ -155,4 +152,3 @@ export function QuestionsTableRow({ question: q, index, onRowClick }: Props) {
 		</QuestionDetailModal>
 	);
 }
-

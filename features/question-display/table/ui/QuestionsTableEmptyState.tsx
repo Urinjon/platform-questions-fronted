@@ -13,4 +13,3 @@ export function QuestionsTableEmptyState({ isVisible }: Props) {
 		</div>
 	);
 }
-

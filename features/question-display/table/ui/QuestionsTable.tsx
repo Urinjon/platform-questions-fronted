@@ -1,9 +1,6 @@
 "use client";
 
-import {
-	Table,
-	TableBody,
-} from "@ui-kit/ui/table";
+import { Table, TableBody } from "@ui-kit/ui/table";
 import type { Question } from "@entities/question";
 import { QuestionsTableEmptyState } from "./QuestionsTableEmptyState";
 import { QuestionsTableHeader } from "./QuestionsTableHeader";
