@@ -60,7 +60,7 @@ export function QuestionsView() {
 						onQuestionClick={handleClick}
 					/>
 
-					{/* Пагинация должна оставаться доступной даже при client-side фильтрах */}
+					
 					{!isLoading && !isError && (
 						<QuestionsViewPagination
 							page={page}

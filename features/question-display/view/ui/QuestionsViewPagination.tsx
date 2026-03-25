@@ -9,15 +9,19 @@ type Props = {
 };
 
 export function QuestionsViewPagination({ page, totalPages, onPageChange }: Props) {
-	if (totalPages <= 1) return null;
-
 	return (
-		<div className="mt-5 flex justify-center">
-			<QuestionsPagination
-				page={page}
-				totalPages={totalPages}
-				onPageChange={onPageChange}
-			/>
+		<div className="mt-5 flex flex-col items-center gap-2">
+			<div className="text-xs text-muted-foreground">
+				Страница {page} из {totalPages}
+			</div>
+
+			{totalPages > 1 && (
+				<QuestionsPagination
+					page={page}
+					totalPages={totalPages}
+					onPageChange={onPageChange}
+				/>
+			)}
 		</div>
 	);
 }

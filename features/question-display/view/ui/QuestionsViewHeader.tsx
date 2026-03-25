@@ -7,8 +7,8 @@ import type {
 	QuestionsSortBy,
 	QuestionsStatusFilter,
 } from "../model/use-questions-view";
-import { QuestionsViewFilters } from "./QuestionsViewFilters";
-import { QuestionsViewFilterChips } from "./QuestionsViewFilterChips";
+import { QuestionsViewFilters } from "@features/question-display/filters/ui/QuestionsViewFilters";
+import { QuestionsViewFilterChips } from "@features/question-display/filters";
 
 type Props = {
 	search: string;

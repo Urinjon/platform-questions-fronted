@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 import type { Question } from "@entities/question";
 import { useQuestionsQuery } from "@features/question-display/api";
+import { useQuestionsViewStore } from "./questionsView.store";
 
 export type QuestionsStatusFilter = "all" | "new" | "answered" | "unanswered";
 
@@ -29,12 +30,17 @@ export interface UseQuestionsViewResult {
 }
 
 export function useQuestionsView(): UseQuestionsViewResult {
-	const [search, setSearch] = useState("");
-	const [statusFilter, setStatusFilter] =
-		useState<QuestionsStatusFilter>("all");
-	const [sortBy, setSortBy] = useState<QuestionsSortBy>("newest");
-	const [page, setPage] = useState(1);
-	const pageSize = 10;
+	const search = useQuestionsViewStore((s) => s.filters.search);
+	const statusFilter = useQuestionsViewStore((s) => s.filters.statusFilter);
+	const sortBy = useQuestionsViewStore((s) => s.filters.sortBy);
+	const page = useQuestionsViewStore((s) => s.pagination.page);
+	const pageSize = useQuestionsViewStore((s) => s.pagination.pageSize);
+
+	const setSearch = useQuestionsViewStore((s) => s.setSearch);
+	const setStatusFilter = useQuestionsViewStore((s) => s.setStatusFilter);
+	const setSortBy = useQuestionsViewStore((s) => s.setSortBy);
+	const setPage = useQuestionsViewStore((s) => s.setPage);
+	const resetFilters = useQuestionsViewStore((s) => s.resetFilters);
 
 	const { data, isLoading, isError } = useQuestionsQuery({
 		page,
@@ -91,17 +97,7 @@ export function useQuestionsView(): UseQuestionsViewResult {
 		[questions, search, sortBy, statusFilter],
 	);
 
-	useEffect(() => {
-		setPage(1);
-	}, []);
-
 	const hasFilters = Boolean(search) || statusFilter !== "all";
-
-	const resetFilters = () => {
-		setSearch("");
-		setStatusFilter("all");
-		setSortBy("newest");
-	};
 
 	return {
 		search,
