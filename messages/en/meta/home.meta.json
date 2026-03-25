@@ -1,7 +1,7 @@
 {
-  "$schema": "https://inlang.com/schema/inlang-message-format",
+	"$schema": "https://inlang.com/schema/inlang-message-format",
 
-  "metaHomeTitle": "Aiautomation. PQ — A platform with questions",
-  "metaHomeDescription": "A platform with thousands of questions to improve knowledge and skills across a wide range of topics.",
-  "metaHomeOgDescription": "Enhance your knowledge with Aiautomation. PQ — create, take, and compete in quizzes."
+	"metaHomeTitle": "Aiautomation. PQ — A platform with questions",
+	"metaHomeDescription": "A platform with thousands of questions to improve knowledge and skills across a wide range of topics.",
+	"metaHomeOgDescription": "Enhance your knowledge with Aiautomation. PQ — create, take, and compete in quizzes."
 }

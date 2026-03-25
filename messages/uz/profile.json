@@ -25,5 +25,15 @@
 	"profileFormBirthdayLabel": "Tug'ilgan sana",
 	"profileFormBirthdayPlaceholder": "Sanani tanlang",
 	"profileFormBirthdayDescription": "Tug'ilgan sanangizni kiriting",
-	"profileFormSave": "O'zgarishlarni saqlash"
+	"profileFormSave": "O'zgarishlarni saqlash",
+
+	"profileActivationTitle": "Hisobni faollashtirish talab qilinadi",
+	"profileActivationDescription": "Sizning hisobingiz hali faollashtirilmagan ko‘rinadi. Iltimos, to‘liq kirish uchun tasdiqlash xatidagi havola orqali o‘ting (odatda u {email} manziliga keladi).",
+	"profileActivationReloadHint": "Agar tasdiqlagandan keyin holat yangilanmasa, sahifani qayta yuklang.",
+	"profileActivationReloadAction": "Sahifani qayta yuklash",
+
+	"profileToastEmailChangedTitle": "Email o‘zgartirildi",
+	"profileToastEmailChangedDescription": "Yangi manzilingizga tasdiqlash xatini yubordik. Email tasdiqlanmaguncha hisobingiz nofaol deb belgilanishi mumkin.",
+	"profileToastProfileUpdatedTitle": "Profil yangilandi",
+	"profileToastProfileUpdateFailed": "Profilni yangilab bo‘lmadi"
 }

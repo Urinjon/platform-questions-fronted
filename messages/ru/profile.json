@@ -25,5 +25,15 @@
 	"profileFormBirthdayLabel": "Дата рождения",
 	"profileFormBirthdayPlaceholder": "Выберите дату",
 	"profileFormBirthdayDescription": "Укажите вашу дату рождения",
-	"profileFormSave": "Сохранить изменения"
+	"profileFormSave": "Сохранить изменения",
+
+	"profileActivationTitle": "Требуется активация аккаунта",
+	"profileActivationDescription": "Похоже, ваш аккаунт ещё не активирован. Пожалуйста, перейдите по ссылке из письма для подтверждения (обычно оно приходит на {email}), чтобы получить полный доступ к платформе.",
+	"profileActivationReloadHint": "Если после подтверждения статус не обновился — перезагрузите страницу.",
+	"profileActivationReloadAction": "Перезагрузить страницу",
+
+	"profileToastEmailChangedTitle": "Email изменён",
+	"profileToastEmailChangedDescription": "Мы отправили письмо для подтверждения на новый адрес. Пока вы не подтвердите email, аккаунт может быть помечен как неактивный.",
+	"profileToastProfileUpdatedTitle": "Профиль успешно обновлён",
+	"profileToastProfileUpdateFailed": "Не удалось обновить профиль"
 }
