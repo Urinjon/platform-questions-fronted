@@ -3,6 +3,8 @@
 import type { User } from "@entities/user";
 import { Mail, UserIcon, Hash, GraduationCap, Calendar } from "lucide-react";
 
+import * as m from "paraglide/messages";
+
 interface ProfileInfoCardProps {
 	user: User | null;
 }
@@ -45,12 +47,12 @@ export const ProfileInfoCard = ({ user }: ProfileInfoCardProps) => {
 			/>
 			<InfoRow
 				icon={<GraduationCap className="size-4 text-muted-foreground" />}
-				label="Университет"
+				label={m.profileUniversity()}
 				value={user?.university ?? undefined}
 			/>
 			<InfoRow
 				icon={<Calendar className="size-4 text-muted-foreground" />}
-				label="Дата рождения"
+				label={m.profileBirthdate()}
 				value={user?.birthday ?? undefined}
 			/>
 		</div>

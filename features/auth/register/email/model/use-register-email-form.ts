@@ -18,13 +18,13 @@ export const useRegisterEmailForm = () => {
 		resolver: zodResolver(registerSchema),
 		mode: "onChange",
 		defaultValues: {
-			firstName: "Timur",
-			lastName: "Tukfatullin",
-			password: "12345678",
-			confirmPassword: "12345678",
-			email: "freyzan2006@gmail.com",
+			firstName: "",
+			lastName: "",
+			password: "",
+			confirmPassword: "",
+			email: "",
 			birthday: new Date(1999, 11, 20),
-			username: "freyzan",
+			username: "",
 		},
 	});
 

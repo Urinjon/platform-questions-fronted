@@ -1,0 +1,17 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"settingtitle": "Sozlamalar",
+	"settingdescription": "Interfeys va hisobni shaxsiylashtirish",
+	"settingAccount": "Hisob",
+	"settingAppearance": "Ko'rinish",
+	"language": "Til",
+	"languageDescription": "Interfeys tilini tanlang",
+	"settingTheme": "Mavzu",
+	"settingAccentColor": "Aksent rangi",
+	"settingAnimation": "Animatsiya",
+	"animationDescription": "Silliq o'tishlar va effektlar",
+	"animationMode": "Animatsiya rejimi",
+	"animationModeDescription": "Silliq o'tishlar va effektlar",
+	"accentColorTitle": "Aksent rangi"
+}

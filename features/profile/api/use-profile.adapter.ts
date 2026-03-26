@@ -4,6 +4,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 import type { AxiosError } from "axios";
 
+import * as m from "paraglide/messages";
+
 import { fetchProfile, updateProfile } from "./profile.api";
 import type { ApiResponse } from "@shared/api/types";
 import type { UpdateUserDto, User } from "@entities/user";
@@ -18,15 +20,12 @@ export function useProfileQuery() {
 		queryKey: PROFILE_QUERY_KEY,
 		queryFn: fetchProfile,
 		staleTime: 1000 * 60 * 5,
-		refetchOnMount: "always",
-		refetchOnWindowFocus: "always",
-		refetchOnReconnect: "always",
 	});
 }
 
 export function useProfileUpdateAdapter() {
 	const queryClient = useQueryClient();
-	const { setUser } = useAuthStore();
+	const { user: currentUser, setUser } = useAuthStore();
 
 	const { mutateAsync, isPending } = useMutation<
 		ApiResponse<User>,
@@ -38,14 +37,20 @@ export function useProfileUpdateAdapter() {
 			const user = getFirstData(response);
 			if (user) {
 				setUser(user);
-				if (variables.email) {
-					toast.message("Email изменён", {
-						description:
-							"Мы отправили письмо для подтверждения на новый адрес. Пока вы не подтвердите email, аккаунт может быть помечен как неактивный.",
+
+				const prevEmail = currentUser?.email?.trim() ?? "";
+				const nextEmail = variables.email?.trim() ?? "";
+				const emailChanged =
+					nextEmail.length > 0 &&
+					prevEmail.toLowerCase() !== nextEmail.toLowerCase();
+
+				if (emailChanged) {
+					toast.message(m.profileToastEmailChangedTitle(), {
+						description: m.profileToastEmailChangedDescription(),
 						position: "top-center",
 					});
 				} else {
-					toast.success("Профиль успешно обновлён", {
+					toast.success(m.profileToastProfileUpdatedTitle(), {
 						position: "top-center",
 					});
 				}
@@ -54,7 +59,7 @@ export function useProfileUpdateAdapter() {
 		},
 		onError: (error) => {
 			const detail = getErrorDetailFromAxiosError(error);
-			toast.error(detail ?? "Не удалось обновить профиль", {
+			toast.error(detail ?? m.profileToastProfileUpdateFailed(), {
 				position: "top-center",
 			});
 		},

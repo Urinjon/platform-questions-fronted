@@ -267,9 +267,17 @@ function SidebarTrigger({
 		<Button
 			data-sidebar="trigger"
 			data-slot="sidebar-trigger"
-			variant="ghost"
+			variant="outline"
 			size="icon"
-			className={cn("size-7", className)}
+			className={cn(
+				"fixed left-4 top-4 z-30 size-9 shadow-sm",
+				"bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+				"transition-[left,transform] duration-200 ease-linear",
+				"md:left-4",
+				"md:peer-data-[state=expanded]:left-[calc(var(--sidebar-width)+1rem)]",
+				"md:peer-data-[collapsible=icon]:peer-data-[state=collapsed]:left-[calc(var(--sidebar-width-icon)+1rem)]",
+				className,
+			)}
 			onClick={(event) => {
 				onClick?.(event);
 				toggleSidebar();

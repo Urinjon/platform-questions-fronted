@@ -4,23 +4,26 @@ import { cn } from "@shared/lib/utils";
 import { motion } from "motion/react";
 import type React from "react";
 
-export const BackgroundLines = ({
-	children,
-	className,
-	svgOptions,
-}: {
+interface BackgroundLinesProps {
 	children: React.ReactNode;
 	className?: string;
 	svgOptions?: {
 		duration?: number;
 	};
+	isActive?: boolean;
+}
+
+export const BackgroundLines: React.FC<BackgroundLinesProps> = ({
+	children,
+	className,
+	svgOptions,
+	isActive = true,
 }) => {
+	if (!isActive) return children;
+
 	return (
 		<div
-			className={cn(
-				"h-[20rem] md:h-screen w-full bg-white dark:bg-black",
-				className,
-			)}
+			className={cn("h-[20rem] md:h-screen w-full bg-background", className)}
 		>
 			<SVG svgOptions={svgOptions} />
 			{children}

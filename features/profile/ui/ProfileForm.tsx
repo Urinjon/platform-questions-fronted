@@ -18,6 +18,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@ui-kit/ui/popover";
 import type { User } from "@entities/user";
 import { useProfileForm } from "../model/use-profile-form";
 
+import * as m from "paraglide/messages";
+
 interface ProfileFormProps {
 	user: User | null;
 }
@@ -34,11 +36,16 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 						name="first_name"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Имя</FormLabel>
+								<FormLabel>{m.profileFormFirstName()}</FormLabel>
 								<FormControl>
-									<Input placeholder="Иван" {...field} />
+									<Input
+										placeholder={m.profileFormFirstNamePlaceholder()}
+										{...field}
+									/>
 								</FormControl>
-								<FormDescription>Ваше настоящее имя</FormDescription>
+								<FormDescription>
+									{m.profileFormFirstNameDescription()}
+								</FormDescription>
 								<FormMessage />
 							</FormItem>
 						)}
@@ -49,11 +56,16 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 						name="last_name"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Фамилия</FormLabel>
+								<FormLabel>{m.profileFormLastName()}</FormLabel>
 								<FormControl>
-									<Input placeholder="Иванов" {...field} />
+									<Input
+										placeholder={m.profileFormLastNamePlaceholder()}
+										{...field}
+									/>
 								</FormControl>
-								<FormDescription>Ваша фамилия</FormDescription>
+								<FormDescription>
+									{m.profileFormLastNameDescription()}
+								</FormDescription>
 								<FormMessage />
 							</FormItem>
 						)}
@@ -70,7 +82,7 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 								<Input placeholder="my_username" {...field} />
 							</FormControl>
 							<FormDescription>
-								Уникальное имя пользователя для вашего аккаунта
+								{m.profileFormUsernameDescription()}
 							</FormDescription>
 							<FormMessage />
 						</FormItem>
@@ -87,7 +99,7 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 								<Input type="email" placeholder="user@example.com" {...field} />
 							</FormControl>
 							<FormDescription>
-								Адрес электронной почты для уведомлений
+								{m.profileFormEmailDescription()}
 							</FormDescription>
 							<FormMessage />
 						</FormItem>
@@ -100,12 +112,12 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 						name="university"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Университет</FormLabel>
+								<FormLabel>{m.profileUniversity()}</FormLabel>
 								<FormControl>
 									<Input placeholder="MIT" {...field} />
 								</FormControl>
 								<FormDescription>
-									Учебное заведение, в котором вы учитесь или учились
+									{m.profileFormUniversityDescription()}
 								</FormDescription>
 								<FormMessage />
 							</FormItem>
@@ -117,7 +129,7 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 						name="birthday"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel>Дата рождения</FormLabel>
+								<FormLabel>{m.profileFormBirthdayLabel()}</FormLabel>
 								<FormControl>
 									<Popover>
 										<PopoverTrigger asChild>
@@ -128,7 +140,7 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 												<CalendarIcon className="mr-2 h-4 w-4" />
 												{field.value
 													? field.value.toLocaleDateString("ru-RU")
-													: "Выберите дату"}
+													: m.profileFormBirthdayPlaceholder()}
 											</Button>
 										</PopoverTrigger>
 										<PopoverContent className="p-0">
@@ -144,7 +156,9 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 										</PopoverContent>
 									</Popover>
 								</FormControl>
-								<FormDescription>Укажите вашу дату рождения</FormDescription>
+								<FormDescription>
+									{m.profileFormBirthdayDescription()}
+								</FormDescription>
 								<FormMessage />
 							</FormItem>
 						)}
@@ -158,7 +172,7 @@ export const ProfileForm = ({ user }: ProfileFormProps) => {
 						) : (
 							<Save className="size-4" />
 						)}
-						Сохранить изменения
+						{m.profileFormSave()}
 					</Button>
 				</div>
 			</form>

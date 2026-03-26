@@ -1,0 +1,39 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"profileHeaderActive": "Active",
+	"profileHeaderNotActive": "Not active",
+	"profileUser": "User",
+	"profileAdmin": "Admin",
+	"profileModerator": "Moderator",
+
+	"profileInfoTitle": "Account Information",
+	"profileInfoDescription": "Your account's basic details",
+	"profileUniversity": "University",
+	"profileBirthdate": "Date of birth",
+
+	"profileEditTitle": "Profile Editing",
+	"profileEditDescription": "Change your profile details and click «Save Changes»",
+	"profileFormFirstName": "First Name",
+	"profileFormFirstNamePlaceholder": "John",
+	"profileFormFirstNameDescription": "Your real first name",
+	"profileFormLastName": "Last Name",
+	"profileFormLastNamePlaceholder": "Doe",
+	"profileFormLastNameDescription": "Your last name",
+	"profileFormUsernameDescription": "Unique username for your account",
+	"profileFormEmailDescription": "Email address for notifications",
+	"profileFormUniversityDescription": "Educational institution where you study or studied",
+	"profileFormBirthdayLabel": "Date of Birth",
+	"profileFormBirthdayPlaceholder": "Select a date",
+	"profileFormBirthdayDescription": "Enter your date of birth",
+	"profileFormSave": "Save Changes",
+
+	"profileActivationTitle": "Account activation required",
+	"profileActivationDescription": "It looks like your account isn’t activated yet. Please open the confirmation link from the email (it’s usually sent to {email}) to get full access to the platform.",
+	"profileActivationReloadHint": "If your status doesn’t update after confirmation, please reload the page.",
+	"profileActivationReloadAction": "Reload page",
+
+	"profileToastEmailChangedTitle": "Email changed",
+	"profileToastEmailChangedDescription": "We’ve sent a confirmation email to your new address. Until you confirm it, your account may be marked as inactive.",
+	"profileToastProfileUpdatedTitle": "Profile updated",
+	"profileToastProfileUpdateFailed": "Failed to update profile"
+}

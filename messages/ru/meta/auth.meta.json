@@ -1,0 +1,21 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"metaAuthTitle": "Авторизация | Aiautomation. PQ",
+	"metaAuthDescription": "Войдите или создайте аккаунт на платформе вопросов Aiautomation. PQ.",
+	"metaAuthOgTitle": "Авторизация | Aiautomation. PQ",
+	"metaAuthOgDescription": "Создайте новый аккаунт или войдите в существующий, чтобы получить доступ к тысячам вопросов.",
+
+	"metaRegisterTitle": "Регистрация | Aiautomation. PQ",
+	"metaRegisterDescription": "Создайте новый аккаунт на платформе вопросов Aiautomation. PQ.",
+	"metaRegisterOgTitle": "Регистрация | Aiautomation. PQ",
+	"metaRegisterOgDescription": "Присоединяйтесь к Aiautomation. PQ — создайте аккаунт и получите доступ к тысячам вопросов.",
+
+	"metaLoginTitle": "Вход | Aiautomation. PQ",
+	"metaLoginDescription": "Войдите в аккаунт на платформе вопросов Aiautomation. PQ.",
+	"metaLoginOgTitle": "Вход | Aiautomation. PQ",
+	"metaLoginOgDescription": "Войдите в свой аккаунт Aiautomation. PQ и продолжайте улучшать свои знания.",
+
+	"metaGoogleAuthTitle": "Google авторизация | Aiautomation. PQ",
+	"metaGoogleAuthDescription": "Обработка авторизации через Google."
+}

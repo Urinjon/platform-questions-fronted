@@ -11,6 +11,8 @@ import type { User } from "@entities/user";
 export const useProfileForm = (user: User | null) => {
 	const { updateProfile, isUpdating } = useProfileUpdateAdapter();
 
+	console.log(user?.birthday);
+
 	const form = useForm<ProfileFormValues>({
 		resolver: zodResolver(profileFormSchema),
 		mode: "onChange",
@@ -35,7 +37,7 @@ export const useProfileForm = (user: User | null) => {
 				birthday: user.birthday ? new Date(user.birthday) : undefined,
 			});
 		}
-	}, [user, form]);
+	}, [user, form.reset]);
 
 	const onSubmit = form.handleSubmit(async (data) => {
 		await updateProfile({

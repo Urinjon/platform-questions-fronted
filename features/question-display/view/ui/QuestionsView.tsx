@@ -48,6 +48,44 @@ export function QuestionsView() {
 				onResetStatusFilter={() => setStatusFilter("all")}
 			/>
 
+<<<<<<< HEAD
+=======
+			<div className="sticky top-0 z-20 -mx-4 bg-background/85 backdrop-blur-lg px-4 py-3 sm:px-6 lg:px-8 border-b shadow-sm">
+				<div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+					<h1 className="text-2xl font-bold tracking-tight flex items-center gap-3">
+						Ваши вопросы
+						<ContainerTextFlip
+							words={["Aiautomation.", "PQ", "Splashel", "For", "You"]}
+							className="text-sm md:text-sm"
+						/>
+					</h1>
+					<QuestionsViewFilters
+						search={search}
+						statusFilter={statusFilter}
+						sortBy={sortBy}
+						onSearchChange={setSearch}
+						onStatusFilterChange={setStatusFilter}
+						onSortByChange={setSortBy}
+					/>
+				</div>
+
+				{/* Чипы применённых фильтров */}
+				<AnimatePresence initial={false}>
+					{hasFilters && (
+						<QuestionsViewFilterChips
+							key="questions-filter-chips"
+							search={search}
+							statusFilter={statusFilter}
+							onClearSearch={() => setSearch("")}
+							onResetFilters={resetFilters}
+							onResetStatusFilter={() => setStatusFilter("all")}
+						/>
+					)}
+				</AnimatePresence>
+			</div>
+
+			{/* Контент */}
+>>>>>>> feature/auth
 			<div className="pt-6 pb-16">
 				<QuestionsViewState
 					isLoading={isLoading}

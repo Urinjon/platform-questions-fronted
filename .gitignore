@@ -4,3 +4,6 @@ bun.lock
 .vscode
 .env
 next-env.d.ts
+tsconfig.tsbuildinfo
+package-lock.json
+paraglide

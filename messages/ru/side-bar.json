@@ -1,0 +1,10 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"sidebarNav": "Навигация",
+	"sidebarHome": "Главная",
+	"sidebarQuestions": "Вопросы",
+	"sidebarProfile": "Профиль",
+	"sidebarHelp": "Как использовать ?",
+	"sidebarSettings": "Настройки"
+}

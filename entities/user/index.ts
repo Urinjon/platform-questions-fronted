@@ -1,1 +1,1 @@
-export type { User, UpdateUserDto } from "./model/types";
+export type { User, UpdateUserDto, Role } from "./model/types";
