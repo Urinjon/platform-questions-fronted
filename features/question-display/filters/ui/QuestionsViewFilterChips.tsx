@@ -3,7 +3,7 @@ import { Button } from "@ui-kit/ui/button";
 import { SlidersHorizontal, X } from "lucide-react";
 import { motion } from "motion/react";
 
-import type { QuestionsStatusFilter } from "../model/use-questions-view";
+import type { QuestionsStatusFilter } from "../../view/model/use-questions-view";
 
 interface QuestionsViewFilterChipsProps {
 	search: string;

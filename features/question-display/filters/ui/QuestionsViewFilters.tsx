@@ -12,7 +12,7 @@ import { Funnel, Search, SortDesc } from "lucide-react";
 import type {
 	QuestionsSortBy,
 	QuestionsStatusFilter,
-} from "../model/use-questions-view";
+} from "../../view/model/use-questions-view";
 
 interface QuestionsViewFiltersProps {
 	search: string;
