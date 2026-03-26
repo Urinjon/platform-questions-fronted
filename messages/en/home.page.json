@@ -1,0 +1,11 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"heroStart": "Get started for free",
+	"heroTitlePt1": "Platform for",
+	"heroTitlePt2": "solving questions",
+	"heroDescription": "Create, complete, compete. A platform with thousands of interesting questions on a wide variety of topics — from science to memes.",
+	"heroWhat": "What is this platform?",
+	"heroCategory": "Popular category",
+	"heroCount": "tasks available right now"
+}

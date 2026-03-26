@@ -16,8 +16,8 @@ export const useLoginEmailForm = () => {
 		resolver: zodResolver(loginEmailSchema),
 		mode: "onChange",
 		defaultValues: {
-			email: "user@example.com",
-			password: "strongpassword123",
+			email: "",
+			password: "",
 		},
 	});
 

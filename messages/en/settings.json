@@ -1,0 +1,17 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"settingtitle": "Settings",
+	"settingdescription": "Personalization of the interface and account",
+	"settingAccount": "Account",
+	"settingAppearance": "Appearance",
+	"language": "Language",
+	"languageDescription": "Interface language",
+	"settingTheme": "Theme",
+	"settingAccentColor": "Accent Color",
+	"settingAnimation": "Animation",
+	"animationDescription": "Smooth transitions and effects",
+	"animationMode": "Animation Mode",
+	"animationModeDescription": "Smooth transitions and effects",
+	"accentColorTitle": "Accent Color"
+}

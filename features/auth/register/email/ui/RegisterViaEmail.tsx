@@ -27,6 +27,7 @@ import {
 	UserPlusIcon,
 } from "lucide-react";
 import Link from "next/link";
+import { GoogleAuthButton } from "@features/auth/google";
 
 import { Space } from "@ui-kit/ui/space";
 import { Calendar } from "@ui-kit/ui/calendar";
@@ -150,9 +151,7 @@ export const RegisterViaEmail: React.FC = () => {
 										</FormItem>
 									)}
 								/>
-							</Space>
 
-							<Space gap={4}>
 								<FormField
 									control={form.control}
 									name="birthday"
@@ -195,6 +194,7 @@ export const RegisterViaEmail: React.FC = () => {
 					</Form>
 				</CardContent>
 				<CardFooter className="flex-col gap-2 w-full">
+					<GoogleAuthButton label="Зарегистрироваться через Google" />
 					<Link href="/auth/login" className="w-full">
 						<Button type="button" className="w-full" variant="outline">
 							<ArrowLeftIcon /> Назад

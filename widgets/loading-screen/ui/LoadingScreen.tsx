@@ -40,7 +40,7 @@ export function LoadingScreen() {
 						<div className="relative z-10 flex h-20 w-20 items-center justify-center rounded-full bg-secondary/90 backdrop-blur-md border border-border/50 shadow-2xl overflow-hidden">
 							<Image
 								src="/logo.png"
-								alt="Platform Questions Logo"
+								alt="Aiautomation. PQ Logo"
 								width={64}
 								height={64}
 								className="object-contain"

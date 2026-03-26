@@ -1,3 +1,5 @@
+"use client";
+
 import { AuthActions } from "./AuthActions";
 import { UserMenuDropdown } from "./UserMenuDropdown";
 

@@ -1,41 +1,15 @@
-// "use client";
-
-// import { Label } from "@ui-kit/ui/label";
-// import { Space } from "@ui-kit/ui/space";
-// import { Switch } from "@ui-kit/ui/switch";
-// import { LaptopMinimalCheckIcon } from "lucide-react";
-// import { useState } from "react";
-
-// export const SwitchAnimation = () => {
-// 	const [isAnimated, setIsAnimated] = useState<boolean>(true);
-
-// 	const toggleAnimation = () => {
-// 		setIsAnimated(!isAnimated);
-// 	};
-
-// 	return (
-// 		<Space align="center" gap={3}>
-// 			<Label htmlFor="is-animated">
-// 				<LaptopMinimalCheckIcon /> вкл/выкл анимации
-// 			</Label>
-// 			<Switch
-// 				id="is-animated"
-// 				checked={isAnimated}
-// 				onChange={toggleAnimation}
-// 			/>
-// 		</Space>
-// 	);
-// };
-
 "use client";
 
 import { Label } from "@ui-kit/ui/label";
 import { Switch } from "@ui-kit/ui/switch";
 import { LaptopMinimalCheckIcon } from "lucide-react"; // или LaptopMinimalCheckIcon
-import { useState } from "react";
+import { useAnimationsSettings } from "../providers/animations.provider";
+
+import * as m from "@paraglide/messages";
 
 export const SwitchAnimation = () => {
-	const [enabled, setEnabled] = useState(true);
+	const { animationsMode, setAnimationsMode } = useAnimationsSettings();
+	const enabled = animationsMode === "on";
 
 	return (
 		<div className="flex items-center justify-between rounded-lg border p-3 hover:bg-accent/50 transition-colors">
@@ -46,15 +20,21 @@ export const SwitchAnimation = () => {
 						htmlFor="animation"
 						className="text-sm font-medium leading-none"
 					>
-						Анимации интерфейса
+						{m.animationMode()}
 					</Label>
 					<p className="text-xs text-muted-foreground mt-0.5">
-						Плавные переходы и эффекты
+						{m.animationModeDescription()}
 					</p>
 				</div>
 			</div>
 
-			<Switch id="animation" checked={enabled} onCheckedChange={setEnabled} />
+			<Switch
+				id="animation"
+				checked={enabled}
+				onCheckedChange={(checked: boolean) =>
+					setAnimationsMode(checked ? "on" : "off")
+				}
+			/>
 		</div>
 	);
 };

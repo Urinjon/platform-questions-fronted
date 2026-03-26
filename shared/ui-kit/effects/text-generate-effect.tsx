@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "motion/react";
 import { cn } from "@shared/lib/utils";
-import { generateUniqId } from "@shared/lib/generate-uniq-id.lib";
 
 export const TextGenerateEffect = ({
 	words,
@@ -34,10 +33,10 @@ export const TextGenerateEffect = ({
 	const renderWords = () => {
 		return (
 			<motion.div ref={scope}>
-				{wordsArray.map((word) => {
+				{wordsArray.map((word, i) => {
 					return (
 						<motion.span
-							key={generateUniqId(word)}
+							key={`${word}-${i}`}
 							className="dark:text-white text-black opacity-0"
 							style={{
 								filter: filter ? "blur(10px)" : "none",

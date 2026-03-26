@@ -47,7 +47,7 @@ export function QuestionsView() {
 					<h1 className="text-2xl font-bold tracking-tight flex items-center gap-3">
 						Ваши вопросы
 						<ContainerTextFlip
-							words={["Platform", "Questions", "Splashel", "For", "You"]}
+							words={["Aiautomation.", "PQ", "Splashel", "For", "You"]}
 							className="text-sm md:text-sm"
 						/>
 					</h1>

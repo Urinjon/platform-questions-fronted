@@ -6,29 +6,45 @@ import type React from "react";
 import type { Metadata } from "next";
 
 import { Container } from "@widgets/container";
-import { AppSideBar } from "@widgets/side-bar";
+import { AppContentSideBar, AppSideBar } from "@widgets/side-bar";
 
-export const metadata: Metadata = {
-	title: "Questions",
-	description: "Страница с вопросами",
-	openGraph: {
-		title: "Questions",
-		description: "Страница с вопросами",
-		url: "https://platform-questions-fronted.vercel.app/questions",
-		siteName: "Platform Questions",
-	},
-};
+import { AnimationGate } from "@features/setting";
+import { getServerLocale } from "@shared/lib/get-locale-server";
+import { configService } from "@shared/container";
+import { m } from "@paraglide/messages";
 
-export default function QuestionsLayout({
+export async function generateMetadata(): Promise<Metadata> {
+	const frontendUrl = configService.getFrontendUrl();
+	await getServerLocale();
+
+	return {
+		title: m.metaQuestionsTitle(),
+		description: m.metaQuestionsDescription(),
+		openGraph: {
+			title: m.metaQuestionsTitle(),
+			description: m.metaQuestionsDescription(),
+			url: `${frontendUrl}/questions`,
+			siteName: m.metaSiteName(),
+		},
+	};
+}
+
+export default async function QuestionsLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
+	await getServerLocale();
 	return (
 		<Space as="main" align="center" fullScreenHeight>
 			<SidebarProvider>
-				<Spotlight />
-				<AppSideBar />
+				<AnimationGate>
+					<Spotlight />
+				</AnimationGate>
+
+				<AppSideBar>
+					<AppContentSideBar />
+				</AppSideBar>
 
 				<SidebarTrigger />
 				<Container>{children}</Container>

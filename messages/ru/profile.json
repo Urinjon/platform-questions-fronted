@@ -1,0 +1,39 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+	"profileHeaderActive": "Активен",
+	"profileHeaderNotActive": "Не активирован",
+	"profileUser": "Пользователь",
+	"profileAdmin": "Администратор",
+	"profileModerator": "Модератор",
+
+	"profileInfoTitle": "Информация об аккаунте",
+	"profileInfoDescription": "Основные данные вашего аккаунта",
+	"profileUniversity": "Университет",
+	"profileBirthdate": "Дата рождения",
+
+	"profileEditTitle": "Редактирование профиля",
+	"profileEditDescription": "Измените данные профиля и нажмите «Сохранить изменения»",
+	"profileFormFirstName": "Имя",
+	"profileFormFirstNamePlaceholder": "Иван",
+	"profileFormFirstNameDescription": "Ваше настоящее имя",
+	"profileFormLastName": "Фамилия",
+	"profileFormLastNamePlaceholder": "Иванов",
+	"profileFormLastNameDescription": "Ваша фамилия",
+	"profileFormUsernameDescription": "Уникальное имя пользователя для вашего аккаунта",
+	"profileFormEmailDescription": "Адрес электронной почты для уведомлений",
+	"profileFormUniversityDescription": "Учебное заведение, в котором вы учитесь или учились",
+	"profileFormBirthdayLabel": "Дата рождения",
+	"profileFormBirthdayPlaceholder": "Выберите дату",
+	"profileFormBirthdayDescription": "Укажите вашу дату рождения",
+	"profileFormSave": "Сохранить изменения",
+
+	"profileActivationTitle": "Требуется активация аккаунта",
+	"profileActivationDescription": "Похоже, ваш аккаунт ещё не активирован. Пожалуйста, перейдите по ссылке из письма для подтверждения (обычно оно приходит на {email}), чтобы получить полный доступ к платформе.",
+	"profileActivationReloadHint": "Если после подтверждения статус не обновился — перезагрузите страницу.",
+	"profileActivationReloadAction": "Перезагрузить страницу",
+
+	"profileToastEmailChangedTitle": "Email изменён",
+	"profileToastEmailChangedDescription": "Мы отправили письмо для подтверждения на новый адрес. Пока вы не подтвердите email, аккаунт может быть помечен как неактивный.",
+	"profileToastProfileUpdatedTitle": "Профиль успешно обновлён",
+	"profileToastProfileUpdateFailed": "Не удалось обновить профиль"
+}

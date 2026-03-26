@@ -1,0 +1,21 @@
+{
+	"$schema": "https://inlang.com/schema/inlang-message-format",
+
+	"metaAuthTitle": "Avtorizatsiya | Aiautomation. PQ",
+	"metaAuthDescription": "Aiautomation. PQ savollar platformasiga kiring yoki hisob yarating.",
+	"metaAuthOgTitle": "Avtorizatsiya | Aiautomation. PQ",
+	"metaAuthOgDescription": "Minglab savollarga kirish uchun yangi hisob yarating yoki mavjud hisobingizga kiring.",
+
+	"metaRegisterTitle": "Ro'yxatdan o'tish | Aiautomation. PQ",
+	"metaRegisterDescription": "Aiautomation. PQ savollar platformasida yangi hisob yarating.",
+	"metaRegisterOgTitle": "Ro'yxatdan o'tish | Aiautomation. PQ",
+	"metaRegisterOgDescription": "Aiautomation. PQ ga qo'shiling — hisob yarating va minglab savollarga kirish imkoniga ega bo'ling.",
+
+	"metaLoginTitle": "Kirish | Aiautomation. PQ",
+	"metaLoginDescription": "Aiautomation. PQ savollar platformasidagi hisobingizga kiring.",
+	"metaLoginOgTitle": "Kirish | Aiautomation. PQ",
+	"metaLoginOgDescription": "Aiautomation. PQ hisobingizga kiring va bilimingizni oshirishni davom eting.",
+
+	"metaGoogleAuthTitle": "Google avtorizatsiya | Aiautomation. PQ",
+	"metaGoogleAuthDescription": "Google orqali avtorizatsiyani qayta ishlash."
+}

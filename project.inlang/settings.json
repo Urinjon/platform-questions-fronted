@@ -1,0 +1,25 @@
+{
+  "$schema": "https://inlang.com/schema/project-settings",
+  "sourceLanguageTag": "en",
+  "languageTags": ["en", "ru", "uz"],
+  "modules": [
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-empty-pattern@latest/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-missing-translation@latest/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/message-lint-rule-without-source@latest/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/plugin-message-format@latest/dist/index.js",
+    "https://cdn.jsdelivr.net/npm/@inlang/plugin-m-function-matcher@latest/dist/index.js"
+  ],
+  "plugin.inlang.messageFormat": {
+    "pathPattern": [
+      "./messages/{languageTag}/settings.json",
+      "./messages/{languageTag}/side-bar.json",
+      "./messages/{languageTag}/profile.json",
+      "./messages/{languageTag}/navbar.json",
+      "./messages/{languageTag}/home.page.json",
+      "./messages/{languageTag}/meta/profile.meta.json",
+      "./messages/{languageTag}/meta/questions.meta.json",
+      "./messages/{languageTag}/meta/home.meta.json",
+      "./messages/{languageTag}/meta/auth.meta.json"
+    ]
+  }
+}

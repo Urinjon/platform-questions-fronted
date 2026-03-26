@@ -1,3 +1,5 @@
+export type Role = "USER" | "ADMIN" | "MODERATOR";
+
 export interface User {
 	id: number;
 	username: string;
@@ -5,7 +7,7 @@ export interface User {
 	first_name: string;
 	last_name: string;
 	is_active: boolean;
-	role?: string;
+	role?: Role;
 	university?: string | null;
 	birthday?: string | null;
 }

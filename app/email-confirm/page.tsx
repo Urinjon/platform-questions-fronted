@@ -35,8 +35,8 @@ export default async function EmailConfirmPage({ searchParams }: Props) {
 			bg: "bg-emerald-950/30 border-emerald-800/50",
 			title: "Email успешно подтверждён!",
 			description: "Спасибо! Ваш аккаунт теперь полностью активирован.",
-			actionText: "Перейти на страницу с вопросами",
-			actionHref: "/questions",
+			actionText: "Перейти на страницу профиля",
+			actionHref: "/profile",
 			extra: "Можете закрыть эту страницу или перейти дальше.",
 		},
 		invalid: {

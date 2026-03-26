@@ -1,14 +1,11 @@
-import { AboutHere } from "@widgets/about-here";
-import { HomeHere } from "@widgets/home-here";
+import { HomeHero } from "@widgets/home-hero";
 import { Navigation } from "@widgets/navigation";
 
-export default function HomePage() {
+export default async function HomePage() {
 	return (
 		<>
 			<Navigation />
-
-			<HomeHere />
-			<AboutHere />
+			<HomeHero />
 		</>
 	);
 }

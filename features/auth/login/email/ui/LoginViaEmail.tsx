@@ -3,7 +3,6 @@ import { Card, CardContent, CardFooter } from "@ui-kit/ui/card";
 
 import { Space } from "@ui-kit/ui/space";
 import { ArrowLeftIcon, AtSignIcon } from "lucide-react";
-import Image from "next/image";
 
 import {
 	Form,
@@ -23,6 +22,7 @@ import { Spinner } from "@ui-kit/ui/spinner";
 import { Alert, AlertDescription, AlertTitle } from "@ui-kit/ui/alert";
 import type { ApiError } from "@shared/api/types";
 import { generateUniqId } from "@shared/lib/generate-uniq-id.lib";
+import { GoogleAuthButton } from "@features/auth/google";
 
 export const LoginViaEmail = () => {
 	const { form, onSubmit, isLoading, errors } = useLoginEmailForm();
@@ -81,24 +81,7 @@ export const LoginViaEmail = () => {
 			</CardContent>
 			<CardFooter>
 				<Space axios="col" gap={3} fullWidth>
-					<Button variant="outline" className="w-full">
-						<Image
-							src="/brands/google-icon.png"
-							alt="Google"
-							width={24}
-							height={24}
-						/>
-						Войти с помощью Google
-					</Button>
-					<Button variant="outline" className="w-full">
-						<Image
-							src="/brands/yandex-icon.png"
-							alt="Yandex"
-							width={24}
-							height={24}
-						/>
-						Войти с помощью Yandex
-					</Button>
+					<GoogleAuthButton label="Войти с помощью Google" />
 					<Button asChild variant="outline" className="w-full">
 						<Link href="/">
 							<ArrowLeftIcon className="mr-2" />

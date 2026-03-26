@@ -37,6 +37,8 @@
 			"@shared/*": ["shared/*"],
 			"@assets/*": ["assets/*"],
 
+			"@paraglide/*": ["paraglide/*"],
+
 			"@/*": ["./*"]
 		}
 	},
